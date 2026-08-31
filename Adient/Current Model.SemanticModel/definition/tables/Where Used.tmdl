@@ -1,0 +1,159 @@
+table 'Where Used'
+	lineageTag: 30766816-fcab-42e0-91e5-321426ffed9c
+
+	measure 'Nb Of Item Parents' = DISTINCTCOUNT('Where Used'[ParentPartId])
+		formatString: 0
+		lineageTag: 58f7beb7-0bde-48a4-bd7f-0e64d7f4bd06
+
+	measure WU = IF([Nb Of Item Parents]<>BLANK(),"1",BLANK())
+		lineageTag: e2f4f865-a974-4dba-8395-a6d7b9f7d04d
+
+	column ChildPartId
+		dataType: int64
+		formatString: 0
+		lineageTag: 352fc979-270b-4cc9-a8ee-96f48e5e33af
+		summarizeBy: none
+		sourceColumn: ChildPartId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ParentPartId
+		dataType: int64
+		formatString: 0
+		lineageTag: 1faf53c3-34e3-45da-bf8b-09ed5772309c
+		summarizeBy: none
+		sourceColumn: ParentPartId
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrevPartId
+		dataType: double
+		lineageTag: 79433b94-ab5a-4539-a3f5-921b4d3d6bf9
+		summarizeBy: none
+		sourceColumn: PrevPartId
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Ratio
+		dataType: double
+		lineageTag: 788746c1-91be-48ab-9f69-cac2f2f89c95
+		summarizeBy: sum
+		sourceColumn: Ratio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PseudoTopLink
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 97901ad2-2da3-4f88-8448-20cc1a7852d0
+		summarizeBy: none
+		sourceColumn: PseudoTopLink
+
+		annotation SummarizationSetBy = Automatic
+
+	column Child = related('ChildrenParts'[Part_Numb_Location])
+		lineageTag: 29d3df13-161d-4b4c-a588-8c5258e1a66c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Next = related(Parts[Part_Numb_Location])
+		lineageTag: f2cf54cb-465f-4563-9745-7630b7b71575
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PrevPart.Priority' = related(PrevParts[Priority])
+		lineageTag: dc5d3321-372d-4b02-b7c3-dc2330a945fa
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ParentPart.AlertSeverity' = related(PrevParts[AlertSeverity])
+		lineageTag: 1e8c2999-a189-4883-84af-ba61652417d0
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Previous = related(PrevParts[Part_Numb_Location])
+		lineageTag: bf2b04b1-43cf-4465-96bd-01b54f466805
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Daily Usage Contribution' = if(RELATED('ChildrenParts'[EffectiveDailyUsage])<>0,RELATED('ChildrenParts'[EffectiveDailyUsage])*'Where Used'[Ratio]/RELATED('ChildrenParts'[EffectiveDailyUsage]),1)
+		lineageTag: 796e18d5-ecd3-4ab3-a47f-2599d7e7640a
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Previous Inv Method' = related(Parts[InventoryMethod])
+		formatString: 0
+		lineageTag: 1f4eb734-d644-412b-bde1-18e9002b1476
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Next Description' = related(PrevParts[Description])
+		lineageTag: 8eee3595-20af-4eb9-941d-fb5955a056b9
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Next_Location = related(Parts[Location])
+		lineageTag: 8463dacb-3809-469b-833d-42362cd9d6c0
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Previous_Location = related(PrevParts[Location])
+		lineageTag: 36ad821d-f64d-40d6-a1b7-816243ff7796
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Level
+		dataType: int64
+		formatString: 0
+		lineageTag: de29d130-38f4-4396-bf9f-f72a3c38de14
+		summarizeBy: sum
+		sourceColumn: Level
+
+		annotation SummarizationSetBy = Automatic
+
+	column Child_Location = related('ChildrenParts'[Location])
+		lineageTag: 3c36d4a7-88cf-4744-a31e-62f53980233a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Where Used' = m
+		mode: import
+		queryGroup: BOM
+		source =
+				let
+				    Source = #"Where Used Source",
+				    #"Requêtes fusionnées" = Table.NestedJoin(Source, {"ParentPartId"}, #"Has Parent", {"Id"}, "Has Parent", JoinKind.Inner),
+				    #"Has Parent développé" = Table.ExpandTableColumn(#"Requêtes fusionnées", "Has Parent", {"Id"}, {"Has Parent.Id"}),
+				    #"Personnalisée ajoutée" = Table.AddColumn(#"Has Parent développé", "nPrevPartId", each [ParentPartId]),
+				    #"Colonnes supprimées1" = Table.RemoveColumns(#"Personnalisée ajoutée",{"Ratio", "PrevPartId", "Has Parent.Id"}),
+				    #"Doublons supprimés" = Table.Distinct(#"Colonnes supprimées1"),
+				    #"Colonnes renommées" = Table.RenameColumns(#"Doublons supprimés",{{"nPrevPartId", "PrevPartId"}}),
+				    #"Personnalisée ajoutée1" = Table.AddColumn(#"Colonnes renommées", "Ratio", each 1),
+				    #"Type modifié" = Table.TransformColumnTypes(#"Personnalisée ajoutée1",{{"PrevPartId", Int64.Type}, {"Ratio", type number}}),
+				    #"Personnalisée ajoutée2" = Table.AddColumn(#"Type modifié", "PseudoTopLink", each true, type logical),
+				    #"Requête ajoutée" = Table.Combine({#"Personnalisée ajoutée2", #"Where Used Source"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Requête ajoutée")
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

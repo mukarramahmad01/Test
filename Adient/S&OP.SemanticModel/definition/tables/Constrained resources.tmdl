@@ -1,0 +1,57 @@
+table 'Constrained resources'
+	lineageTag: ed3985cf-45ac-4d16-bbee-58e5ddc7cde1
+
+	column PartId
+		formatString: 0
+		lineageTag: 05d07666-654d-4091-a753-79b9f47d7f3e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [PartId]
+
+		annotation SummarizationSetBy = Automatic
+
+	column ResourceName
+		lineageTag: decc8d0e-9275-4895-be23-9a8e5ab8f90e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [ResourceName]
+
+		annotation SummarizationSetBy = Automatic
+
+	column ConcatenateResource =
+			CALCULATE(
+			    CONCATENATEX(
+			            'Constrained resources',
+			        'Constrained resources'[ResourceName],
+			        ", "
+			    ),
+			    ALLEXCEPT(
+			        'Constrained resources',
+			        'Constrained resources'[PartId]
+			    )
+			)
+		lineageTag: 7f78ad3d-62e3-4ea5-8d63-81bd06f94a62
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Constrained resources' = calculated
+		mode: import
+		source = ```
+				
+				DISTINCT(
+				    SELECTCOLUMNS(
+				        FILTER(
+				            SchedulingResourceDailyLoading,
+				            NOT(ISBLANK(SchedulingResourceDailyLoading[ResourceName]))
+				        ),
+				        "PartId", SchedulingResourceDailyLoading[SchedulingOrders_source.PartId],
+				        "ResourceName", SchedulingResourceDailyLoading[ResourceName]
+				    )
+				)
+				
+				
+				```
+
+	annotation PBI_Id = 961de12075904623959ff241bb95d185
+

@@ -1,0 +1,45 @@
+table PartUnitOfMeasures
+	lineageTag: 8d8e9b08-3880-49db-be11-3a9a07fa13bd
+
+	column Id
+		dataType: int64
+		formatString: 0
+		lineageTag: 674ac0d9-8072-4806-9a6e-4f14bd947eaf
+		summarizeBy: none
+		sourceColumn: Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column FromUnit
+		dataType: string
+		lineageTag: 49fd4700-0d84-4995-9f26-24937bfde047
+		summarizeBy: none
+		sourceColumn: FromUnit
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rate
+		dataType: double
+		lineageTag: 9ec9936c-7e7c-4f3c-b0f9-6511fec108af
+		summarizeBy: none
+		sourceColumn: Rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition PartUnitOfMeasures = m
+		mode: import
+		queryGroup: Supply
+		source =
+				let
+				    Source = Sql.Database(Server, Database, [Query="select * from PartUnitOfMeasures"]),
+				    #"Added Custom" = Table.AddColumn(Source, "Rate", each [FromQuantity]/[ToQuantity],type number),
+				    #"Removed Columns" = Table.RemoveColumns(#"Added Custom",{"FromQuantity", "ToQuantity", "ToRoundingDigits", "Timestamp", "ToUnit"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

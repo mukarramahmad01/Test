@@ -1,0 +1,35 @@
+table AverageSellingPrice
+	lineageTag: 47c18a9f-d216-4288-b48d-fd0a2800229b
+
+	column Id
+		dataType: int64
+		formatString: 0
+		lineageTag: 05a6a443-7288-4769-9cb5-f2bce15efcc0
+		summarizeBy: none
+		sourceColumn: Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column AverageSellingPrice
+		dataType: double
+		lineageTag: e7f4f87a-c612-4f3d-9c7b-327bb0b7605a
+		summarizeBy: sum
+		sourceColumn: AverageSellingPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition AverageSellingPrice = m
+		mode: import
+		queryGroup: Sources
+		source =
+				let
+				    Source = Sql.Database(Server, Database, [Query="select Id, AverageSellingPrice from Parts"])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

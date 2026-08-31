@@ -1,0 +1,24 @@
+table FDU&ADU
+	lineageTag: 2f36ea4d-e05e-4395-9a95-1a3c1318f4b6
+
+	column FDU&ADU
+		dataType: string
+		lineageTag: c8cdb4cd-ad10-441d-9cad-cc87e70dc333
+		summarizeBy: none
+		sourceColumn: FDU&ADU
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FDU&ADU = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WcnMJjSk1MDBOBpOpBgqJeSkKjmiCSrE6uFXawqVtcemOBQA=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"FDU&ADU" = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"FDU&ADU", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,54 @@
+table 'Grouping Child'
+	lineageTag: d1e3f40e-33d8-4500-b89e-bb45b295721f
+
+	column Parameter
+		lineageTag: a4733855-f81f-47e1-87d9-38172e24557d
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Fields'
+		isHidden
+		lineageTag: d1ee58b2-118b-4360-a63e-7d2384d120f5
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: b0567d53-8dec-40c7-ab5e-2813c1ba8550
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Grouping Child' = calculated
+		mode: import
+		source =
+				{
+				    ("InventoryPlanning", NAMEOF('Child Parts'[InventoryPlanning]), 1),
+				    ("Location", NAMEOF('Child Parts'[Location]), 2),
+				    ("MaterialType", NAMEOF('Child Parts'[MaterialType]), 3),
+				    ("PartNumber", NAMEOF('Child Parts'[PartNumber]), 4),
+				    ("SKU", NAMEOF('Child Parts'[Part_Numb_Location]), 5),
+				    ("PartType", NAMEOF('Child Parts'[PartType]), 6),
+				    ("PlannerCode", NAMEOF('Child Parts'[PlannerCode]), 7),
+				    ("Vendor", NAMEOF('Child Parts'[Vendor]), 24)
+				}
+
+	annotation PBI_Id = bf9daf08cd684de9bd0779531c81afde
+

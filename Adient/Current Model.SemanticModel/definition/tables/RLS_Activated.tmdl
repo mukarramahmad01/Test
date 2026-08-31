@@ -1,0 +1,18 @@
+table RLS_Activated
+	lineageTag: 6713aeef-e028-4d04-bb88-68bbcc55810e
+
+	column RLS_Activated
+		dataType: string
+		lineageTag: 7e41d2b6-64d0-437e-8b75-971e5fe5d25b
+		summarizeBy: none
+		sourceColumn: RLS_Activated
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RLS_Activated-58d8de0c-bf5f-4047-a46f-069fcf213b95 = m
+		mode: import
+		queryGroup: 'Server Parameters'
+		source = "True" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+
+	annotation PBI_ResultType = Text
+

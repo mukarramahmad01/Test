@@ -1,0 +1,355 @@
+table PartTransitions_followup
+	lineageTag: 87bbdc8c-c11a-45eb-9487-9539df4b7f65
+
+	column SourcePartId
+		dataType: int64
+		formatString: 0
+		lineageTag: 8c60f9e0-f5e9-44c9-a8ee-3c713ab0244a
+		summarizeBy: none
+		sourceColumn: SourcePartId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourcePartNumber
+		dataType: string
+		lineageTag: 9dfba9d4-43d4-41be-a1b6-7b67d2e4ccb4
+		summarizeBy: none
+		sourceColumn: SourcePartNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourcePartLocation
+		dataType: string
+		lineageTag: 8fff1c4e-5666-4694-b26a-84229a95c5e4
+		summarizeBy: none
+		sourceColumn: SourcePartLocation
+
+		annotation SummarizationSetBy = Automatic
+
+	column TargetPartId
+		dataType: int64
+		formatString: 0
+		lineageTag: 1f9633bd-7a9c-4398-9c45-b16f50f1d1db
+		summarizeBy: count
+		sourceColumn: TargetPartId
+
+		annotation SummarizationSetBy = Automatic
+
+	column TargetPartNumber
+		dataType: string
+		lineageTag: 464e600f-c46e-4077-91b0-df3a06f39743
+		summarizeBy: none
+		sourceColumn: TargetPartNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column TargetPartLocation
+		dataType: string
+		lineageTag: a0c8afa5-22fa-49b4-bd8a-515c3bbf78f3
+		summarizeBy: none
+		sourceColumn: TargetPartLocation
+
+		annotation SummarizationSetBy = Automatic
+
+	column StartDate
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 786c448e-c939-460f-bf4f-00653a9f619b
+		summarizeBy: none
+		sourceColumn: StartDate
+
+		variation Variation
+			isDefault
+			relationship: 34a8c991-5f96-40a0-8972-f784cb40ce43
+			defaultHierarchy: LocalDateTable_1a5cbae0-e2de-4b95-a5e3-891198e88164.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column EndDate
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 9434fd0c-8b54-4cdf-8e22-27228ab4547c
+		summarizeBy: none
+		sourceColumn: EndDate
+
+		variation Variation
+			isDefault
+			relationship: 90f8d415-a3cb-4f23-9180-87da9098e780
+			defaultHierarchy: LocalDateTable_8602c000-1865-43a2-a91e-b244b706545e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADULinkMethod
+		dataType: string
+		lineageTag: ac3f76fa-d3c3-4eaa-a61f-84b988555db2
+		summarizeBy: none
+		sourceColumn: ADULinkMethod
+
+		annotation SummarizationSetBy = Automatic
+
+	column ConversionRatio
+		dataType: double
+		formatString: 0
+		lineageTag: 32b2d653-51bf-4f8a-89f7-0b12dc9bd8c7
+		summarizeBy: sum
+		sourceColumn: ConversionRatio
+
+		annotation SummarizationSetBy = Automatic
+
+	column NetFlowLink
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4008146f-9e1c-40e4-83d6-4f4504fe7c86
+		summarizeBy: none
+		sourceColumn: NetFlowLink
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Target.InventoryPlanning'
+		dataType: string
+		lineageTag: 06d21313-550e-4193-840b-b20187b49be0
+		summarizeBy: none
+		sourceColumn: Target.InventoryPlanning
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Target.EffectiveDailyUsage'
+		dataType: double
+		lineageTag: def5e456-25a6-4925-9184-95b91a831ae6
+		summarizeBy: sum
+		sourceColumn: Target.EffectiveDailyUsage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Source.InventoryPlanning'
+		dataType: string
+		lineageTag: 83b301a7-6d80-4d9c-95ea-ae36640f3172
+		summarizeBy: none
+		sourceColumn: Source.InventoryPlanning
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Source.EffectiveDailyUsage'
+		dataType: double
+		lineageTag: 4b24abb9-57b1-4947-a27d-f78b6af3991d
+		summarizeBy: sum
+		sourceColumn: Source.EffectiveDailyUsage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Source.InventoryQty'
+		dataType: double
+		lineageTag: ef8b7d99-6560-40a3-bc46-3a514e15ab85
+		summarizeBy: sum
+		sourceColumn: Source.InventoryQty
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Source in days (Source EDU)' = DIVIDE(PartTransitions_followup[Source.InventoryQty],PartTransitions_followup[Source.EffectiveDailyUsage],BLANK())
+		lineageTag: b08d2b4e-6441-451b-a32a-b1f93f399744
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Source in days (Target EDU)' = DIVIDE(PartTransitions_followup[Source.InventoryQty],PartTransitions_followup[Target.EffectiveDailyUsage],BLANK())
+		lineageTag: 3bf59a4f-499b-4f9d-a8d1-1cdbb32dfe95
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition PartTransitions_followup = m
+		mode: import
+		queryGroup: Source
+		source = ```
+				let
+				    report_Parts = Sql.Database(Server, Database, [Query="select [$Outer].[SourcePartId] as [SourcePartId],
+				    [$Outer].[SourcePartNumber] as [SourcePartNumber],
+				    [$Outer].[SourcePartLocation] as [SourcePartLocation],
+				    [$Outer].[TargetPartId] as [TargetPartId],
+				    [$Outer].[TargetPartNumber] as [TargetPartNumber],
+				    [$Outer].[TargetPartLocation] as [TargetPartLocation],
+				    [$Outer].[StartDate] as [StartDate],
+				    [$Outer].[EndDate] as [EndDate],
+				    [$Outer].[ADULinkMethod] as [ADULinkMethod],
+				    [$Outer].[ConversionRatio] as [ConversionRatio],
+				    [$Outer].[NetFlowLink] as [NetFlowLink],
+				    [$Outer].[InventoryPlanning] as [Target.InventoryPlanning],
+				    [$Outer].[EffectiveDailyUsage] as [Target.EffectiveDailyUsage],
+				    [$Inner].[InventoryPlanning2] as [Source.InventoryPlanning],
+				    [$Inner].[EffectiveDailyUsage2] as [Source.EffectiveDailyUsage],
+				    [$Inner].[InventoryQty] as [Source.InventoryQty]
+				from 
+				(
+				    select [$Outer].[SourcePartId],
+				        [$Outer].[SourcePartNumber],
+				        [$Outer].[SourcePartLocation],
+				        [$Outer].[TargetPartId],
+				        [$Outer].[TargetPartNumber],
+				        [$Outer].[TargetPartLocation],
+				        [$Outer].[StartDate],
+				        [$Outer].[EndDate],
+				        [$Outer].[ADULinkMethod],
+				        [$Outer].[ConversionRatio],
+				        [$Outer].[NetFlowLink],
+				        [$Inner].[InventoryPlanning],
+				        [$Inner].[EffectiveDailyUsage]
+				    from 
+				    (
+				        select [SourcePartId],
+				            [SourcePartNumber],
+				            [SourcePartLocation],
+				            [TargetPartId],
+				            [TargetPartNumber],
+				            [TargetPartLocation],
+				            [StartDate],
+				            [EndDate],
+				            [ADULinkMethod],
+				            [ConversionRatio],
+				            [NetFlowLink]
+				        from [report].[PartTransitions] as [$Table]
+				    ) as [$Outer]
+				    left outer join [report].[Parts] as [$Inner] on ([$Outer].[TargetPartId] = [$Inner].[Id])
+				) as [$Outer]
+				left outer join 
+				(
+				    select [_].[DataSetId] as [DataSetId],
+				        [_].[Id] as [Id],
+				        [_].[LocationId] as [LocationId],
+				        [_].[PartNumber] as [PartNumber],
+				        [_].[Revision] as [Revision],
+				        [_].[Location] as [Location],
+				        [_].[Description] as [Description],
+				        [_].[InventoryMethod] as [InventoryMethod],
+				        [_].[InventoryPlanning] as [InventoryPlanning2],
+				        [_].[BufferProfileId] as [BufferProfileId],
+				        [_].[PlanningCalendarId] as [PlanningCalendarId],
+				        [_].[PlannedAdjustmentFactorId] as [PlannedAdjustmentFactorId],
+				        [_].[UnitOfMeasure] as [UnitOfMeasure],
+				        [_].[PartType] as [PartType],
+				        [_].[DailyUsageType] as [DailyUsageType],
+				        [_].[FixedLeadTime] as [FixedLeadTime],
+				        [_].[GoodsReceiptTime] as [GoodsReceiptTime],
+				        [_].[AutoApproveRecommendedOrders] as [AutoApproveRecommendedOrders],
+				        [_].[DisableAutoProfile] as [DisableAutoProfile],
+				        [_].[AlertHorizon] as [AlertHorizon],
+				        [_].[DecoupledLeadTime] as [DecoupledLeadTime],
+				        [_].[OrderCycle] as [OrderCycle],
+				        [_].[OrderMaximumQty] as [OrderMaximumQty],
+				        [_].[OrderMinimumQty] as [OrderMinimumQty],
+				        [_].[OrderMultipleQty] as [OrderMultipleQty],
+				        [_].[ManualTopOfRed] as [ManualTopOfRed],
+				        [_].[ManualTopOfYellow] as [ManualTopOfYellow],
+				        [_].[ManualTopOfGreen] as [ManualTopOfGreen],
+				        [_].[OutSourceCost] as [OutSourceCost],
+				        [_].[RawMaterialsCost] as [RawMaterialsCost],
+				        [_].[PlannerCode] as [PlannerCode],
+				        [_].[MaterialType] as [MaterialType],
+				        [_].[Notes] as [Notes],
+				        [_].[Vendor] as [Vendor],
+				        [_].[VendorIdentifier] as [VendorIdentifier],
+				        [_].[IncludeInMAC] as [IncludeInMAC],
+				        [_].[FixedReorderCycle] as [FixedReorderCycle],
+				        [_].[SourceErp] as [SourceErp],
+				        [_].[TopOfGreen] as [TopOfGreen],
+				        [_].[TopOfYellow] as [TopOfYellow],
+				        [_].[TopOfRed] as [TopOfRed],
+				        [_].[TodaysPAF] as [TodaysPAF],
+				        [_].[ReorderPoint] as [ReorderPoint],
+				        [_].[RedZoneBase] as [RedZoneBase],
+				        [_].[PercentageOfToR] as [PercentageOfToR],
+				        [_].[PercentageOfToRSpike] as [PercentageOfToRSpike],
+				        [_].[OrderSpikeHorizon] as [OrderSpikeHorizon],
+				        [_].[SupplyOrderQty] as [SupplyOrderQty],
+				        [_].[OnHandQty] as [OnHandQty],
+				        [_].[DemandAllocationQty] as [DemandAllocationQty],
+				        [_].[IssuedQty] as [IssuedQty],
+				        [_].[ForecastedDailyUsage] as [ForecastedDailyUsage],
+				        [_].[EffectiveDailyUsage] as [EffectiveDailyUsage2],
+				        [_].[AverageDailyUsage] as [AverageDailyUsage],
+				        [_].[RPlusLeadTime] as [RPlusLeadTime],
+				        [_].[Priority] as [Priority],
+				        [_].[BufferAlertLevel] as [BufferAlertLevel],
+				        [_].[ReminderStatus] as [ReminderStatus],
+				        [_].[IsOrderSpike] as [IsOrderSpike],
+				        [_].[LTMTotalOrders] as [LTMTotalOrders],
+				        [_].[AlertSeverity] as [AlertSeverity],
+				        [_].[DueDate] as [DueDate],
+				        [_].[ReorderQuantityTo] as [ReorderQuantityTo],
+				        [_].[InventoryQty] as [InventoryQty],
+				        [_].[NetFlowQty] as [NetFlowQty],
+				        [_].[NetFlowPercentage] as [NetFlowPercentage],
+				        [_].[TargetedInventory] as [TargetedInventory],
+				        [_].[TodaysYZAF] as [TodaysYZAF],
+				        [_].[YZAFType] as [YZAFType],
+				        [_].[YZAFValue] as [YZAFValue],
+				        [_].[YZAFName] as [YZAFName],
+				        [_].[CDAFTargetedInventory] as [CDAFTargetedInventory],
+				        [_].[CDAFTargetedInventoryType] as [CDAFTargetedInventoryType],
+				        [_].[TodaysRZAF] as [TodaysRZAF],
+				        [_].[RZAFValue] as [RZAFValue],
+				        [_].[RZAFType] as [RZAFType],
+				        [_].[RZAFName] as [RZAFName],
+				        [_].[EffectiveLeadTime] as [EffectiveLeadTime],
+				        [_].[ReorderQuantityFrom] as [ReorderQuantityFrom],
+				        [_].[ScheduleOrderDate] as [ScheduleOrderDate],
+				        [_].[RequestDate] as [RequestDate],
+				        [_].[OrderReceiptDate] as [OrderReceiptDate],
+				        [_].[SupplyOrderFollowUpBy] as [SupplyOrderFollowUpBy],
+				        [_].[SupplyOrderNote] as [SupplyOrderNote],
+				        [_].[MaterialAvailabilityShortage] as [MaterialAvailabilityShortage],
+				        [_].[MaterialAvailabilityShortageAsChild] as [MaterialAvailabilityShortageAsChild],
+				        [_].[CustomOrderDueDate] as [CustomOrderDueDate],
+				        [_].[DaysUntilYellow] as [DaysUntilYellow],
+				        [_].[OrderIntervalDays] as [OrderIntervalDays],
+				        [_].[AlertType] as [AlertType],
+				        [_].[AlertJSONBlob] as [AlertJSONBlob],
+				        [_].[DeploymentQuantity] as [DeploymentQuantity],
+				        [_].[ShortfallQuantity] as [ShortfallQuantity],
+				        [_].[StandardDeviationOfDemand] as [StandardDeviationOfDemand],
+				        [_].[UserDefined1] as [UserDefined1],
+				        [_].[UserDefined2] as [UserDefined2],
+				        [_].[UserDefined3] as [UserDefined3],
+				        [_].[UserDefined4] as [UserDefined4],
+				        [_].[UserDefined5] as [UserDefined5],
+				        [_].[UserDefined6] as [UserDefined6],
+				        [_].[UserDefined7] as [UserDefined7],
+				        [_].[UserDefined8] as [UserDefined8],
+				        [_].[UserDefined9] as [UserDefined9],
+				        [_].[UserDefined10] as [UserDefined10],
+				        [_].[UserDefined11] as [UserDefined11],
+				        [_].[UserDefined12] as [UserDefined12],
+				        [_].[UserDefined13] as [UserDefined13],
+				        [_].[UserDefined14] as [UserDefined14],
+				        [_].[UserDefined15] as [UserDefined15],
+				        [_].[UserDefined16] as [UserDefined16],
+				        [_].[ShelfLife] as [ShelfLife],
+				        [_].[BoMType] as [BoMType],
+				        [_].[SourceInformation1] as [SourceInformation1],
+				        [_].[SourceInformation2] as [SourceInformation2],
+				        [_].[SourceInformation3] as [SourceInformation3],
+				        [_].[AlertDate] as [AlertDate],
+				        [_].[NetFlowQtyMinusTopOfGreen] as [NetFlowQtyMinusTopOfGreen],
+				        [_].[OnHandQtyMinusDemandAllocationQty] as [OnHandQtyMinusDemandAllocationQty],
+				        [_].[SourceLocation] as [SourceLocation],
+				        [_].[ForecastedDailyUsageHorizonOverride] as [ForecastedDailyUsageHorizonOverride],
+				        [_].[AverageDailyUsageHorizonOverride] as [AverageDailyUsageHorizonOverride]
+				    from [report].[Parts] as [_]
+				) as [$Inner] on ([$Outer].[SourcePartId] = [$Inner].[Id])"])
+				in
+				    report_Parts
+				```
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

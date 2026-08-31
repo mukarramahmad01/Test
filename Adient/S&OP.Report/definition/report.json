@@ -1,0 +1,211 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY21SU11",
+      "reportVersionAtImport": {
+        "visual": "1.8.65",
+        "report": "2.0.65",
+        "page": "1.3.65"
+      },
+      "type": "SharedResources"
+    }
+  },
+  "filterConfig": {
+    "filterSortOrder": "Custom"
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          },
+          "visible": {
+            "expr": {
+              "Literal": {
+                "Value": "true"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "publicCustomVisuals": [
+    "advanceCardE03760C5AB684758B56AA29F9E6C257B",
+    "AdvancedLinearGaugeDA0D695483C84EDAA6A55149E2DS37",
+    "AsterPlot1443303142064",
+    "bac49510ab1d3fa4399887df4f629646fbf",
+    "BulletChart832EC06300814F26921DEFC2DE8606BE",
+    "ChicletSlicer1448559807354",
+    "cylindricalGauge73A12A442345453EB69B593649C3A341",
+    "HierarchySlicer1458836712039",
+    "KGdev3DBI69f2181a7e5a44a9a709014959414bf0",
+    "LinearGauge1450736844786",
+    "linearGauge2EBA8C0A99F94BF297BCCB1CF5427E68",
+    "linechartE963BF7F5E38A01A5A51F3576A050B47",
+    "Multi_target_KPI",
+    "multiInfoCards9D184BB3D4E44A139DA08142D76EFD36",
+    "multiLineChartA7F3AE9EF91E48C78A2807BCA25C2765",
+    "networkGraphA96234ADB8D143D1837FEC426BB34781",
+    "pbi_ai_agent",
+    "PBI_CV_3C80B1F2_09AF_4123_8E99_C3CBC46B23E0",
+    "PBI_CV_73744D90_4DC9_4F18_8BA5_EE8FA5C98035",
+    "Piechart1FB7F15A3B454007B4569186335A40B8E",
+    "pieChartNewAA90D11FDE2D45BBADC4383C1313084F",
+    "PulseChart1459209850231",
+    "ScrollingTextVisual1448795304508",
+    "selectionSlicer75918E1108FD45E0B85F2A29F491BBA8",
+    "sparklines50DB3783432B40A69C0B91926CE74CD9"
+  ],
+  "resourcePackages": [
+    {
+      "name": "HierarchySlicer1458836712039",
+      "type": "CustomVisual",
+      "items": [
+        {
+          "name": "HierarchySlicer1458836712039.pbiviz.json",
+          "path": "HierarchySlicer1458836712039.pbiviz.json",
+          "type": "CustomVisualMetadata"
+        }
+      ]
+    },
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY21SU11",
+          "path": "BaseThemes/CY21SU11.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "selectionSlicer75918E1108FD45E0B85F2A29F491BBA9",
+      "type": "CustomVisual",
+      "items": [
+        {
+          "name": "selectionSlicer75918E1108FD45E0B85F2A29F491BBA9.pbiviz.json",
+          "path": "selectionSlicer75918E1108FD45E0B85F2A29F491BBA9.pbiviz.json",
+          "type": "CustomVisualMetadata"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "2025-12-08_16h55_204194078220018169.png",
+          "path": "2025-12-08_16h55_204194078220018169.png",
+          "type": "Image"
+        },
+        {
+          "name": "2025-12-08_17h05_563036156096059348.png",
+          "path": "2025-12-08_17h05_563036156096059348.png",
+          "type": "Image"
+        },
+        {
+          "name": "2025-12-08_17h08_4817783660726737793.png",
+          "path": "2025-12-08_17h08_4817783660726737793.png",
+          "type": "Image"
+        },
+        {
+          "name": "2025-12-08_17h12_421431613653236885.png",
+          "path": "2025-12-08_17h12_421431613653236885.png",
+          "type": "Image"
+        },
+        {
+          "name": "2025-12-08_17h22_038048722344797744.png",
+          "path": "2025-12-08_17h22_038048722344797744.png",
+          "type": "Image"
+        },
+        {
+          "name": "2025-12-09_16h58_269704137305217146.png",
+          "path": "2025-12-09_16h58_269704137305217146.png",
+          "type": "Image"
+        },
+        {
+          "name": "2025-12-23_10h19_3411204565055094895.png",
+          "path": "2025-12-23_10h19_3411204565055094895.png",
+          "type": "Image"
+        },
+        {
+          "name": "2025-12-23_12h07_4933658554660468953.png",
+          "path": "2025-12-23_12h07_4933658554660468953.png",
+          "type": "Image"
+        },
+        {
+          "name": "2025-12-23_12h14_2247910392415249714.png",
+          "path": "2025-12-23_12h14_2247910392415249714.png",
+          "type": "Image"
+        },
+        {
+          "name": "2025-12-23_13h39_21680808774731674.png",
+          "path": "2025-12-23_13h39_21680808774731674.png",
+          "type": "Image"
+        },
+        {
+          "name": "2025-12-29_16h27_29677336505867186.png",
+          "path": "2025-12-29_16h27_29677336505867186.png",
+          "type": "Image"
+        },
+        {
+          "name": "2026-01-09_14h15_563332017826777711.png",
+          "path": "2026-01-09_14h15_563332017826777711.png",
+          "type": "Image"
+        },
+        {
+          "name": "calendar026185790365065742.jpg",
+          "path": "calendar026185790365065742.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "icon-multipleFamilyBlue6829074202224095.jpg",
+          "path": "icon-multipleFamilyBlue6829074202224095.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "Image66305551078065974.jpg",
+          "path": "Image66305551078065974.jpg",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": false,
+    "queryLimitOption": "None",
+    "customMemoryLimit": "1048576",
+    "customTimeoutLimit": "225"
+  },
+  "slowDataSourceSettings": {
+    "isCrossHighlightingDisabled": false,
+    "isSlicerSelectionsButtonEnabled": false,
+    "isFilterSelectionsButtonEnabled": false,
+    "isFieldWellButtonEnabled": false,
+    "isApplyAllButtonEnabled": false
+  }
+}

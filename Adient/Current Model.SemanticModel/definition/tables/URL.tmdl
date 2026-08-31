@@ -1,0 +1,20 @@
+table URL
+	lineageTag: 67f56512-15c8-4484-b1c9-ef86c7191357
+
+	column URL
+		dataType: string
+		lineageTag: 0617bd95-21f7-45bb-aea9-90a6bb8d8a71
+		summarizeBy: none
+		sourceColumn: URL
+
+		annotation SummarizationSetBy = Automatic
+
+	partition URL = m
+		mode: import
+		queryGroup: 'Server Parameters'
+		source = "demanddriventech.com" meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
