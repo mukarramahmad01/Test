@@ -1,0 +1,129 @@
+table DemandHistoryAnalyses
+	lineageTag: e316a21c-d690-47aa-a036-0820dd129dbe
+
+	column Id
+		dataType: int64
+		formatString: 0
+		lineageTag: 788b68b7-9c8a-47a5-a17c-50af67caf6af
+		summarizeBy: none
+		sourceColumn: Id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalQuantity
+		dataType: double
+		lineageTag: 0538fcd6-67fd-4e3b-ba2e-ff8a844696ec
+		summarizeBy: sum
+		sourceColumn: TotalQuantity
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NumberDailyPulls
+		dataType: int64
+		formatString: 0
+		lineageTag: 9d9dbc36-0631-49bd-87a9-b0139e233d40
+		summarizeBy: sum
+		sourceColumn: NumberDailyPulls
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column AveragePullQuantity
+		dataType: double
+		lineageTag: 73a6e077-0fc1-4856-b84c-13d039506982
+		summarizeBy: sum
+		sourceColumn: AveragePullQuantity
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column StandardDeviation
+		dataType: double
+		lineageTag: c32a557f-0ef1-4093-9ea8-7e9d00873df9
+		summarizeBy: sum
+		sourceColumn: StandardDeviation
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CoefficientOfVariation
+		dataType: int64
+		formatString: 0
+		lineageTag: 2cdec73c-432b-425c-b639-f47792ee92e3
+		summarizeBy: average
+		sourceColumn: CoefficientOfVariation
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column StandardDeviationOfDemand
+		dataType: double
+		lineageTag: f5653c60-f9a1-4bb5-af9d-aa650b593f0e
+		summarizeBy: sum
+		sourceColumn: StandardDeviationOfDemand
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NumberDailyPullsStandardDeviationOfDemand
+		dataType: int64
+		formatString: 0
+		lineageTag: f9d66990-d3d5-4617-9f4e-02c7a69a680e
+		summarizeBy: sum
+		sourceColumn: NumberDailyPullsStandardDeviationOfDemand
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CoV Range' = CEILING(DemandHistoryAnalyses[CoefficientOfVariation],max(DemandHistoryAnalyses[CoefficientOfVariation])/20)
+		formatString: 0
+		lineageTag: 3d9b7899-5280-4985-a0dd-af8d39868ae9
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Demand Pulses Range' = CEILING(DemandHistoryAnalyses[NumberDailyPulls],max(DemandHistoryAnalyses[NumberDailyPulls])/20)
+		lineageTag: b69cc735-a48f-4e46-a73a-7966773ddc6d
+		summarizeBy: sum
+
+		changedProperty = SortByColumn
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition DemandHistoryAnalyses-81a50042-f300-47c6-ae43-1a59907379d6 = m
+		mode: import
+		queryGroup: Source
+		source =
+				let
+				    Source = Sql.Database(Server,Database,[Query="SELECT Id, TotalQuantity, NumberDailyPulls, AveragePullQuantity, StandardDeviation, CoefficientOfVariation, StandardDeviationOfDemand, NumberDailyPullsStandardDeviationOfDemand FROM DemandHistoryAnalyses With (NOLOCK)"])
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

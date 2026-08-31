@@ -1,0 +1,64 @@
+table 'UDF Parameters'
+	isHidden
+	lineageTag: a46754ab-c2c7-447f-96b9-0d1bb9c80ece
+
+	column Paramètre
+		isHidden
+		lineageTag: 3a471189-c846-4719-a2b0-04bd9beb1ca5
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Paramètre Commande'
+
+		relatedColumnDetails
+			groupByColumn: 'Paramètre Champs'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Paramètre Champs'
+		isHidden
+		lineageTag: 202740ac-9286-4a5a-b166-b27044c9ae78
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Paramètre Commande'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Paramètre Commande'
+		isHidden
+		formatString: 0
+		lineageTag: d0cff139-d937-4f0b-bb23-d2ad79e9cb27
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'UDF Parameters-4aecce21-f2d3-48a9-acfe-a3aedbe3bcc3' = calculated
+		mode: import
+		source =
+				{
+				    (SELECTEDVALUE(UDF[UserDefined1]), NAMEOF('Parts'[UserDefined1]), 3),
+				    (SELECTEDVALUE(UDF[UserDefined2]), NAMEOF('Parts'[UserDefined2]), 4),
+				    (SELECTEDVALUE(UDF[UserDefined3]), NAMEOF('Parts'[UserDefined3]), 5),
+				    (SELECTEDVALUE(UDF[UserDefined4]), NAMEOF('Parts'[UserDefined4]), 6),
+				    (SELECTEDVALUE(UDF[UserDefined5]), NAMEOF('Parts'[UserDefined5]), 7),
+				    (SELECTEDVALUE(UDF[UserDefined6]), NAMEOF('Parts'[UserDefined6]), 8),
+				    (SELECTEDVALUE(UDF[UserDefined7]), NAMEOF('Parts'[UserDefined7]), 9),
+				    (SELECTEDVALUE(UDF[UserDefined8]), NAMEOF('Parts'[UserDefined8]), 10),
+				    (SELECTEDVALUE(UDF[UserDefined9]), NAMEOF('Parts'[UserDefined9]), 11),
+				    (SELECTEDVALUE(UDF[UserDefined10]), NAMEOF('Parts'[UserDefined10]), 12),
+				    (SELECTEDVALUE(UDF[UserDefined11]), NAMEOF('Parts'[UserDefined11]), 13),
+				    (SELECTEDVALUE(UDF[UserDefined12]), NAMEOF('Parts'[UserDefined12]), 14),
+				    (SELECTEDVALUE(UDF[UserDefined13]), NAMEOF('Parts'[UserDefined13]), 15),
+				    (SELECTEDVALUE(UDF[UserDefined14]), NAMEOF('Parts'[UserDefined14]), 16),
+				    (SELECTEDVALUE(UDF[UserDefined15]), NAMEOF('Parts'[UserDefined15]), 17),
+				    (SELECTEDVALUE(UDF[UserDefined16]), NAMEOF('Parts'[UserDefined16]), 18)
+				}
+
+	annotation PBI_Id = c9fcd43c2c354087a118d31763bb0b4f
+

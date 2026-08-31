@@ -1,0 +1,29 @@
+{
+  "version": "2.4.1.1",
+  "author": {
+    "name": "Walnut Innovation Limited",
+    "email": "pbisupport@walnutinnovation.co.uk"
+  },
+  "resources": [
+    {
+      "resourceId": "rId0",
+      "sourceType": 5,
+      "file": "resources/selectionSlicer75918E1108FD45E0B85F2A29F491BBA9.pbiviz.json"
+    }
+  ],
+  "visual": {
+    "guid": "selectionSlicer75918E1108FD45E0B85F2A29F491BBA9",
+    "name": "selectionSlicer",
+    "displayName": "Selection Slicer by Walnut Innovation",
+    "version": "2.4.1.1",
+    "description": "Multi slicer with paged panel showing selected options",
+    "supportUrl": "https://www.walnutinnovation.co.uk/powerbi-selection-slicer/",
+    "gitHubUrl": "",
+    "visualClassName": "SelectionSlicer"
+  },
+  "metadata": {
+    "pbivizjson": {
+      "resourceId": "rId0"
+    }
+  }
+}

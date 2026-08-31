@@ -1,0 +1,36 @@
+table 'Where Used'
+	lineageTag: 61b32e67-0df3-4dc1-b48a-26439a052618
+
+	column ChildPartId
+		formatString: 0
+		lineageTag: ed30997c-c346-4fc7-89d5-8bf601206956
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: BOM_Multilevel[ChildPartId]
+
+		annotation SummarizationSetBy = Automatic
+
+	column ParentPartId
+		formatString: 0
+		lineageTag: c26a79dc-2d48-4f74-b9d0-e82caef607af
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: BOM_Multilevel[ParentPartId]
+
+		annotation SummarizationSetBy = Automatic
+
+	column level
+		formatString: 0
+		lineageTag: a1da28f5-c3f4-4027-8dd8-b690fa7d7df8
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: BOM_Multilevel[level]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Where Used' = calculated
+		mode: import
+		source = BOM_Multilevel
+
+	annotation PBI_Id = d17f5594349d4fb08dc6ac4753afea09
+

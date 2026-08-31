@@ -1,0 +1,70 @@
+table 'Grouping Reco'
+	lineageTag: adef0200-188a-4127-93b1-2433b5f01bdb
+
+	column 'Grouping Reco'
+		lineageTag: 85f4905a-9a60-464d-919d-46bdc9abef8a
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Grouping Reco Commande'
+
+		relatedColumnDetails
+			groupByColumn: 'Grouping Reco Champs'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grouping Reco Champs'
+		isHidden
+		lineageTag: 8bb10842-4448-420b-b8cc-a2fe21de2301
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Grouping Reco Commande'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grouping Reco Commande'
+		isHidden
+		formatString: 0
+		lineageTag: 3ef67562-ec3a-43e7-82b5-87a3e589e915
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Grouping Reco' = calculated
+		mode: import
+		source =
+				{
+				    ("Priority", NAMEOF('Parts'[Priority]), 0),
+				    ("Vendor", NAMEOF('Parts'[Vendor]), 1),
+				    ("Location", NAMEOF('Parts'[Location]), 2),
+				    ("MaterialType", NAMEOF('Parts'[MaterialType]), 3),
+				    ("PartNumber", NAMEOF('Parts'[PartNumber]), 4),
+				    ("SKU", NAMEOF('Parts'[Part_Numb_Location]), 5),
+				    ("PartType", NAMEOF('Parts'[PartType]), 6),
+				    ("PlannerCode", NAMEOF('Parts'[PlannerCode]), 7),
+				    (SELECTEDVALUE(UDF[UserDefined1]), NAMEOF('Parts'[UserDefined1]), 8),
+				    (SELECTEDVALUE(UDF[UserDefined2]), NAMEOF('Parts'[UserDefined2]), 9),
+				    (SELECTEDVALUE(UDF[UserDefined3]), NAMEOF('Parts'[UserDefined3]), 10),
+				    (SELECTEDVALUE(UDF[UserDefined4]), NAMEOF('Parts'[UserDefined4]), 11),
+				    (SELECTEDVALUE(UDF[UserDefined5]), NAMEOF('Parts'[UserDefined5]), 12),
+				    (SELECTEDVALUE(UDF[UserDefined6]), NAMEOF('Parts'[UserDefined6]), 13),
+				    (SELECTEDVALUE(UDF[UserDefined7]), NAMEOF('Parts'[UserDefined7]), 14),
+				    (SELECTEDVALUE(UDF[UserDefined8]), NAMEOF('Parts'[UserDefined8]), 15),
+				    (SELECTEDVALUE(UDF[UserDefined9]), NAMEOF('Parts'[UserDefined9]), 16),
+				    (SELECTEDVALUE(UDF[UserDefined10]), NAMEOF('Parts'[UserDefined10]), 17),
+				    (SELECTEDVALUE(UDF[UserDefined11]), NAMEOF('Parts'[UserDefined11]), 18),
+				    (SELECTEDVALUE(UDF[UserDefined12]), NAMEOF('Parts'[UserDefined12]), 19),
+				    (SELECTEDVALUE(UDF[UserDefined13]), NAMEOF('Parts'[UserDefined13]), 20),
+				    (SELECTEDVALUE(UDF[UserDefined14]), NAMEOF('Parts'[UserDefined14]), 21),
+				    (SELECTEDVALUE(UDF[UserDefined15]), NAMEOF('Parts'[UserDefined15]), 22),
+				    (SELECTEDVALUE(UDF[UserDefined16]), NAMEOF('Parts'[UserDefined16]), 23)
+				}
+
+	annotation PBI_Id = c31c6a3e1dac420081f77be25ab64253
+

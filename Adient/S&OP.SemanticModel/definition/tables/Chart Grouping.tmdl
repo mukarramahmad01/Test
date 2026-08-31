@@ -1,0 +1,70 @@
+table 'Chart Grouping'
+	lineageTag: 587982c1-5df8-4a91-8343-773ab076fb75
+
+	column 'Chart Grouping'
+		lineageTag: 828f4fe5-526b-443a-aec2-f894c96df8cf
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Chart Grouping Commande'
+
+		relatedColumnDetails
+			groupByColumn: 'Chart Grouping Champs'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Chart Grouping Champs'
+		lineageTag: 2cabfcb8-c163-4046-83a3-6d3465fc8b3c
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Chart Grouping Commande'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Chart Grouping Commande'
+		formatString: 0
+		lineageTag: 23841ef0-c513-4f41-9094-d07fd30acdc8
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Chart Grouping-cf2398b2-123b-4cbf-98d5-f306cfecba22' = calculated
+		mode: import
+		source =
+				{
+				    ("InventoryMethod", NAMEOF('Parts'[InventoryMethod]), 0),
+				    ("Location", NAMEOF('Parts'[Location]), 1),
+				    ("MaterialType", NAMEOF('Parts'[MaterialType]), 2),
+				    ("PartType", NAMEOF('Parts'[PartType]), 3),
+				    ("PartNumber", NAMEOF('Parts'[PartNumber]), 4),
+				    ("PlannerCode", NAMEOF('Parts'[PlannerCode]), 5),
+				    (SELECTEDVALUE(UDF[UserDefined1]), NAMEOF('Parts'[UserDefined1]), 6),
+				    (SELECTEDVALUE(UDF[UserDefined2]), NAMEOF('Parts'[UserDefined2]), 7),
+				    (SELECTEDVALUE(UDF[UserDefined3]), NAMEOF('Parts'[UserDefined3]), 8),
+				    (SELECTEDVALUE(UDF[UserDefined4]), NAMEOF('Parts'[UserDefined4]), 9),
+				    (SELECTEDVALUE(UDF[UserDefined5]), NAMEOF('Parts'[UserDefined5]), 10),
+				    (SELECTEDVALUE(UDF[UserDefined6]), NAMEOF('Parts'[UserDefined6]), 11),
+				    (SELECTEDVALUE(UDF[UserDefined7]), NAMEOF('Parts'[UserDefined7]), 12),
+				    (SELECTEDVALUE(UDF[UserDefined8]), NAMEOF('Parts'[UserDefined8]), 13),
+				    (SELECTEDVALUE(UDF[UserDefined9]), NAMEOF('Parts'[UserDefined9]), 14),
+				    (SELECTEDVALUE(UDF[UserDefined10]), NAMEOF('Parts'[UserDefined10]), 15),
+				    (SELECTEDVALUE(UDF[UserDefined11]), NAMEOF('Parts'[UserDefined11]), 16),
+				    (SELECTEDVALUE(UDF[UserDefined12]), NAMEOF('Parts'[UserDefined12]), 17),
+				    (SELECTEDVALUE(UDF[UserDefined13]), NAMEOF('Parts'[UserDefined13]), 18),
+				    (SELECTEDVALUE(UDF[UserDefined14]), NAMEOF('Parts'[UserDefined14]), 19),
+				    (SELECTEDVALUE(UDF[UserDefined15]), NAMEOF('Parts'[UserDefined15]), 20),
+				    (SELECTEDVALUE(UDF[UserDefined16]), NAMEOF('Parts'[UserDefined16]), 21),
+				    ("Vendor", NAMEOF('Simulation_Scheduling_SupplyOrders_Source'[Vendor]), 22),
+				    ("SKU", NAMEOF('Parts'[Part_Numb_Location]), 4),
+				    ("MTO - MTS", NAMEOF('Parts'[MTO-MTS]), 23),
+				    ("Constrained Resources", NAMEOF('Constrained resources'[ResourceName]), 24)
+				}
+
+	annotation PBI_Id = 4260731e2032401b9139f22703ce70c4
+

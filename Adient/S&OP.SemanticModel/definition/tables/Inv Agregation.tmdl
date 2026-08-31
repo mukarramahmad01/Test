@@ -1,0 +1,24 @@
+table 'Inv Agregation'
+	lineageTag: 7a48a986-0341-48e8-ae65-732918c32b93
+
+	column Agregation
+		dataType: string
+		lineageTag: 34f65084-122a-4f0a-942f-e5dc9705033b
+		summarizeBy: none
+		sourceColumn: Agregation
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Inv Agregation' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WCkgtysxPUXAsS1eK1YlWcs1LUchPU4CIKsXGAgA=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Agregation = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Agregation", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

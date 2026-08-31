@@ -1,0 +1,116 @@
+table SimulationPartForecasts_BufferItemsWeekly
+	lineageTag: d758cbec-77c9-452d-859f-6904fcc01faa
+
+	column Id
+		dataType: int64
+		formatString: 0
+		lineageTag: 7a940c87-895b-475d-bbfa-a07ef6a7c468
+		summarizeBy: none
+		sourceColumn: Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 49da65ae-32e8-4f86-ac92-822b5443dec3
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Unit
+		dataType: string
+		lineageTag: 9efb2f13-ae6a-4723-90ce-a6bafaffc793
+		summarizeBy: none
+		sourceColumn: Unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Top Of Green'
+		dataType: double
+		lineageTag: db0d7f79-7dff-4f35-9699-e9f863d4284b
+		summarizeBy: sum
+		sourceColumn: Top Of Green
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Top Of Red'
+		dataType: double
+		lineageTag: cc433883-f69e-4128-a1fd-110fde34e2e1
+		summarizeBy: sum
+		sourceColumn: Top Of Red
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Top Of Yellow'
+		dataType: double
+		lineageTag: dab61339-0ae8-4b5b-9d4b-4c3d5f0849e2
+		summarizeBy: sum
+		sourceColumn: Top Of Yellow
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SimulationId
+		dataType: int64
+		formatString: 0
+		lineageTag: 21e1919f-d600-497f-866c-59f4bc0fcff5
+		summarizeBy: none
+		sourceColumn: SimulationId
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Projected EDU'
+		dataType: double
+		lineageTag: 9a86490f-cca2-4299-aa95-1c967a84ac3a
+		summarizeBy: sum
+		sourceColumn: Projected EDU
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition SimulationPartForecasts_BufferItemsWeekly = m
+		mode: import
+		queryGroup: 'S&OP report Part\SimulationPartForecasts'
+		source = ```
+				let
+				    Source = Sql.Database(Server, Database, [Query="SELECT 
+				    Id, SimulationId,
+				    DATEADD(DAY, (7 - (DATEPART(WEEKDAY, Date) - @@DATEFIRST + 7) % 7), CAST(Date AS DATE)) AS Date, 
+				    SUM(TopOfGreen) AS TopOfGreen, 
+				    SUM(TopOfRed) AS TopOfRed, 
+				    SUM(TopOfYellow) AS TopOfYellow, 
+				    SUM(ProjectedEDU) AS ProjectedEDU
+				FROM report.SimulationPartForecasts WITH (NOLOCK) 
+				WHERE 
+				    (TopOfGreen >0 or TopOfRed >0 or TopOfYellow >0 or ProjectedEDU >0)
+				    AND Date >= cast(GETDATE() as date) 
+				    AND Date <= '" & Date.ToText(Date.AddDays(Date.From(DateTime.LocalNow()), FutureDays), "yyyy-MM-dd") & "' 
+				GROUP BY 
+				    Id,SimulationId, DATEADD(DAY, (7 - (DATEPART(WEEKDAY, Date) - @@DATEFIRST + 7) % 7), CAST(Date AS DATE));
+				"]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Date", type date}}),
+				    #"Merged Queries" = Table.NestedJoin(#"Changed Type", {"Id"}, PartsPakagings, {"PartId"}, "PartsPakagings", JoinKind.LeftOuter),
+				    #"Expanded PartsPakagings" = Table.ExpandTableColumn(#"Merged Queries", "PartsPakagings", {"Quantity", "Unit"}, {"Quantity", "Unit"}),
+				    #"Added Custom" = Table.AddColumn(#"Expanded PartsPakagings", "Top Of Green", each [TopOfGreen]/[Quantity],type number),
+				    #"Added Custom1" = Table.AddColumn(#"Added Custom", "Top Of Red", each [TopOfRed]/[Quantity],type number),
+				    #"Added Custom2" = Table.AddColumn(#"Added Custom1", "Top Of Yellow", each [TopOfYellow]/[Quantity],type number),
+				    #"Added Custom3" = Table.AddColumn(#"Added Custom2", "Projected EDU", each [ProjectedEDU]/[Quantity],type number),
+				    #"Removed Columns" = Table.RemoveColumns(#"Added Custom3",{"TopOfGreen", "TopOfRed", "TopOfYellow", "Quantity", "ProjectedEDU"})
+				in
+				    #"Removed Columns"
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

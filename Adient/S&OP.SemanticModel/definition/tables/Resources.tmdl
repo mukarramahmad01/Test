@@ -1,0 +1,205 @@
+table Resources
+	lineageTag: f21c6351-c7b5-4f4d-8112-e10b0f72a41a
+
+	column DataSetId
+		dataType: int64
+		formatString: 0
+		lineageTag: 6943c9b7-2f7b-48ae-8adf-de059a4c989c
+		summarizeBy: count
+		sourceColumn: DataSetId
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: bff421db-75ee-4f69-b6e1-a9cfcb6584aa
+		summarizeBy: none
+		sourceColumn: Id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column LocationId
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 05affdd8-f663-4e63-93d0-78e74993c35a
+		summarizeBy: count
+		sourceColumn: LocationId
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 5808b274-7a43-4eef-b808-84b3568bed4b
+		summarizeBy: none
+		sourceColumn: Name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: bc700d50-83e5-459b-b7a2-a920d7240fff
+		summarizeBy: none
+		sourceColumn: Location
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: a461035d-0c84-416d-bb50-2e198208b038
+		summarizeBy: none
+		sourceColumn: Description
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Count
+		dataType: int64
+		formatString: 0
+		lineageTag: b2926951-a6fd-4829-a569-50422818741b
+		summarizeBy: sum
+		sourceColumn: Count
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ResourceType
+		dataType: string
+		lineageTag: a693bbd2-44ee-44e0-b650-39b9426e5160
+		summarizeBy: none
+		sourceColumn: ResourceType
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CrewSize
+		dataType: int64
+		formatString: 0
+		lineageTag: 19946c29-3c61-418c-ade0-6003b7cb409d
+		summarizeBy: sum
+		sourceColumn: CrewSize
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column BufferManager
+		dataType: string
+		lineageTag: 710116b6-bdfd-444a-9fd1-a17451cee31f
+		summarizeBy: none
+		sourceColumn: BufferManager
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ResourceManager
+		dataType: string
+		lineageTag: 7a8b3485-6f36-4009-8517-ec1648f47e59
+		summarizeBy: none
+		sourceColumn: ResourceManager
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: aeb0a35d-2d00-4da3-b704-12c3f1e3bb7e
+		summarizeBy: none
+		sourceColumn: Category
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Efficiency
+		dataType: int64
+		formatString: 0
+		lineageTag: abc2d563-3689-4d58-b4c8-9ac2ebfb9626
+		summarizeBy: sum
+		sourceColumn: Efficiency
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Buffer
+		dataType: int64
+		formatString: 0
+		lineageTag: 6a773a28-0089-4bd9-9a64-ed79c56d74b5
+		summarizeBy: sum
+		sourceColumn: Buffer
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SetupTime
+		dataType: int64
+		formatString: 0
+		lineageTag: 2e2a4cf5-c787-4deb-81a6-d7a36d746c52
+		summarizeBy: sum
+		sourceColumn: SetupTime
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FixedOffset
+		dataType: int64
+		formatString: 0
+		lineageTag: 9e490e60-6717-4388-b176-15b8b1e7334e
+		summarizeBy: sum
+		sourceColumn: FixedOffset
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Notes
+		dataType: string
+		lineageTag: 41184020-c7e9-4639-b2e7-1c243790a3d4
+		summarizeBy: none
+		sourceColumn: Notes
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Resource_Contraint = IF(Resources[ResourceType]="Constraint",1,0)
+		formatString: 0
+		lineageTag: df030bc7-44eb-4261-a4e2-20791c2bb9df
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Resources-922d9112-1dc0-46a5-ac38-98e07de24d56 = m
+		mode: import
+		queryGroup: RCCP
+		source =
+				let
+				    Source = Sources,
+				    report_Resources = Source{[Schema="report",Item="Resources"]}[Data]
+				in
+				    report_Resources
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
