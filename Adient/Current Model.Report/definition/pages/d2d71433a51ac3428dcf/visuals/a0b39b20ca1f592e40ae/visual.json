@@ -1,0 +1,2326 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "a0b39b20ca1f592e40ae",
+  "position": {
+    "x": 15.118110236220472,
+    "y": 184.7769028871391,
+    "z": 33000,
+    "height": 651.758530183727,
+    "width": 1254.8031496062993,
+    "tabOrder": 29000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts"
+                    }
+                  },
+                  "Property": "Part_Numb_Location"
+                }
+              },
+              "queryRef": "Parts.Part_Numb_Location",
+              "nativeQueryRef": "SKU",
+              "displayName": "SKU"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "All Measures"
+                    }
+                  },
+                  "Property": "Inventory Planning"
+                }
+              },
+              "queryRef": "All Measures.Inventory Planning",
+              "nativeQueryRef": "Inventory Planning1"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "All Measures"
+                    }
+                  },
+                  "Property": "Current Inv_EO"
+                }
+              },
+              "queryRef": "All Measures.Current Inv_EO",
+              "nativeQueryRef": "Inventory",
+              "displayName": "Inventory"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "All Measures"
+                    }
+                  },
+                  "Property": "Target Inv GZ+RZ"
+                }
+              },
+              "queryRef": "All Measures.Target Inv GZ+RZ",
+              "nativeQueryRef": "Target Inv GZ+RZ1"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "All Measures"
+                    }
+                  },
+                  "Property": "Qualified Demand"
+                }
+              },
+              "queryRef": "All Measures.Qualified Demand",
+              "nativeQueryRef": "Qualified Demand"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "All Measures"
+                    }
+                  },
+                  "Property": "Total Demand Qty"
+                }
+              },
+              "queryRef": "All Measures.Total Demand Qty",
+              "nativeQueryRef": "Total Demand",
+              "displayName": "Total Demand"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "All Measures"
+                    }
+                  },
+                  "Property": "Total Demand Forecast"
+                }
+              },
+              "queryRef": "All Measures.Total Demand Forecast",
+              "nativeQueryRef": "12 months Forecast",
+              "displayName": "12 months Forecast"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "All Measures"
+                    }
+                  },
+                  "Property": "Total Supply Qty"
+                }
+              },
+              "queryRef": "All Measures.Total Supply Qty",
+              "nativeQueryRef": "Total Supply",
+              "displayName": "Total Supply"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "All Measures"
+                    }
+                  },
+                  "Property": "LastMovement"
+                }
+              },
+              "queryRef": "All Measures.LastMovement",
+              "nativeQueryRef": "LastMovement",
+              "displayName": "Last Movement (Demand)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "All Measures"
+                    }
+                  },
+                  "Property": "EDU"
+                }
+              },
+              "queryRef": "All Measures.EDU",
+              "nativeQueryRef": "EDU"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "All Measures"
+                    }
+                  },
+                  "Property": "FDU"
+                }
+              },
+              "queryRef": "All Measures.FDU",
+              "nativeQueryRef": "FDU"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "All Measures"
+                    }
+                  },
+                  "Property": "ADU"
+                }
+              },
+              "queryRef": "All Measures.ADU",
+              "nativeQueryRef": "ADU"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "All Measures"
+                    }
+                  },
+                  "Property": "Demand pulses"
+                }
+              },
+              "queryRef": "All Measures.Demand pulses",
+              "nativeQueryRef": "No. Demand Pulses (SBP Horizon)",
+              "displayName": "No. Demand Pulses (SBP Horizon)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "All Measures"
+                    }
+                  },
+                  "Property": "DLT"
+                }
+              },
+              "queryRef": "All Measures.DLT",
+              "nativeQueryRef": "DLT"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "All Measures"
+                    }
+                  },
+                  "Property": "Excess"
+                }
+              },
+              "queryRef": "All Measures.Excess",
+              "nativeQueryRef": "Excess"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "All Measures"
+                    }
+                  },
+                  "Property": "StockTotalDemand"
+                }
+              },
+              "queryRef": "All Measures.StockTotalDemand",
+              "nativeQueryRef": "Stock > Total demand1",
+              "displayName": "Stock > Total demand"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "All Measures"
+                    }
+                  },
+                  "Property": "ExcessSupplyDemand"
+                }
+              },
+              "queryRef": "All Measures.ExcessSupplyDemand",
+              "nativeQueryRef": "Stock + Supply> Total Demand",
+              "displayName": "Stock + Supply> Total Demand"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "All Measures"
+                    }
+                  },
+                  "Property": "ExcessForecast"
+                }
+              },
+              "queryRef": "All Measures.ExcessForecast",
+              "nativeQueryRef": "Stock + Supply > 12 months Forecast",
+              "displayName": "Stock + Supply > 12 months Forecast"
+            }
+          ],
+          "fieldParameters": [
+            {
+              "parameterExpr": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Grouping"
+                    }
+                  },
+                  "Property": "Grouping"
+                }
+              },
+              "index": 0,
+              "length": 1
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "grid": [
+        {
+          "properties": {
+            "outlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F5F9FF'"
+                    }
+                  }
+                }
+              }
+            },
+            "outlineWeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            },
+            "gridVertical": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "gridVerticalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FCFDFF'"
+                    }
+                  }
+                }
+              }
+            },
+            "gridVerticalWeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
+                }
+              }
+            },
+            "gridHorizontal": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "gridHorizontalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FCFDFF'"
+                    }
+                  }
+                }
+              }
+            },
+            "gridHorizontalWeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#6C6C84'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F5F9FF'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI'', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            },
+            "fontColorPrimary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#6C6C84'"
+                    }
+                  }
+                }
+              }
+            },
+            "backColorPrimary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FCFDFF'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontColorSecondary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#605E5C'"
+                    }
+                  }
+                }
+              }
+            },
+            "backColorSecondary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F5F9FF'"
+                    }
+                  }
+                }
+              }
+            },
+            "urlIcon": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "webURL": {
+              "expr": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "All Measures"
+                    }
+                  },
+                  "Property": "URL_Workbench"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "DemandOrders.Total Demand Qty"
+          }
+        },
+        {
+          "properties": {
+            "webURL": {
+              "expr": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "All Measures"
+                    }
+                  },
+                  "Property": "URL_Workbench"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "All Measures.Inventory Planning"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "All Measures.StockTotalDemand"
+          }
+        },
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "FillRule": {
+                      "Input": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "All Measures"
+                            }
+                          },
+                          "Property": "ExcessSupplyDemand"
+                        }
+                      },
+                      "FillRule": {
+                        "linearGradient2": {
+                          "min": {
+                            "color": {
+                              "Literal": {
+                                "Value": "'#6C6C84'"
+                              }
+                            }
+                          },
+                          "max": {
+                            "color": {
+                              "Literal": {
+                                "Value": "'#FFFFFF'"
+                              }
+                            }
+                          },
+                          "nullColoringStrategy": {
+                            "strategy": {
+                              "Literal": {
+                                "Value": "'asZero'"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "FillRule": {
+                      "Input": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "All Measures"
+                            }
+                          },
+                          "Property": "ExcessSupplyDemand"
+                        }
+                      },
+                      "FillRule": {
+                        "linearGradient2": {
+                          "min": {
+                            "color": {
+                              "Literal": {
+                                "Value": "'#FFFFFF'"
+                              }
+                            }
+                          },
+                          "max": {
+                            "color": {
+                              "Literal": {
+                                "Value": "'maxColor'"
+                              }
+                            }
+                          },
+                          "nullColoringStrategy": {
+                            "strategy": {
+                              "Literal": {
+                                "Value": "'asZero'"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "All Measures.ExcessSupplyDemand"
+          }
+        },
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "FillRule": {
+                      "Input": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "All Measures"
+                            }
+                          },
+                          "Property": "ExcessForecast"
+                        }
+                      },
+                      "FillRule": {
+                        "linearGradient2": {
+                          "min": {
+                            "color": {
+                              "Literal": {
+                                "Value": "'#6C6C84'"
+                              }
+                            }
+                          },
+                          "max": {
+                            "color": {
+                              "Literal": {
+                                "Value": "'#FFFFFF'"
+                              }
+                            }
+                          },
+                          "nullColoringStrategy": {
+                            "strategy": {
+                              "Literal": {
+                                "Value": "'asZero'"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "FillRule": {
+                      "Input": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "All Measures"
+                            }
+                          },
+                          "Property": "ExcessForecast"
+                        }
+                      },
+                      "FillRule": {
+                        "linearGradient2": {
+                          "min": {
+                            "color": {
+                              "Literal": {
+                                "Value": "'#FFFFFF'"
+                              }
+                            }
+                          },
+                          "max": {
+                            "color": {
+                              "Literal": {
+                                "Value": "'maxColor'"
+                              }
+                            }
+                          },
+                          "nullColoringStrategy": {
+                            "strategy": {
+                              "Literal": {
+                                "Value": "'noColor'"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "All Measures.ExcessForecast"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "All Measures.Excess"
+          }
+        }
+      ],
+      "total": [
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#605E5C'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F5F9FF'"
+                    }
+                  }
+                }
+              }
+            },
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "81.01079057476328D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report PartHistories and HistoricalDemands.PartNumber"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "65.84592233722383D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report PartHistories and HistoricalDemands.Location"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "74.17565881230273D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report PartHistories and HistoricalDemands.Date"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "69.70263524921089D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report PartHistories and HistoricalDemands.AverageDailyUsage"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "59.85671291198709D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report PartHistories and HistoricalDemands.ForecastedDailyUsage"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "80.35131762460544D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report PartHistories and HistoricalDemands.YZAFValue"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "71.25809293107245D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report PartHistories and HistoricalDemands.RZAFValue"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "89.01079057476326D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report PartHistories and HistoricalDemands.InventoryQty"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "74.67026352492108D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report PartHistories and HistoricalDemands.TotalSupply"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "180.17278386666644D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Present Items Measure.Number of items"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "114.64462867389271D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PartDetails.EffectiveLeadTime"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "120.63723979156823D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report Parts.GoodsReceiptTime"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "97.35343653166878D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report Parts.FixedLeadTime"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "86.62554594180355D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report Parts.PartType"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "255.00119853641067D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report Parts.MaterialType"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "100.28515442787968D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PartDetails.RPlusLeadTime"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "73.7924441332116D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report Parts.NetFlowPercentage"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "85.70366003917988D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report Parts.SupplyOrderQty"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "60.27154671890651D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report Parts.OnHandQty"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "68.67886679726627D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report Parts.InventoryPlanning"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "82.97520675808639D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report Parts.ReorderQuantityTo"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "95.49090973558012D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report Parts.OnHandQtyMinusDemandAllocationQty"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "81.24325314765856D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "LocalDateTable_e2dfc417-55e0-49d9-97de-3c25f339a8a9"
+                          }
+                        },
+                        "Property": "Month"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'March'"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "metadata": "DemandOrders.Total Demand Qty"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "123.3087977383975D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "LocalDateTable_e2dfc417-55e0-49d9-97de-3c25f339a8a9"
+                          }
+                        },
+                        "Property": "Year"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "2020L"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "metadata": "DemandOrders.Total Demand Value"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "58.69387224281622D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "All Measures.Demand pulses"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "59.48212036733378D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "All Measures.Total Demand Qty"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "60.38141071296389D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "All Measures.Qualified Demand"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "47.774539599465356D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "All Measures.Total Supply Qty"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "51.61904761904762D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "All Measures.Excess"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "121.71428571428571D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Parts.Part_Numb_Location"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "82.7738920308121D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "All Measures.Inventory Planning"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "90.49721727874068D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "All Measures.LastMovement"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "57.10552763819095D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "All Measures.Total Demand Forecast"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "71.10188078434489D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "All Measures.StockTotalDemand"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "111.06367883342529D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "All Measures.ExcessSupplyDemand"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "105.3019023986766D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "All Measures.ExcessForecast"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "79.83461830804038D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Parts.PartNumber"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "61.36876055565007D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "All Measures.Target Inv GZ+RZ"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#3F3D76'"
+                    }
+                  }
+                }
+              }
+            },
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI'', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Excess & Obsolescence Risks'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FCFDFF'"
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Average number of items every day'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#B2B2B3'"
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "5D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "preset": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Custom'"
+                }
+              }
+            },
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Outer'"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#6C6C84'"
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "70L"
+                }
+              }
+            },
+            "shadowSpread": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            },
+            "shadowBlur": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
+                }
+              }
+            },
+            "angle": {
+              "expr": {
+                "Literal": {
+                  "Value": "45D"
+                }
+              }
+            },
+            "shadowDistance": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'AlternatingRowsNew'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "border": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "showTooltipButton": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeaderTooltip": [
+        {
+          "properties": {
+            "titleFontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "5D"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualTooltip": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "titleFontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "valueFontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "5D"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'The scope of the report covers : Buffered items: Inv > Red+Green Zone & NB / LTM: planning priority blue. Note: Inventory = On Hand'"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#3F3D76'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "spacing": [
+        {
+          "properties": {
+            "customizeSpacing": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "spaceBelowSubTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "spaceBelowTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "167528dad72a750c4d41",
+        "ordinal": 0,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Parts"
+              }
+            },
+            "Property": "AverageDailyUsage"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "50f90f2df17344178eb6",
+        "ordinal": 1,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Parts"
+              }
+            },
+            "Property": "Name"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "5f67972eb83864f67b68",
+        "ordinal": 2,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Parts"
+              }
+            },
+            "Property": "RPlusLeadTime"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "56384decf2b567a65516",
+        "ordinal": 3,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Parts"
+              }
+            },
+            "Property": "EffectiveDailyUsage"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "e610623a8efc0817db62",
+        "ordinal": 4,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Parts"
+              }
+            },
+            "Property": "ForecastedDailyUsage"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "e8ee0527cb450b4e45b5",
+        "ordinal": 5,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Parts"
+              }
+            },
+            "Property": "OnHandQty"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "06b573631926c16dcfa9",
+        "ordinal": 6,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "HistoricalDemand"
+              }
+            },
+            "Property": "LastMovement"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "45e60978e9ca1d0661e4",
+        "ordinal": 7,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Parts"
+              }
+            },
+            "Property": "Location"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "08fc24426317ba233f9b",
+        "ordinal": 8,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "All Measures"
+              }
+            },
+            "Property": "Demand pulses"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "39eb1f7e2124d3935a56",
+        "ordinal": 9,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Parts"
+              }
+            },
+            "Property": "PartNumber"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "db8012e1e62fcf681c2a",
+        "ordinal": 10,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Parts"
+              }
+            },
+            "Property": "DemandAllocationQty"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "27ef0a0a0945761eb05b",
+        "ordinal": 11,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Parts"
+              }
+            },
+            "Property": "TargetedInventory"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "2e27ddaca973e7391ae4",
+        "ordinal": 12,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "All Measures"
+              }
+            },
+            "Property": "Total Demand Qty"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d796f37ab95e89b69ae9",
+        "ordinal": 13,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "All Measures"
+              }
+            },
+            "Property": "Total Supply Qty2"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "572340204de75d4720e4",
+        "ordinal": 14,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "All Measures"
+              }
+            },
+            "Property": "LastMovement"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "3b3895ad00a00cdb0c6b",
+        "ordinal": 15,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "All Measures"
+              }
+            },
+            "Property": "Target Inv"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "5cb1a2760e9ece309d09",
+        "ordinal": 16,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "All Measures"
+              }
+            },
+            "Property": "Qualified Demand"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "e0f30d30ad308707ded0",
+        "ordinal": 17,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "All Measures"
+              }
+            },
+            "Property": "Total Supply Qty"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "add441a5e2439594e07e",
+        "ordinal": 18,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "All Measures"
+              }
+            },
+            "Property": "Excess"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "26a389d32c50dc305a54",
+        "ordinal": 19,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "All Measures"
+              }
+            },
+            "Property": "StockTotalDemand"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "dbc7d51fe438b93d7ea3",
+        "ordinal": 20,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "All Measures"
+              }
+            },
+            "Property": "ExcessSupplyDemand"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "b875c2b8b0d726b74209",
+        "ordinal": 21,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "All Measures"
+              }
+            },
+            "Property": "EDU"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "be5ab1c1795b0536a219",
+        "ordinal": 22,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "All Measures"
+              }
+            },
+            "Property": "FDU"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "8a56c3e4cc2e6eb13604",
+        "ordinal": 23,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "All Measures"
+              }
+            },
+            "Property": "ADU"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "ce809cf0cb9937bcd2d1",
+        "ordinal": 24,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "All Measures"
+              }
+            },
+            "Property": "DLT"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "1c6c8d342be59806cb60",
+        "ordinal": 25,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "All Measures"
+              }
+            },
+            "Property": "Inventory Planning"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "affd5ba9e8660e708418",
+        "ordinal": 26,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "All Measures"
+              }
+            },
+            "Property": "Total Demand Forecast"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "12a1ad37136ae35e5a05",
+        "ordinal": 27,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "All Measures"
+              }
+            },
+            "Property": "ExcessForecast"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "e6d4dfa30894ad3c372b",
+        "ordinal": 28,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "All Measures"
+              }
+            },
+            "Property": "Current Inv_EO"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "cc8f136c56274093176c",
+        "ordinal": 29,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Parts"
+              }
+            },
+            "Property": "Part_Numb_Location"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "548f23c0e03370a82541",
+        "ordinal": 30,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Parts"
+              }
+            },
+            "Property": "Flag"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User",
+        "isLockedInViewMode": true
+      }
+    ],
+    "filterSortOrder": "Custom"
+  }
+}

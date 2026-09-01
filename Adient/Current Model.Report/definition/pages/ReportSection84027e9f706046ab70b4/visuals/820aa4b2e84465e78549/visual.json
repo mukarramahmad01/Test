@@ -1,0 +1,130 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "820aa4b2e84465e78549",
+  "position": {
+    "x": 356.85243261697383,
+    "y": 166,
+    "z": 17000,
+    "height": 145,
+    "width": 292.02909391816382,
+    "tabOrder": 18000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Compare Current and Target inventories to identify the main variances & assess the aggregated value of the buffers",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "color": "#252a36"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "I",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "color": "#252a36"
+                    }
+                  },
+                  {
+                    "value": "dentify the location of the items",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "12px",
+                      "color": "#252a36"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Assess the risk for my items with shelf life or expiry date",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "keepLayerOrder": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

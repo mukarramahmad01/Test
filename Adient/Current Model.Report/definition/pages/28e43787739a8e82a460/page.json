@@ -1,0 +1,447 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "28e43787739a8e82a460",
+  "displayName": "BOM View",
+  "displayOption": "FitToWidth",
+  "height": 844,
+  "width": 1280,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "Filterbc1d15b119d18f8ecc9f",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Parts"
+              }
+            },
+            "Property": "SuspressionIsTrueFalse"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "p",
+              "Entity": "Parts",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "p"
+                          }
+                        },
+                        "Property": "SuspressionIsTrueFalse"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'False'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User",
+        "isLockedInViewMode": true
+      },
+      {
+        "name": "98f66f8347a53b0c260b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Where Used"
+              }
+            },
+            "Property": "PseudoTopLink"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User",
+        "isLockedInViewMode": true,
+        "objects": {
+          "general": [
+            {
+              "properties": {}
+            }
+          ]
+        }
+      },
+      {
+        "name": "0ab104e0caa4aa604ecc",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ChildrenParts"
+              }
+            },
+            "Property": "Location"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "fc3b6e076c0368bc9ca0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ChildrenParts"
+              }
+            },
+            "Property": "AlertType"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "04d5e38824707076c29c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ChildrenParts"
+              }
+            },
+            "Property": "BoMType"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "2bd9f72a35a3b78b9c4a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ChildrenParts"
+              }
+            },
+            "Property": "PartNumber"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "8ebd4b0816320d50dcd5",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ChildrenParts"
+              }
+            },
+            "Property": "Priority"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "6057c05056b650c20592",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ChildrenParts"
+              }
+            },
+            "Property": "PartType"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "2e0b65a3390161c53c47",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ChildrenParts"
+              }
+            },
+            "Property": "PlannerCode"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "7f960149212c14ee98e0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ChildrenParts"
+              }
+            },
+            "Property": "Vendor"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "bd6c733e263ae530ba38",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ChildrenParts"
+              }
+            },
+            "Property": "VendorIdentifier"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      }
+    ],
+    "filterSortOrder": "Ascending"
+  },
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "ThemeDataColor": {
+                    "ColorId": 0,
+                    "Percent": 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspace": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "ThemeDataColor": {
+                    "ColorId": 0,
+                    "Percent": 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "filterCard": [
+      {
+        "properties": {
+          "foregroundColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#3F3D76'"
+                  }
+                }
+              }
+            }
+          },
+          "backgroundColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#ffffff'"
+                  }
+                }
+              }
+            }
+          },
+          "inputBoxColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#C8C8C8'"
+                  }
+                }
+              }
+            }
+          },
+          "textSize": {
+            "expr": {
+              "Literal": {
+                "Value": "10L"
+              }
+            }
+          },
+          "borderColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#3F3D76'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0L"
+              }
+            }
+          },
+          "border": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        },
+        "selector": {
+          "id": "Available"
+        }
+      },
+      {
+        "properties": {
+          "borderColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#C8C8C8'"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "selector": {
+          "id": "Applied"
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "foregroundColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "ThemeDataColor": {
+                    "ColorId": 0,
+                    "Percent": 0
+                  }
+                }
+              }
+            }
+          },
+          "titleSize": {
+            "expr": {
+              "Literal": {
+                "Value": "12L"
+              }
+            }
+          },
+          "inputBoxColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "ThemeDataColor": {
+                    "ColorId": 0,
+                    "Percent": -0.2
+                  }
+                }
+              }
+            }
+          },
+          "headerSize": {
+            "expr": {
+              "Literal": {
+                "Value": "10L"
+              }
+            }
+          },
+          "searchTextSize": {
+            "expr": {
+              "Literal": {
+                "Value": "10L"
+              }
+            }
+          },
+          "borderColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#3F3D76'"
+                  }
+                }
+              }
+            }
+          },
+          "checkboxAndApplyColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#000000'"
+                  }
+                }
+              }
+            }
+          },
+          "border": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          },
+          "backgroundColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#3F3D76'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

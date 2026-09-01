@@ -1,0 +1,124 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
+	sourceQueryCulture: fr-FR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup 'Server Parameters'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup RLS
+
+	annotation PBI_QueryGroupOrder = 3
+
+queryGroup Source
+
+	annotation PBI_QueryGroupOrder = 1
+
+queryGroup BOM
+
+	annotation PBI_QueryGroupOrder = 3
+
+annotation PBI_QueryOrder = ["Unit","Orders","RLS_Sources","RLS_UserResourceFilters","RLS_Administrator","RLS_Location","RLS_PlannerCode","RLS_VendorIdentifier","Sources","Locations","Parts","Server","Database","All Measures","UDF","SupplyOrders","PartInventories","PartTransitions","DemandHistoryAnalyses","DemandOrders","PartTransitions_followup","BackSupplyOrders","Calendar","RLS_UserResource","IsEmpty","RLS_Activated","HistoryDays","URL","RLS_LocationValue","RLS_VendorIdentifierValue","RLS_PlannerCodeValue","AD_Key","Where Used Source","Has Parent","Has Child","Where Used","ChildrenParts","BOM_Source","BOM_Multilevel","FDU&ADU","DeploymentSource","BufferProfiles","SupplyOrderReminders","DemandForecasts","HistoricalDemand","PeriodUnit","Calendar_BestByDate"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation __TEdtr = 1
+
+annotation PBI_ProTooling = ["DaxQueryView_Desktop","DevMode","MCP-PBIModeling"]
+
+ref table DateTableTemplate_bb5adf9b-9e1b-4c25-a355-992d649087ae
+ref table Parts
+ref table RLS_Location
+ref table RLS_PlannerCode
+ref table RLS_VendorIdentifier
+ref table 'All Measures'
+ref table DemandHistoryAnalyses
+ref table Grouping
+ref table SupplyOrders
+ref table LocalDateTable_747fc653-6dad-4a04-9302-176874489203
+ref table LocalDateTable_425e3713-6a45-4fcd-b47c-0d9c861ce46e
+ref table LocalDateTable_66a3cc7d-ad4d-494d-9251-9260aaa310a2
+ref table LocalDateTable_542428b6-19fc-47eb-9bc2-f2eb4eed446a
+ref table LocalDateTable_efdbde67-7275-4f92-9dbe-f534e52facc8
+ref table DemandOrders
+ref table LocalDateTable_c324442b-e667-45e6-992e-bdf9ebbc3240
+ref table LocalDateTable_b716c72d-a53f-4ffd-9e2a-6de3fe80fe38
+ref table RLS_Administrator
+ref table LocalDateTable_0640d546-9640-4134-abfc-972b8195932a
+ref table LocalDateTable_ac87a3cb-9e59-4f0b-9c96-fb9a5841d7af
+ref table LocalDateTable_11f45e6c-73cf-44b0-b806-0ca94e47ba8b
+ref table UDF
+ref table 'UDF Fiels'
+ref table RLS_UserResource
+ref table RLS_Activated
+ref table PartInventories
+ref table LocalDateTable_bac1dd2e-402c-4d19-aa0d-3e053beaa22d
+ref table RLS_LocationValue
+ref table RLS_VendorIdentifierValue
+ref table RLS_PlannerCodeValue
+ref table AD_Key
+ref table Orders
+ref table Vendor/Customer
+ref table OrderNumber
+ref table Calendar
+ref table LocalDateTable_0b3a110b-10dd-4586-86ab-ae8146877c55
+ref table BackSupplyOrders
+ref table LocalDateTable_1c47ef37-653a-4c3c-b4c8-cd86d491fdfa
+ref table PartTransitions_followup
+ref table LocalDateTable_1a5cbae0-e2de-4b95-a5e3-891198e88164
+ref table LocalDateTable_8602c000-1865-43a2-a91e-b244b706545e
+ref table 'Where Used'
+ref table ChildrenParts
+ref table LocalDateTable_eb32f149-6759-4014-9c44-49ce9b823fea
+ref table LocalDateTable_f5cf7f81-08b3-4695-9e79-61906d997a39
+ref table LocalDateTable_0171ba90-ceb2-462a-84c2-56b99c824deb
+ref table PrevParts
+ref table LocalDateTable_bb069e6a-9221-4917-aa39-ebcb9e1aff47
+ref table LocalDateTable_0f5115fe-48d2-45a0-9d3d-9e29e7c3ec99
+ref table LocalDateTable_030b2797-2547-4e61-9e8d-e64d153968f2
+ref table BOM_Multilevel
+ref table BOM_Child
+ref table LocalDateTable_97289a65-5f90-4b53-943f-241a15120cd5
+ref table LocalDateTable_72561616-9c1a-4024-9dd4-e3435d03e82e
+ref table LocalDateTable_cac43468-42fc-4d98-9be6-7c7bf6eca4d1
+ref table BOM_PrevParent
+ref table LocalDateTable_5c87b0f3-f6dd-425c-90c1-4b6388924f57
+ref table LocalDateTable_43fcf635-1876-457b-aab9-63a65f2458d3
+ref table LocalDateTable_c2250c3f-2455-4bda-a9e6-11994cf51f73
+ref table Locations
+ref table Unit
+ref table DemandOrderNumber
+ref table FDU&ADU
+ref table 'Grouping Reco'
+ref table LocalDateTable_580e584e-e040-45ff-b90e-e36d46eda993
+ref table LocalDateTable_fb04abc8-e3cb-451f-bf21-72e03c28795c
+ref table LocalDateTable_3781dc2d-d47a-4377-a112-247c6901107b
+ref table LocalDateTable_d4ff2a6d-f004-4f83-93be-db5c2f6ba1e6
+ref table LocalDateTable_a70a28eb-2c39-407d-a87e-531db49f5949
+ref table LocalDateTable_5fca108e-c6f6-4f4a-9727-c6ef5f4140be
+ref table DeploymentSource
+ref table BufferProfiles
+ref table SupplyOrderReminders
+ref table LocalDateTable_5e77b858-d48b-4bf8-ad80-11bb5765e675
+ref table LocalDateTable_4ad624b7-f005-48c7-b8ca-7ff6b60eae21
+ref table URL
+ref table DemandForecasts
+ref table HistoricalDemand
+ref table LocalDateTable_ef0d61cc-12d9-4f59-bc60-2b0fc49b71b6
+ref table LocalDateTable_aa13f463-52ec-4387-8be3-9d189714e8e9
+ref table PeriodByDate
+ref table PeriodUnit
+ref table Calendar_BestByDate
+ref table LocalDateTable_82fcd428-81af-4f9d-b32d-8ad22743217e
+
+ref role 'User Role'
+
+ref cultureInfo en-US
+ref cultureInfo fr-FR
+ref cultureInfo es-ES
+

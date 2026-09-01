@@ -1,0 +1,1170 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "5701e9780e38a1f109a3",
+  "position": {
+    "x": 15,
+    "y": 124.64571298289934,
+    "z": 6000,
+    "height": 712.35428701710066,
+    "width": 1256,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PartTransitions_followup"
+                    }
+                  },
+                  "Property": "TargetPartNumber"
+                }
+              },
+              "queryRef": "PartTransitions_followup.TargetPartNumber",
+              "nativeQueryRef": "Target PartNumber",
+              "displayName": "Target PartNumber"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PartTransitions_followup"
+                    }
+                  },
+                  "Property": "TargetPartLocation"
+                }
+              },
+              "queryRef": "PartTransitions_followup.TargetPartLocation",
+              "nativeQueryRef": "Target Location",
+              "displayName": "Target Location"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PartTransitions_followup"
+                    }
+                  },
+                  "Property": "Target.InventoryPlanning"
+                }
+              },
+              "queryRef": "PartTransitions_followup.Target.InventoryPlanning",
+              "nativeQueryRef": "Target Buffer Profile",
+              "displayName": "Target Buffer Profile"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PartTransitions_followup"
+                    }
+                  },
+                  "Property": "SourcePartNumber"
+                }
+              },
+              "queryRef": "PartTransitions_followup.SourcePartNumber",
+              "nativeQueryRef": "Source PartNumber",
+              "displayName": "Source PartNumber"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PartTransitions_followup"
+                    }
+                  },
+                  "Property": "SourcePartLocation"
+                }
+              },
+              "queryRef": "PartTransitions_followup.SourcePartLocation",
+              "nativeQueryRef": "Source Location1",
+              "displayName": "Source Location"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PartTransitions_followup"
+                    }
+                  },
+                  "Property": "Source.InventoryPlanning"
+                }
+              },
+              "queryRef": "PartTransitions_followup.Source.InventoryPlanning",
+              "nativeQueryRef": "Source Buffer Profile1",
+              "displayName": "Source Buffer Profile"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PartTransitions_followup"
+                    }
+                  },
+                  "Property": "Source.InventoryQty"
+                }
+              },
+              "queryRef": "PartTransitions_followup.Source.InventoryQty",
+              "nativeQueryRef": "Source On Hand Inv",
+              "displayName": "Source On Hand Inv"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PartTransitions_followup"
+                    }
+                  },
+                  "Property": "Source in days (Target EDU)"
+                }
+              },
+              "queryRef": "PartTransitions_followup.Source in days (Target EDU)",
+              "nativeQueryRef": "Source Inv days (Target EDU)",
+              "displayName": "Source Inv days (Target EDU)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PartTransitions_followup"
+                    }
+                  },
+                  "Property": "Source in days (Source EDU)"
+                }
+              },
+              "queryRef": "PartTransitions_followup.Source in days (Source EDU)",
+              "nativeQueryRef": "Source Inv days (Source EDU)",
+              "displayName": "Source Inv days (Source EDU)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PartTransitions_followup"
+                    }
+                  },
+                  "Property": "StartDate"
+                }
+              },
+              "queryRef": "PartTransitions_followup.StartDate",
+              "nativeQueryRef": "StartDate"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PartTransitions_followup"
+                    }
+                  },
+                  "Property": "EndDate"
+                }
+              },
+              "queryRef": "PartTransitions_followup.EndDate",
+              "nativeQueryRef": "EndDate"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PartTransitions_followup"
+                    }
+                  },
+                  "Property": "ADULinkMethod"
+                }
+              },
+              "queryRef": "PartTransitions_followup.ADULinkMethod",
+              "nativeQueryRef": "ADULinkMethod"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PartTransitions_followup"
+                    }
+                  },
+                  "Property": "NetFlowLink"
+                }
+              },
+              "queryRef": "PartTransitions_followup.NetFlowLink",
+              "nativeQueryRef": "NetFlowLink"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PartTransitions_followup"
+                    }
+                  },
+                  "Property": "ConversionRatio"
+                }
+              },
+              "queryRef": "PartTransitions_followup.ConversionRatio",
+              "nativeQueryRef": "ConversionRatio"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#6C6C84'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F5F9FF'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI'', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            },
+            "fontColorPrimary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#6C6C84'"
+                    }
+                  }
+                }
+              }
+            },
+            "backColorPrimary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FCFDFF'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontColorSecondary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#605E5C'"
+                    }
+                  }
+                }
+              }
+            },
+            "backColorSecondary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F5F9FF'"
+                    }
+                  }
+                }
+              }
+            },
+            "urlIcon": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "74.17565881230273D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report PartHistories and HistoricalDemands.Date"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "69.70263524921089D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report PartHistories and HistoricalDemands.AverageDailyUsage"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "59.85671291198709D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report PartHistories and HistoricalDemands.ForecastedDailyUsage"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "80.35131762460544D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report PartHistories and HistoricalDemands.YZAFValue"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "71.25809293107245D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report PartHistories and HistoricalDemands.RZAFValue"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "89.01079057476326D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report PartHistories and HistoricalDemands.InventoryQty"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "74.67026352492108D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report PartHistories and HistoricalDemands.TotalSupply"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "81.01079057476328D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report PartHistories and HistoricalDemands.PartNumber"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "65.84592233722383D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report PartHistories and HistoricalDemands.Location"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "180.17278386666644D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Present Items Measure.Number of items"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "205.37030660084253D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PartDetails.InventoryPlanning"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "114.64462867389271D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PartDetails.EffectiveLeadTime"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "120.63723979156823D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report Parts.GoodsReceiptTime"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "97.35343653166878D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report Parts.FixedLeadTime"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "86.62554594180355D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report Parts.PartType"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "255.00119853641067D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "report Parts.MaterialType"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "100.28515442787968D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PartDetails.RPlusLeadTime"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "102.31157643897582D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PartTransitions_followup.Source in days (Target EDU)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "101.65632830617778D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PartTransitions_followup.Source in days (Source EDU)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "95.29793108201304D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PartTransitions_followup.Target.InventoryPlanning"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "76.33436503930196D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PartTransitions_followup.SourcePartLocation"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "110.94095715766093D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PartTransitions_followup.ConversionRatio"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "112.04151884288486D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PartTransitions_followup.TargetPartLocation"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "85.30561356078647D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PartTransitions_followup.TargetPartNumber"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "82.25695987069926D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PartTransitions_followup.SourcePartNumber"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "89.77200151850315D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PartTransitions_followup.Source.InventoryPlanning"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "73.45078378547825D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PartTransitions_followup.Source.InventoryQty"
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "outlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F5F9FF'"
+                    }
+                  }
+                }
+              }
+            },
+            "outlineWeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            },
+            "gridVertical": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "gridVerticalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FCFDFF'"
+                    }
+                  }
+                }
+              }
+            },
+            "gridVerticalWeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
+                }
+              }
+            },
+            "gridHorizontalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FCFDFF'"
+                    }
+                  }
+                }
+              }
+            },
+            "gridHorizontalWeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
+                }
+              }
+            },
+            "gridHorizontal": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "rowPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "3D"
+                }
+              }
+            },
+            "textSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "total": [
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#605E5C'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F5F9FF'"
+                    }
+                  }
+                }
+              }
+            },
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnFormatting": [
+        {
+          "properties": {
+            "labelPrecision": {
+              "expr": {
+                "Literal": {
+                  "Value": "0L"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PartTransitions_followup.Source.InventoryQty"
+          }
+        },
+        {
+          "properties": {
+            "labelPrecision": {
+              "expr": {
+                "Literal": {
+                  "Value": "0L"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PartTransitions_followup.Source in days (Target EDU)"
+          }
+        },
+        {
+          "properties": {
+            "labelPrecision": {
+              "expr": {
+                "Literal": {
+                  "Value": "0L"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PartTransitions_followup.Source in days (Source EDU)"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Part Transition'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#3F3D76'"
+                    }
+                  }
+                }
+              }
+            },
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI'', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Average number of items every day'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "preset": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Custom'"
+                }
+              }
+            },
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Outer'"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#6C6C84'"
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "70L"
+                }
+              }
+            },
+            "shadowSpread": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            },
+            "shadowBlur": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
+                }
+              }
+            },
+            "angle": {
+              "expr": {
+                "Literal": {
+                  "Value": "45D"
+                }
+              }
+            },
+            "shadowDistance": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#B2B2B3'"
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "5D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'AlternatingRowsNew'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FCFDFF'"
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "border": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "isHidden": true
+}

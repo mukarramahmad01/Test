@@ -1,0 +1,35 @@
+table PeriodUnit
+	lineageTag: 24850ee5-8118-4974-9ee5-fad76dbaa69f
+
+	column Unit
+		dataType: string
+		lineageTag: 4988488d-f54f-430a-ab1e-02b3359e3e56
+		summarizeBy: none
+		sourceColumn: Unit
+		sortByColumn: id
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column id
+		dataType: string
+		lineageTag: b911fce5-ba21-4a64-b20c-ef468067d744
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition PeriodUnit = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45Wckms1CjWVNJRMlSK1YlWCk9NzYbwjcB83/y8kgyIgLFSbCwA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Unit = _t, id = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Unit", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
