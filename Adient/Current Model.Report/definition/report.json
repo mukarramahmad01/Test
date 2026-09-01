@@ -1,0 +1,339 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY21SU11",
+      "reportVersionAtImport": {
+        "visual": "1.8.65",
+        "report": "2.0.65",
+        "page": "1.3.65"
+      },
+      "type": "SharedResources"
+    },
+    "customTheme": {
+      "name": "Custom49048476680323394.json",
+      "reportVersionAtImport": {
+        "visual": "1.8.87",
+        "report": "2.0.87",
+        "page": "1.3.87"
+      },
+      "type": "RegisteredResources"
+    }
+  },
+  "filterConfig": {
+    "filterSortOrder": "Custom"
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "true"
+              }
+            }
+          },
+          "visible": {
+            "expr": {
+              "Literal": {
+                "Value": "true"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "publicCustomVisuals": [
+    "BulletChart1443347686880",
+    "calendarVisual74934D05B71F4C31B0F79D925EE89638",
+    "ChicletSlicer1448559807354",
+    "CustomSlicer",
+    "HierarchicalFilterF39DAE8D57A743EF89F5C3809DEE2B67",
+    "impactBubbleChart9F474F4C9D2243D7A6BB693D25F75740",
+    "PDFUploaderAndViewerByPBICraft",
+    "performanceBubbleChartFBAAA829CB604E5CAB4F21729F233294",
+    "sankey02300D1BE6F5427989F3DE31CCA9E0F32020",
+    "selectionSlicer75918E1108FD45E0B85F2A29F491BBA8",
+    "textSearchSlicerF85E2E78BE4A4D7D9F99ED75B5D71C85",
+    "TimeBrush1450434005853"
+  ],
+  "resourcePackages": [
+    {
+      "name": "psProcessAnalyzer",
+      "type": "CustomVisual",
+      "items": [
+        {
+          "name": "psProcessAnalyzer.pbiviz.json",
+          "path": "psProcessAnalyzer.pbiviz.json",
+          "type": "CustomVisualMetadata"
+        }
+      ]
+    },
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY21SU11",
+          "path": "BaseThemes/CY21SU11.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "attention14518062012681443.jpg",
+          "path": "attention14518062012681443.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "attention456172672166667.jpg",
+          "path": "attention456172672166667.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "attentionred24772418291637333.svg",
+          "path": "attentionred24772418291637333.svg",
+          "type": "Image"
+        },
+        {
+          "name": "attentionred7526967155775739.png",
+          "path": "attentionred7526967155775739.png",
+          "type": "Image"
+        },
+        {
+          "name": "BackOrders-removebg-preview002746576121940736.png",
+          "path": "BackOrders-removebg-preview002746576121940736.png",
+          "type": "Image"
+        },
+        {
+          "name": "balanceremplie-removebg-previe27625376380493205.png",
+          "path": "balanceremplie-removebg-previe27625376380493205.png",
+          "type": "Image"
+        },
+        {
+          "name": "BOM12290002591757343.png",
+          "path": "BOM12290002591757343.png",
+          "type": "Image"
+        },
+        {
+          "name": "calendar23157938089466046.jpg",
+          "path": "calendar23157938089466046.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "Custom49048476680323394.json",
+          "path": "Custom49048476680323394.json",
+          "type": "Image"
+        },
+        {
+          "name": "customerView-removebg-preview27628241885175653.png",
+          "path": "customerView-removebg-preview27628241885175653.png",
+          "type": "Image"
+        },
+        {
+          "name": "demand_icon7132125587191718.jpg",
+          "path": "demand_icon7132125587191718.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "EDU_icon8186837703353762.jpg",
+          "path": "EDU_icon8186837703353762.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "excess_supply2.png28788754755470514.jpg",
+          "path": "excess_supply2.png28788754755470514.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "ExcessSupply-removebg-preview04563516340807916.png",
+          "path": "ExcessSupply-removebg-preview04563516340807916.png",
+          "type": "Image"
+        },
+        {
+          "name": "fleche-bas-removebg-preview2537404859374892.png",
+          "path": "fleche-bas-removebg-preview2537404859374892.png",
+          "type": "Image"
+        },
+        {
+          "name": "fleche-haut-removebg-preview362623575174732.png",
+          "path": "fleche-haut-removebg-preview362623575174732.png",
+          "type": "Image"
+        },
+        {
+          "name": "globe-removebg-preview14798527780125137.png",
+          "path": "globe-removebg-preview14798527780125137.png",
+          "type": "Image"
+        },
+        {
+          "name": "Image67573087766046993.png",
+          "path": "Image67573087766046993.png",
+          "type": "Image"
+        },
+        {
+          "name": "Image77004864292939845.png",
+          "path": "Image77004864292939845.png",
+          "type": "Image"
+        },
+        {
+          "name": "Image86715054874737907.png",
+          "path": "Image86715054874737907.png",
+          "type": "Image"
+        },
+        {
+          "name": "Inventory_icon_bold-removebg-p10328912515297084.png",
+          "path": "Inventory_icon_bold-removebg-p10328912515297084.png",
+          "type": "Image"
+        },
+        {
+          "name": "inventory_icon10265420012540138.jpg",
+          "path": "inventory_icon10265420012540138.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "Inventory_icon20606213263483752.jpg",
+          "path": "Inventory_icon20606213263483752.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "Inventory_icon22350868277946367.jpg",
+          "path": "Inventory_icon22350868277946367.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "inventoryView30936701224161434.png",
+          "path": "inventoryView30936701224161434.png",
+          "type": "Image"
+        },
+        {
+          "name": "main-removebg-preview16314414154808277.png",
+          "path": "main-removebg-preview16314414154808277.png",
+          "type": "Image"
+        },
+        {
+          "name": "Modeling_View3368563444332371.png",
+          "path": "Modeling_View3368563444332371.png",
+          "type": "Image"
+        },
+        {
+          "name": "money-removebg-preview16409566354482918.png",
+          "path": "money-removebg-preview16409566354482918.png",
+          "type": "Image"
+        },
+        {
+          "name": "money-removebg-preview8366908964959177.png",
+          "path": "money-removebg-preview8366908964959177.png",
+          "type": "Image"
+        },
+        {
+          "name": "monnaie18343809145107648.jpg",
+          "path": "monnaie18343809145107648.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "monnaie964290138292518.jpg",
+          "path": "monnaie964290138292518.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "Navigatingreports2698601791963642.jpg",
+          "path": "Navigatingreports2698601791963642.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "orderView7853902658111684.png",
+          "path": "orderView7853902658111684.png",
+          "type": "Image"
+        },
+        {
+          "name": "parametre-removebg-preview5306570644504494.png",
+          "path": "parametre-removebg-preview5306570644504494.png",
+          "type": "Image"
+        },
+        {
+          "name": "parametre-removebg-preview5659507689302878.png",
+          "path": "parametre-removebg-preview5659507689302878.png",
+          "type": "Image"
+        },
+        {
+          "name": "pourcentage_icon6605086519858914.jpg",
+          "path": "pourcentage_icon6605086519858914.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "qty_icon14819651519980304.jpg",
+          "path": "qty_icon14819651519980304.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "qty_icon99820297242212.jpg",
+          "path": "qty_icon99820297242212.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "shelflife1-removebg-preview1370871143432837.png",
+          "path": "shelflife1-removebg-preview1370871143432837.png",
+          "type": "Image"
+        },
+        {
+          "name": "target_icon_empty22531701268940396.jpg",
+          "path": "target_icon_empty22531701268940396.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "titre_home_page2749896913989103.gif",
+          "path": "titre_home_page2749896913989103.gif",
+          "type": "Image"
+        },
+        {
+          "name": "transport21846927254277038.jpg",
+          "path": "transport21846927254277038.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "valeur_icon6015170357011799.jpg",
+          "path": "valeur_icon6015170357011799.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "valeur_icon612500928380971.jpg",
+          "path": "valeur_icon612500928380971.jpg",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true
+  },
+  "slowDataSourceSettings": {
+    "isCrossHighlightingDisabled": false,
+    "isSlicerSelectionsButtonEnabled": false,
+    "isFilterSelectionsButtonEnabled": false,
+    "isFieldWellButtonEnabled": false,
+    "isApplyAllButtonEnabled": false
+  }
+}

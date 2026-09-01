@@ -1,0 +1,1592 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "90c2d4214ab2ef3a9e9b",
+  "position": {
+    "x": 15.04571139820751,
+    "y": 119.29823431967156,
+    "z": 2000,
+    "height": 724.70176568032844,
+    "width": 1256,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "psProcessAnalyzer",
+    "query": {
+      "queryState": {
+        "variants": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "All Measures"
+                    }
+                  },
+                  "Property": "WUVariant"
+                }
+              },
+              "queryRef": "Where Used.WUVariant",
+              "nativeQueryRef": "WUVariant"
+            }
+          ]
+        },
+        "edgeGraphValue": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "All Measures"
+                    }
+                  },
+                  "Property": "LT"
+                }
+              },
+              "queryRef": "Where Used.LT",
+              "displayName": "Lead Time"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "All Measures"
+                    }
+                  },
+                  "Property": "DLT parent"
+                }
+              },
+              "queryRef": "Where Used.DLT parent",
+              "nativeQueryRef": "DLT parent"
+            }
+          ]
+        },
+        "eventDetails": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "All Measures"
+                    }
+                  },
+                  "Property": "url"
+                }
+              },
+              "queryRef": "Where Used.url",
+              "displayName": "Open the item"
+            }
+          ]
+        },
+        "eventsFrom": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Where Used"
+                    }
+                  },
+                  "Property": "Previous"
+                }
+              },
+              "queryRef": "Where Used.Previous",
+              "nativeQueryRef": "Previous"
+            }
+          ]
+        },
+        "eventsTo": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Where Used"
+                    }
+                  },
+                  "Property": "Next"
+                }
+              },
+              "queryRef": "Where Used.Next",
+              "nativeQueryRef": "Next"
+            }
+          ]
+        },
+        "activityIcon": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "All Measures"
+                    }
+                  },
+                  "Property": "Event_icon"
+                }
+              },
+              "queryRef": "All Measures.Event_icon",
+              "nativeQueryRef": "Event_icon"
+            }
+          ]
+        },
+        "eventInfos": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "All Measures"
+                    }
+                  },
+                  "Property": "Next Description"
+                }
+              },
+              "queryRef": "All Measures.Next Description",
+              "nativeQueryRef": "Description",
+              "displayName": "Description"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "All Measures"
+                    }
+                  },
+                  "Property": "Alert Severity"
+                }
+              },
+              "queryRef": "All Measures.Alert Severity",
+              "nativeQueryRef": "Alert Severity",
+              "displayName": "Alert Severity"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "All Measures"
+                    }
+                  },
+                  "Property": "Priority Where Used"
+                }
+              },
+              "queryRef": "All Measures.Priority Where Used",
+              "nativeQueryRef": "Priority",
+              "displayName": "Priority"
+            }
+          ]
+        },
+        "eventGraphValue": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "All Measures"
+                    }
+                  },
+                  "Property": "Alert Date"
+                }
+              },
+              "queryRef": "All Measures.Alert Date",
+              "nativeQueryRef": "Alert Date"
+            }
+          ]
+        },
+        "activityLegend": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "All Measures"
+                    }
+                  },
+                  "Property": "Priority Where Used"
+                }
+              },
+              "queryRef": "All Measures.Priority Where Used",
+              "nativeQueryRef": "Priority",
+              "displayName": "Priority"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "All Measures"
+                  }
+                },
+                "Property": "LT"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "aboutSettings": [
+        {
+          "properties": {
+            "processScienceLicenseKey": {
+              "expr": {
+                "Literal": {
+                  "Value": "'eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJ2ZXJzaW9uIjozLCJsaWNlbnNlZSI6IkRlbWFuZCBEcml2ZW4gVGVjaG5vbG9naWVzIiwiY2xpZW50RW1haWwiOiI2MDhjZWNlODIxZjVlOTU4YTJmYTZjZDI4YzMyYTAyMDBmN2I0ZDY2NzQ5MWM1MWU5NGM3NWRkNzMzNjIyMmY0IiwidmFsaWRGcm9tIjoiMjAyMjEyMDEiLCJ2YWxpZFVudGlsIjoiMjAyMzExMzAiLCJ0aW1lc3RhbXAiOjE2NzEwODc3NjUsImxpY2Vuc2VOdW1iZXIiOiI2NzdKZW1abkNNUGJ6QzlYIiwibGljZW5zZVNlcmlhbCI6IlBVeFZhQnllWjB6YUVGemYiLCJsaWNlbnNlU2VydmVyVXJsIjoiIiwiaXNDb25zdWx0aW5nIjp0cnVlLCJmbG9hdGluZ1dyaXRlcnMiOjAsImZsb2F0aW5nUmVhZGVycyI6MCwibWF4V3JpdGVycyI6MCwibmFtZWRVc2VycyI6W119.W3CdFUknff-wexSS7H2O1K1M0diYSwWy5F9iymSpIddPc_L06V45CpKJ_ikJrXRfO7nc-vn2yazhB4wJFIg8FGyN_oy9R4NGL9liE9Zao25iaenXv1ubmDFqNGcn9uhxY-qf97rC4jAdy3fr6j7fA8J1XN4OFVhhdyCrQQu9c955mBqApPKyXEe556mR966sX9BnRH9jqjKvzYzAIr-dgAjM1dxLtNKR5LekqVE26gur1-7Z0ul96HQ0vFKO1kk4Bq8RO8iGB_VZHdQJ3J-bIJQFJjnox8_caqDyCwb2T7g7mRwJZpySvGD20tpGTlGf8RWIgr7giVi3Gai8zVOJPw'"
+                }
+              }
+            },
+            "licenseDate": {
+              "expr": {
+                "Literal": {
+                  "Value": "'15/11'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "hiddenObjects": [
+        {
+          "properties": {
+            "savedMinVariantState": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "savedMaxVariantState": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            },
+            "legendColorsMap": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"Low\":\"#14F00D\",\"Medium\":\"#14F00D\",\"OToG\":\"#4EC3E0\",\"Inactive\":\"#ffffff\",\"High\":\"#E56A54\",\"Critical\":\"#B3001B\",\"Green\":\"#92CE66\",\"Red\":\"#E56A54\",\"Yellow\":\"#F7E942\"}'"
+                }
+              }
+            },
+            "currentLegendName": {
+              "expr": {
+                "Literal": {
+                  "Value": "'All Measures.Priority Where Used'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "activityLegendSettings": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "highlightFullActivity": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "legendName": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Priority'"
+                }
+              }
+            },
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "7D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "activityLayoutSettings": [
+        {
+          "properties": {
+            "showStartAndEndIndicators": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "sameSizeForAllActivities": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showActivityValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "showGroupedModeIcon": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showProgressBar": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "showActivityValuesText": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "countOfActivityValuesOnNode": {
+              "expr": {
+                "Literal": {
+                  "Value": "3D"
+                }
+              }
+            },
+            "breakAfterEveryXWord": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "showActivityIcons": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "activityIconSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "13D"
+                }
+              }
+            },
+            "activityIconPosition": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "targetProcessSettings": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "menuSettings": [
+        {
+          "properties": {
+            "useSmallMenuItems": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showNavigator": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "graphLayoutSettings": [
+        {
+          "properties": {
+            "nodeSep": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "graphDirection": {
+              "expr": {
+                "Literal": {
+                  "Value": "'LR'"
+                }
+              }
+            },
+            "marginX": {
+              "expr": {
+                "Literal": {
+                  "Value": "20D"
+                }
+              }
+            },
+            "marginY": {
+              "expr": {
+                "Literal": {
+                  "Value": "20D"
+                }
+              }
+            },
+            "rankSep": {
+              "expr": {
+                "Literal": {
+                  "Value": "50D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "graphSettings": [
+        {
+          "properties": {
+            "isGroupedMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "durationSettings": [
+        {
+          "properties": {
+            "labelDurationAutomatic": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "nodeSettings": [
+        {
+          "properties": {
+            "activityColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "colorScaleMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'l'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "edgeSettings": [
+        {
+          "properties": {
+            "minimumTransitionWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
+                }
+              }
+            },
+            "maximumTransitionWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "numberOfGroups": {
+              "expr": {
+                "Literal": {
+                  "Value": "32D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "variantsSettings": [
+        {
+          "properties": {
+            "defaultTopVariantsPercentage": {
+              "expr": {
+                "Literal": {
+                  "Value": "37D"
+                }
+              }
+            },
+            "mostFrequent": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {}
+        }
+      ],
+      "dataColors": [
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#27F702'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Where Used"
+                          }
+                        },
+                        "Property": "Previous"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'PPC-Usine-'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Where Used"
+                          }
+                        },
+                        "Property": "Previous"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'ICB-Usine-'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F7E942'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Where Used"
+                          }
+                        },
+                        "Property": "Previous"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'FPA-Usine-'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#27F702'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Where Used"
+                          }
+                        },
+                        "Property": "Previous"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'PPI-Usine-'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#4EC3E0'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Where Used"
+                          }
+                        },
+                        "Property": "Previous"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'SAD-Usine-'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#ffffff'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Where Used"
+                          }
+                        },
+                        "Property": "Previous"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'SAC-Usine-'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#E56A54'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Where Used"
+                          }
+                        },
+                        "Property": "Previous"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'SAB-Usine-'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#B3001B'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Where Used"
+                          }
+                        },
+                        "Property": "Previous"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'PPJ-Usine-'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#92CE66'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Where Used"
+                          }
+                        },
+                        "Property": "Previous"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'00099969-9407961-'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#4EC3E0'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Where Used"
+                          }
+                        },
+                        "Property": "Previous"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'16516005-9407961-'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#E56A54'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Where Used"
+                          }
+                        },
+                        "Property": "Previous"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'998-825000-010-9407961-'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#14F00D'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Where Used"
+                          }
+                        },
+                        "Property": "Previous"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'00002961-CERECO DOMAGNE-'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F7E942'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Where Used"
+                          }
+                        },
+                        "Property": "Previous"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'90001894-28-'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "swimLaneSettings": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fillColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#27F702'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Where used'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI'', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#3F3D76'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "5D"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#B2B2B3'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "preset": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Custom'"
+                }
+              }
+            },
+            "shadowSpread": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            },
+            "shadowBlur": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
+                }
+              }
+            },
+            "shadowDistance": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 7,
+                      "Percent": 0.6
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "90D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "showTooltipButton": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeaderTooltip": [
+        {
+          "properties": {
+            "titleFontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "5D"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'If there are too many nodes the graph may be partial – restrict selections if required.\nA double click on a tile opens a pop up window to navigate to the item’s workbench.\nFor complex graphs the user can zoom in and navigate through the visual.\n\n'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualTooltip": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            },
+            "titleFontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "valueFontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "Filterb574ec341f2e966c7c91",
+        "ordinal": 0,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "All Measures"
+              }
+            },
+            "Property": "DLT parent"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "Filter5527dd37388a5b3ab4ec",
+        "ordinal": 1,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "All Measures"
+              }
+            },
+            "Property": "Event_icon"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "Filter0488bd789421f4c3375f",
+        "ordinal": 2,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "All Measures"
+              }
+            },
+            "Property": "LT"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "Filter1d0759edcba5c572afed",
+        "ordinal": 3,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Where Used"
+              }
+            },
+            "Property": "Next"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "Filter7e3966e67b1f83e925cf",
+        "ordinal": 4,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "All Measures"
+              }
+            },
+            "Property": "url"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "Filter92c05cc8f4b34042f6ab",
+        "ordinal": 5,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Where Used"
+              }
+            },
+            "Property": "Previous"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "Filter692efc97e877cc93420e",
+        "ordinal": 6,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Where Used"
+              }
+            },
+            "Property": "Previous Inv Method"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "Filterc4bec339a0889a1a6895",
+        "ordinal": 7,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Planning-Execution"
+              }
+            },
+            "Property": "Alert Date Where Used"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "Filter5094834298803bb5308f",
+        "ordinal": 8,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "All Measures"
+              }
+            },
+            "Property": "WUVariant"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "Filter1039745cc1a024cc6488",
+        "ordinal": 9,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "All Measures"
+              }
+            },
+            "Property": "Next Description"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "Filtera1b2cb830bd89ebc5892",
+        "ordinal": 10,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "All Measures"
+              }
+            },
+            "Property": "Alert Date"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "Filter6cbccce676890ebc1530",
+        "ordinal": 11,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "All Measures"
+              }
+            },
+            "Property": "Alert Severity"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "Filterac3ba19da255dbd29c35",
+        "ordinal": 12,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "All Measures"
+              }
+            },
+            "Property": "Priority Where Used"
+          }
+        },
+        "type": "Advanced"
+      }
+    ],
+    "filterSortOrder": "Custom"
+  },
+  "isHidden": true
+}

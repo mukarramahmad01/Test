@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "61f08e7890b1dd449d20",
+  "position": {
+    "x": 24,
+    "y": 0,
+    "z": 11000,
+    "height": 723,
+    "width": 1256,
+    "tabOrder": 43000
+  },
+  "visualGroup": {
+    "displayName": "table backorders",
+    "groupMode": "ScaleMode"
+  },
+  "isHidden": true
+}
