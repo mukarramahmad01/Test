@@ -1,0 +1,49 @@
+table RLS_UserResource
+	isHidden
+	lineageTag: 5849f909-a379-4fc4-a23a-4fd8005108ed
+
+	column Email
+		dataType: string
+		isHidden
+		lineageTag: c244fca4-8f67-49c2-9ecb-86e3d5937c01
+		summarizeBy: none
+		sourceColumn: Email
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column AD_Key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e5d59cdf-0f55-4f09-89ce-7e2b793c6535
+		summarizeBy: none
+		sourceColumn: AD_Key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RLS_UserResource-58467ab6-035f-479f-9e85-9911309513a1 = m
+		mode: import
+		queryGroup: RLS
+		source =
+				let
+				    Source = #"RLS_UserResourceFilters",
+				    #"Personnalisée ajoutée" = Table.AddColumn(Source, "Personnalisé", each #"IsEmpty"(#"RLS_PlannerCode",#"RLS_Location",#"RLS_VendorIdentifier", [FieldName], [Email] )),
+				    #"Filtered Rows" = Table.SelectRows(#"Personnalisée ajoutée", each true),
+				    #"Colonnes renommées" = Table.RenameColumns(#"Filtered Rows",{{"Personnalisé", "AllAcces"}}),
+				    #"Lignes filtrées" = Table.SelectRows(#"Colonnes renommées", each ([AllAcces] = 1)),
+				    #"Index ajouté" = Table.AddIndexColumn(#"Lignes filtrées", "AD_Key", 1, 0, Int64.Type),
+				    #"Removed Columns" = Table.RemoveColumns(#"Index ajouté",{"FieldName", "FieldValue", "FilterKind", "AllAcces"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Columns")
+				in
+				    #"Removed Duplicates"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

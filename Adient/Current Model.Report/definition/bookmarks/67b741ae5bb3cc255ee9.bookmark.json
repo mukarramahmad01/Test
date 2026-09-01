@@ -1,0 +1,3201 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
+  "displayName": "Current & Target inv",
+  "name": "67b741ae5bb3cc255ee9",
+  "options": {
+    "targetVisualNames": [
+      "efce993d009ec54c8c95"
+    ]
+  },
+  "explorationState": {
+    "version": "1.40",
+    "activeSection": "8701966d6dbaa8be1b08",
+    "sections": {
+      "8701966d6dbaa8be1b08": {
+        "filters": {
+          "byName": {
+            "Filterbc1d15b119d18f8ecc9f": {
+              "name": "Filterbc1d15b119d18f8ecc9f",
+              "type": "Categorical",
+              "filter": {
+                "Version": 2,
+                "From": [
+                  {
+                    "Name": "p",
+                    "Entity": "Parts",
+                    "Type": 0
+                  }
+                ],
+                "Where": [
+                  {
+                    "Condition": {
+                      "In": {
+                        "Expressions": [
+                          {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Source": "p"
+                                }
+                              },
+                              "Property": "SuspressionIsTrueFalse"
+                            }
+                          }
+                        ],
+                        "Values": [
+                          [
+                            {
+                              "Literal": {
+                                "Value": "'False'"
+                              }
+                            }
+                          ]
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts"
+                    }
+                  },
+                  "Property": "SuspressionIsTrueFalse"
+                }
+              },
+              "howCreated": 1
+            }
+          },
+          "byExpr": [
+            {
+              "name": "Filter8c946593ecf60141ffe0",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts"
+                    }
+                  },
+                  "Property": "AlertSeverity"
+                }
+              },
+              "howCreated": 1
+            },
+            {
+              "name": "Filter2ea864a476121a7cf585",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts"
+                    }
+                  },
+                  "Property": "AlertType"
+                }
+              },
+              "howCreated": 1
+            },
+            {
+              "name": "Filteraa78d0d4e30d156f184b",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts"
+                    }
+                  },
+                  "Property": "BoMType"
+                }
+              },
+              "howCreated": 1
+            },
+            {
+              "name": "Filter94fe5191edd33942d73b",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts"
+                    }
+                  },
+                  "Property": "Description"
+                }
+              },
+              "howCreated": 1
+            },
+            {
+              "name": "Filterc0f90bb002107b9627cf",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts"
+                    }
+                  },
+                  "Property": "Inventory Method"
+                }
+              },
+              "howCreated": 1
+            },
+            {
+              "name": "Filterc98a3403380421639b70",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts"
+                    }
+                  },
+                  "Property": "InventoryPlanning"
+                }
+              },
+              "howCreated": 1
+            },
+            {
+              "name": "Filterdec82fd5455c3ed0e0db",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts"
+                    }
+                  },
+                  "Property": "MaterialType"
+                }
+              },
+              "howCreated": 1
+            },
+            {
+              "name": "Filter0be75219a02bf08acefc",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DemandOrders"
+                    }
+                  },
+                  "Property": "OrderType"
+                }
+              },
+              "howCreated": 1
+            },
+            {
+              "name": "Filtercce16aba1cd617b19370",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts"
+                    }
+                  },
+                  "Property": "PartNumber"
+                }
+              },
+              "howCreated": 1
+            },
+            {
+              "name": "Filterd85a7f77b8c770a46d2d",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts"
+                    }
+                  },
+                  "Property": "PartType"
+                }
+              },
+              "howCreated": 1
+            },
+            {
+              "name": "Filter26cb74855e517d8d0373",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts"
+                    }
+                  },
+                  "Property": "PlannerCode"
+                }
+              },
+              "howCreated": 1
+            },
+            {
+              "name": "Filter40290d068fe44ac62504",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts"
+                    }
+                  },
+                  "Property": "UserDefined1"
+                }
+              },
+              "howCreated": 1
+            },
+            {
+              "name": "Filter54ee7017975c1f08c24b",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts"
+                    }
+                  },
+                  "Property": "UserDefined10"
+                }
+              },
+              "howCreated": 1
+            },
+            {
+              "name": "Filterc295aae1123997474dba",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts"
+                    }
+                  },
+                  "Property": "UserDefined11"
+                }
+              },
+              "howCreated": 1
+            },
+            {
+              "name": "Filter45e7186ee81bd8d7a92b",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts"
+                    }
+                  },
+                  "Property": "UserDefined12"
+                }
+              },
+              "howCreated": 1
+            },
+            {
+              "name": "Filter6c171837db1b9c20ec7f",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts"
+                    }
+                  },
+                  "Property": "UserDefined13"
+                }
+              },
+              "howCreated": 1
+            },
+            {
+              "name": "Filter7f719d1dd417c1086a68",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts"
+                    }
+                  },
+                  "Property": "UserDefined14"
+                }
+              },
+              "howCreated": 1
+            },
+            {
+              "name": "Filter1c994a483666bc55b4ef",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts"
+                    }
+                  },
+                  "Property": "UserDefined15"
+                }
+              },
+              "howCreated": 1
+            },
+            {
+              "name": "Filterd90de5135ea014eb3172",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts"
+                    }
+                  },
+                  "Property": "UserDefined16"
+                }
+              },
+              "howCreated": 1
+            },
+            {
+              "name": "Filter23e9d0ef641c4eeb9dc9",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts"
+                    }
+                  },
+                  "Property": "UserDefined2"
+                }
+              },
+              "howCreated": 1
+            },
+            {
+              "name": "Filter5d317a22ca9bfc046cfd",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts"
+                    }
+                  },
+                  "Property": "UserDefined3"
+                }
+              },
+              "howCreated": 1
+            },
+            {
+              "name": "Filtera499867e55dae78fe443",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts"
+                    }
+                  },
+                  "Property": "UserDefined4"
+                }
+              },
+              "howCreated": 1
+            },
+            {
+              "name": "Filter4a556e84672f0d14a049",
+              "type": "Advanced",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts"
+                    }
+                  },
+                  "Property": "UserDefined5"
+                }
+              },
+              "howCreated": 1
+            },
+            {
+              "name": "Filter9335198e84ee7718825e",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts"
+                    }
+                  },
+                  "Property": "UserDefined6"
+                }
+              },
+              "howCreated": 1
+            },
+            {
+              "name": "Filter625d8ed6e639c48cc141",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts"
+                    }
+                  },
+                  "Property": "UserDefined7"
+                }
+              },
+              "howCreated": 1
+            },
+            {
+              "name": "Filter21a68dfa0f01f5316b75",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts"
+                    }
+                  },
+                  "Property": "UserDefined8"
+                }
+              },
+              "howCreated": 1
+            },
+            {
+              "name": "Filter567067ebbf42c444865d",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts"
+                    }
+                  },
+                  "Property": "UserDefined9"
+                }
+              },
+              "howCreated": 1
+            },
+            {
+              "name": "Filter2c01d00fb0e87a620ea1",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts"
+                    }
+                  },
+                  "Property": "Vendor"
+                }
+              },
+              "howCreated": 1
+            },
+            {
+              "name": "Filterb13e84b23d28e06a9223",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts"
+                    }
+                  },
+                  "Property": "VendorIdentifier"
+                }
+              },
+              "howCreated": 1
+            },
+            {
+              "name": "7ac5fef7b1dded04ab40",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts"
+                    }
+                  },
+                  "Property": "Location"
+                }
+              },
+              "howCreated": 1
+            }
+          ]
+        },
+        "visualContainers": {
+          "3fb3106bae341b591885": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "d2516d36f745f9341f49": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "cec08dcdce020a2bb784",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Current Inv"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "d7e963a57f5d91fee0d5",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Variance"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "871995b7f03dfe8358f4",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Target Inv"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "tableEx",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Variance"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "7da7a181cfe585b5bfff": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "a604686997cb3e115f7d",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "RedZone"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "4f81ecad967b64ec869e",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "YellowZone"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "adfab73040e478c6bc20",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "GreenZone"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "barChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "PartType"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "PartType"
+                    }
+                  }
+                ]
+              },
+              "projections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "PartType"
+                    }
+                  }
+                ],
+                "Y": [
+                  {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "RedZone"
+                    }
+                  },
+                  {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "YellowZone"
+                    }
+                  },
+                  {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "GreenZone"
+                    }
+                  }
+                ]
+              },
+              "parameters": {
+                "Category": [
+                  {
+                    "expr": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Grouping"
+                          }
+                        },
+                        "Property": "Grouping Champs"
+                      }
+                    },
+                    "index": 0,
+                    "length": 1,
+                    "sortDirection": 2
+                  }
+                ]
+              }
+            }
+          },
+          "3bcabfdcf087636aafc4": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "28d306ec63449f4d2676",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined1"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "7cc649269e9e11ea7f92",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined2"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "504d83dcc7bafe7a6a4f",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined3"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "2d162ce4ed8643d12973",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined4"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "bfe43d634deb8ad056be",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined5"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "90e11e94f1852707c21c",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined6"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "414442e178041458ee88",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined7"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "675311ce47de854ff49f",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined8"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "dc549ec03e7262b323ab",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined9"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "5c9cf16e458a79caa44f",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined10"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "36dad04b9bd80a11a3b1",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined11"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "c82fa0f8174eacb4410a",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined12"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "b872e9221d04879baafc",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined13"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "9886cd54aee4f85797ca",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined14"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "4cf3d64627078c46dcfe",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined15"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "2925c8d83d6f67742dca",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined16"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "selectionSlicer75918E1108FD45E0B85F2A29F491BBA8",
+              "objects": {},
+              "projections": {
+                "Categories": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined1"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined2"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined3"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined4"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined5"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined6"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined7"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined8"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined9"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined10"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined11"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined12"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined13"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined14"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined15"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined16"
+                    }
+                  }
+                ]
+              },
+              "parameters": {
+                "Categories": [
+                  {
+                    "expr": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "UDF Fiels"
+                          }
+                        },
+                        "Property": "UDF"
+                      }
+                    },
+                    "index": 0,
+                    "length": 16
+                  }
+                ]
+              }
+            }
+          },
+          "c5ab37419f66ece8eb0c": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "Filter56cf62156bc031a7b855",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Grouping"
+                        }
+                      },
+                      "Property": "Grouping Champs"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "f4a04c74e40bce49ac7a",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Grouping"
+                        }
+                      },
+                      "Property": "Grouping"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "general": [
+                    {
+                      "properties": {
+                        "filter": {
+                          "filter": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "g",
+                                "Entity": "Grouping",
+                                "Type": 0
+                              }
+                            ],
+                            "Where": [
+                              {
+                                "Condition": {
+                                  "In": {
+                                    "Expressions": [
+                                      {
+                                        "Column": {
+                                          "Expression": {
+                                            "SourceRef": {
+                                              "Source": "g"
+                                            }
+                                          },
+                                          "Property": "Grouping Champs"
+                                        }
+                                      }
+                                    ],
+                                    "Values": [
+                                      [
+                                        {
+                                          "Literal": {
+                                            "Value": "'''Parts''[PartType]'"
+                                          }
+                                        }
+                                      ]
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "selection": [
+                    {
+                      "properties": {
+                        "strictSingleSelect": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "true"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Grouping"
+                        }
+                      },
+                      "Property": "Grouping"
+                    }
+                  }
+                ]
+              },
+              "cachedFilterDisplayItems": [
+                {
+                  "id": {
+                    "scopeId": {
+                      "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "Grouping"
+                              }
+                            },
+                            "Property": "Grouping Champs"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "'''Parts''[PartType]'"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "displayName": "PartType"
+                }
+              ]
+            }
+          },
+          "40541bf0811b9dda7db7": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "13e85ec25626460a5a49",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Current Inv"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "9d31a238f9f02b2f33ce",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Target Inv"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "0b6dff8773971c1148e9",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Variance"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "e3308529b9a8348a4d38",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Part Count"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "cardVisual",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Current Inv"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "605d7f2a37a91660af33": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "7857bbedb992acc1ae7f": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "16565df64a0b51258d04": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "c8716a91e2a7af542cda": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "d1f72ed9cd6686c1666a",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Qty write-off risk vs Current Inv"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "af8d83269636eedb61a8",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Qty write-off risk vs Target Inv"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "6ed2a09bc135f647a4bb",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Lot write-off risk vs Current Demand"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "cardVisual",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "7feb84c4e130e4a0e004": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "00f9793b056f7bbc3ba2",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Max Target Inv Days"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "6856289327de7ea91368",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Min Target Inv Days"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "a3f680b4e36a1efe3d45",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Qty write-off risk vs Current Inv"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "b947fcc08da38563fb9f",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "InventoryQty"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "a7992b3b5bbd1c235db1",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "TargetedInventory"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "7942ec51712d87bef747",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Qty write-off risk vs Target Inv"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "d5480ba00b7481d8f9ec",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Target Stock Days"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "9a5558dca32e66d36edb",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Current Stock Days"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "tableEx",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "bcaf637cfc7208eeb708": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "d6c70327da7dda53f54c",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "PartInventories"
+                        }
+                      },
+                      "Property": "ExpirationDate"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "07e2c1d2e0471b1f114d",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "PartInventories"
+                        }
+                      },
+                      "Property": "BatchId"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "8e30ba750d04f0940b84",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "PartInventories"
+                        }
+                      },
+                      "Property": "OnHandInventory"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "767fa00e1b329532111a",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Lot write-off risk vs Current Demand"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "tableEx",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "6d0dd0b0d4aa54910dcb": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "09cedc70922161211360": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "0705573e9a196295890b": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "3c3e06a83e334d869c5f": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "0527073d6f84b514f511": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "c031b34e7107e9345c86",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Target Inv"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "4a7c2898870160c23f87",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Current Inv"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "6c12c61dc5f64702fe18",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "Status"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "f606d563cf0042b93f21",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Locations"
+                        }
+                      },
+                      "Property": "Longitude"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "37153557b3cc6c12e589",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Locations"
+                        }
+                      },
+                      "Property": "Latitude"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "azureMap",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "19997c6e6b2ce191911b": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "ff2fce3134d57ce4ffea": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "4e2477a779e7f6cf198d": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "145646171764f4e7f17c",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined1"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "982b9e9f903d4bcd304d",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined2"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "34e4a96435fb8da7b832",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined3"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "65a8d9d68dc587803c76",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined4"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "43726bb53083fa890511",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined5"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "422996b38afcfc414866",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined6"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "6859dce8712e1128b8eb",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined7"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "2ad086f39500e6aa86a7",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined8"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "40ff7adda5348aa93e3a",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined9"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "edb58a76c98a63b4baea",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined10"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "896e0e88c32ef1539a77",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined11"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "efb17c2676919d7285a7",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined12"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "552402d42fd29f2716e3",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined13"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "78e8d392530ae63a4615",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined14"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "d67710106363a3a32c5d",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined15"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "4954999e7d5c07d8aed3",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined16"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "selectionSlicer75918E1108FD45E0B85F2A29F491BBA8",
+              "objects": {},
+              "projections": {
+                "Categories": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined1"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined2"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined3"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined4"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined5"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined6"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined7"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined8"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined9"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined10"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined11"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined12"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined13"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined14"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined15"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined16"
+                    }
+                  }
+                ]
+              },
+              "parameters": {
+                "Categories": [
+                  {
+                    "expr": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "UDF Fiels"
+                          }
+                        },
+                        "Property": "UDF"
+                      }
+                    },
+                    "index": 0,
+                    "length": 16
+                  }
+                ]
+              },
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "efce993d009ec54c8c95": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "4b9b8a6d6e6521f5cc5c": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "c038b9fe8b2041101998": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "9e593e3cde188bf2f685": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "324329c49c2bfee6ed1c",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "Inventory Method_filter"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "ChicletSlicer1448559807354",
+              "objects": {
+                "merge": {
+                  "general": [
+                    {
+                      "properties": {
+                        "filter": {
+                          "filter": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "p",
+                                "Entity": "Parts",
+                                "Type": 0
+                              }
+                            ],
+                            "Where": [
+                              {
+                                "Condition": {
+                                  "In": {
+                                    "Expressions": [
+                                      {
+                                        "Column": {
+                                          "Expression": {
+                                            "SourceRef": {
+                                              "Source": "p"
+                                            }
+                                          },
+                                          "Property": "Inventory Method_filter"
+                                        }
+                                      }
+                                    ],
+                                    "Values": [
+                                      [
+                                        {
+                                          "Literal": {
+                                            "Value": "'NB'"
+                                          }
+                                        }
+                                      ],
+                                      [
+                                        {
+                                          "Literal": {
+                                            "Value": "'Buffer'"
+                                          }
+                                        }
+                                      ]
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "65a5e8eac76e57039716": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "daeff08b91b1ec37bd3b",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined1"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "277aaf7ed8f8ca2cbef7",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined2"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "1ee8ec643568840f34a1",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined3"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "9c6bad4612176e2eba35",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined4"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "906e7a25265735d9e2d7",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined5"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "e58d753ace7de111044d",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined6"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "6457761bb5d1e3f4c6d9",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined7"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "a0d4dabec18fad1c5366",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined8"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "a5104bc11df8352e3cb5",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined9"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "cab9e42da59a7428918d",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined10"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "d2535f04f9f756b88e72",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined11"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "0b5ee0b194108df5f0a0",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined12"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "3b87ce6e5a964b0611d8",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined13"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "d0bf0589352756c7b5f8",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined14"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "38a1cd3cd096ad5fb057",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined15"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "ffc729ac0f9fd8e30458",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined16"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "selectionSlicer75918E1108FD45E0B85F2A29F491BBA8",
+              "objects": {},
+              "projections": {
+                "Categories": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined1"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined2"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined3"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined4"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined5"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined6"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined7"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined8"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined9"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined10"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined11"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined12"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined13"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined14"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined15"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "UserDefined16"
+                    }
+                  }
+                ]
+              },
+              "parameters": {
+                "Categories": [
+                  {
+                    "expr": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "UDF Fiels"
+                          }
+                        },
+                        "Property": "UDF"
+                      }
+                    },
+                    "index": 0,
+                    "length": 16
+                  }
+                ]
+              },
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "87cdc7091f69f873a08a": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "Filter56cf62156bc031a7b855",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Grouping"
+                        }
+                      },
+                      "Property": "Grouping Champs"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "21f252a8ef9caddad1e4",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Unit"
+                        }
+                      },
+                      "Property": "Unit"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "general": [
+                    {
+                      "properties": {
+                        "filter": {
+                          "filter": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "u",
+                                "Entity": "Unit",
+                                "Type": 0
+                              }
+                            ],
+                            "Where": [
+                              {
+                                "Condition": {
+                                  "In": {
+                                    "Expressions": [
+                                      {
+                                        "Column": {
+                                          "Expression": {
+                                            "SourceRef": {
+                                              "Source": "u"
+                                            }
+                                          },
+                                          "Property": "Unit"
+                                        }
+                                      }
+                                    ],
+                                    "Values": [
+                                      [
+                                        {
+                                          "Literal": {
+                                            "Value": "'Cost'"
+                                          }
+                                        }
+                                      ]
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "selection": [
+                    {
+                      "properties": {
+                        "strictSingleSelect": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "true"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Unit"
+                        }
+                      },
+                      "Property": "Unit"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "416cc54a6e6ac4fce0cb": {
+            "singleVisual": {
+              "visualType": "image",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "710a6327269bbeebeeab": {
+            "singleVisual": {
+              "visualType": "image",
+              "objects": {}
+            }
+          },
+          "5e0df89a838e77718698": {
+            "singleVisual": {
+              "visualType": "image",
+              "objects": {}
+            }
+          },
+          "2f2534bd522fd53292cb": {
+            "singleVisual": {
+              "visualType": "image",
+              "objects": {}
+            }
+          },
+          "1d9261c8a410f7bef22f": {
+            "singleVisual": {
+              "visualType": "image",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "61b50dfd4ad99fd25c4a": {
+            "singleVisual": {
+              "visualType": "image",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "1e694bf27da28468641f": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "5d984705bf4626013f5e": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "6b7500eadf5b711cda3f": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "26ea0dc3f4f47bb66b85": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "8b4dcb49d04ecbcfe127",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Current Inv"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "e108027f9ff7f588ee83",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Target Inv"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "acee1fe2e222465288b0",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Variance"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "clusteredBarChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "PartType"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "PartType"
+                    }
+                  }
+                ]
+              },
+              "projections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Parts"
+                        }
+                      },
+                      "Property": "PartType"
+                    }
+                  }
+                ],
+                "Y": [
+                  {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Current Inv"
+                    }
+                  },
+                  {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Target Inv"
+                    }
+                  },
+                  {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Variance"
+                    }
+                  }
+                ]
+              },
+              "parameters": {
+                "Category": [
+                  {
+                    "expr": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Grouping"
+                          }
+                        },
+                        "Property": "Grouping Champs"
+                      }
+                    },
+                    "index": 0,
+                    "length": 1,
+                    "sortDirection": 2
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              },
+              "visible": {
+                "expr": {
+                  "Literal": {
+                    "Value": "true"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
