@@ -1,0 +1,62 @@
+table RLS_VendorIdentifier
+	isHidden
+	lineageTag: 76b26060-505e-4c24-885a-dff1eb215947
+
+	column Email
+		dataType: string
+		isHidden
+		lineageTag: 3ea6a3e0-60bc-4c62-af11-73d106e34e21
+		summarizeBy: none
+		sourceColumn: Email
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FieldName
+		dataType: string
+		isHidden
+		lineageTag: 27b38eb4-ebdd-466a-86ee-771c160e7fa0
+		summarizeBy: none
+		sourceColumn: FieldName
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FieldValue
+		dataType: string
+		isHidden
+		lineageTag: 3bfa02a6-2ac0-4371-9e53-6af921f23dcd
+		summarizeBy: none
+		sourceColumn: FieldValue
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FilterKind
+		dataType: int64
+		formatString: 0
+		lineageTag: cda070eb-434e-4317-8ec2-9e28e7dc0865
+		summarizeBy: sum
+		sourceColumn: FilterKind
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RLS_VendorIdentifier = m
+		mode: import
+		queryGroup: RLS
+		source =
+				let
+				    Source = RLS_UserResourceFilters,
+				    #"Filtered Rows" = Table.SelectRows(Source, each ([FieldName] = "VendorIdentifier")and ([FilterKind] <> 0))
+				in
+				    #"Filtered Rows"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+

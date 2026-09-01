@@ -1,0 +1,36 @@
+table 'Unit Children'
+	lineageTag: 676b68b9-434a-461f-b8f0-55acadfbf28c
+
+	column PartId
+		formatString: 0
+		lineageTag: 58a9c9f9-4475-47cd-a64f-82ea57b2bbab
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [PartId]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Unit
+		lineageTag: ba0a3e00-0188-45ce-a543-c45e5cf57ebb
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Unit]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		lineageTag: 79df98aa-e1a2-4a15-b902-8cd772faea96
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Quantity]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Unit Children' = calculated
+		mode: import
+		source = SELECTCOLUMNS(PartsPakagings,"PartId",PartsPakagings[PartId],"Unit",PartsPakagings[Unit],"Quantity",PartsPakagings[Quantity])
+
+	annotation PBI_Id = 85b72cce2d284409a63eec5f4ded5429
+

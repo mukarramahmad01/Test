@@ -1,0 +1,112 @@
+table SchedulingOrders
+	lineageTag: c6d8a74e-6563-4d88-a150-6144a251ca7a
+
+	column Id
+		dataType: int64
+		formatString: 0
+		lineageTag: 016b8594-ff78-4140-a31e-5eb03cd747df
+		summarizeBy: none
+		sourceColumn: Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderNumber
+		dataType: string
+		lineageTag: eef4b633-95b1-4b78-8abf-6534af9d1e04
+		summarizeBy: none
+		sourceColumn: OrderNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column PlannedReleaseDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: af4b9159-d27d-4873-bd9f-df0d85d33f3c
+		summarizeBy: none
+		sourceColumn: PlannedReleaseDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column EndRequestDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1f78b572-68a3-4cf8-b9ca-06fd8ad88193
+		summarizeBy: none
+		sourceColumn: EndRequestDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column PromiseDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 91fea657-c303-4104-b2bf-e18c09560d97
+		summarizeBy: none
+		sourceColumn: PromiseDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column PartId
+		dataType: int64
+		formatString: 0
+		lineageTag: 6ee42c43-e643-41a9-94c1-7efe087720b3
+		summarizeBy: count
+		sourceColumn: PartId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SchedulingSetId
+		dataType: int64
+		formatString: 0
+		lineageTag: d832f0d1-70e6-43d6-9bd1-a81e8026e89d
+		summarizeBy: count
+		sourceColumn: SchedulingSetId
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastRunDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c1fe0b37-0e47-408b-9ec7-f88c59799280
+		summarizeBy: none
+		sourceColumn: LastRunDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column IsBack
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 755abe26-5df0-46fc-b41f-513dcb9f2cd9
+		summarizeBy: none
+		sourceColumn: IsBack
+
+		annotation SummarizationSetBy = Automatic
+
+	partition SchedulingOrders = m
+		mode: import
+		queryGroup: Supply
+		source = ```
+				let
+				   // Source = Sql.Database(Server, Database, [Query="select * from report.SchedulingOrders t1 inner join dbo.SchedulingSets t2 on t1.DatasetId=t2.DatasetId and t1.SchedulingSetId=t2.Id where t2.isDbrSchedulingSet=0", CommandTimeout=#duration(0, 1, 30, 0)]),
+				    
+				    
+				Source = Sql.Database(Server, Database, [Query="select t1.Id,t1.OrderNumber,t1.PlannedReleaseDate,t1.EndRequestDate,t1.PromiseDate,t1.PartId,t1.SchedulingSetId from report.SchedulingOrders t1 With (NOLOCK)"]),
+				#"Merged Queries" = Table.NestedJoin(Source, {"SchedulingSetId"}, SchedulingSets, {"Id"}, "SchedulingSets", JoinKind.Inner),
+				    #"Expanded SchedulingSets" = Table.ExpandTableColumn(#"Merged Queries", "SchedulingSets", {"LastRunDate"}, {"LastRunDate"}),
+				    #"Type modifié" = Table.TransformColumnTypes(#"Expanded SchedulingSets",{{"PromiseDate", type date}, {"PlannedReleaseDate", type date}, {"EndRequestDate", type date}, {"LastRunDate", type date}}),
+				    #"Added Custom" = Table.AddColumn(#"Type modifié", "IsBack", each if [EndRequestDate]<[LastRunDate] then true else false, type logical)
+				in
+				    #"Added Custom"
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+

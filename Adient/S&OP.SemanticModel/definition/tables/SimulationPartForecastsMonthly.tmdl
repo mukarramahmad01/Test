@@ -1,0 +1,200 @@
+table SimulationPartForecastsMonthly
+	isHidden
+	lineageTag: 3ecebe01-7b31-4e34-b4a1-f7e4dc4c842a
+
+	column Id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 8586ae1e-ee53-4b02-83b9-1aa8904f722a
+		summarizeBy: none
+		sourceColumn: Id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		isHidden
+		formatString: Short Date
+		lineageTag: 5a256540-8872-4ccf-a417-bcf9e587d87e
+		summarizeBy: none
+		sourceColumn: Date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column OpenOrdes_Purchase =
+			
+			VAR CurrentId = [Id_SimulationId]
+			VAR CurrentPromise = [Date]
+			VAR Qty=
+			CALCULATE (
+			    SUM ( SupplyOrders[SupplyQty] ),
+			    FILTER (
+			       SupplyOrders,AND(
+			       AND( SupplyOrders[Id_SimulationId] = CurrentId
+			            , AND(SupplyOrders[StartDate] < CurrentPromise,CurrentPromise<SupplyOrders[PromiseDate]) ),SupplyOrders[OrderType]="Purchase Order")
+			    )
+			)
+			RETURN Qty/SimulationPartForecastsMonthly[Quantity]
+		lineageTag: d03a0824-6e93-4186-b98d-78b6196617a2
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OpenOrdes_Transfer =
+			
+			VAR CurrentId = [Id_SimulationId]
+			VAR CurrentPromise = [Date]
+			VAR Qty=
+			CALCULATE (
+			    SUM ( SupplyOrders[SupplyQty] ),
+			    FILTER (
+			       SupplyOrders,AND(
+			       AND( SupplyOrders[Id_SimulationId] = CurrentId
+			            , AND(SupplyOrders[StartDate] < CurrentPromise,CurrentPromise<SupplyOrders[PromiseDate]) ),SupplyOrders[OrderType]="Transfer Order")
+			    )
+			)
+			RETURN Qty/SimulationPartForecastsMonthly[Quantity]
+		lineageTag: 55d99dbb-c80e-4369-b44f-812ffc2ed6cc
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OpenOrdes_Work =
+			
+			VAR CurrentId = [Id_SimulationId]
+			VAR CurrentPromise = [Date]
+			VAR Qty=
+			CALCULATE (
+			    SUM ( SupplyOrders[SupplyQty] ),
+			    FILTER (
+			       SupplyOrders,AND(
+			       AND( SupplyOrders[Id_SimulationId] = CurrentId
+			            , AND(SupplyOrders[StartDate] < CurrentPromise,CurrentPromise<SupplyOrders[PromiseDate]) ),SupplyOrders[OrderType]="Work Order")
+			    )
+			)
+			RETURN Qty/SimulationPartForecastsMonthly[Quantity]
+		lineageTag: ba1aa112-d66f-4262-84bb-fcb544edc953
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SimulationId
+		dataType: double
+		formatString: 0
+		lineageTag: 261b302c-a9e8-4557-a991-ef75208dc710
+		summarizeBy: none
+		sourceColumn: SimulationId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Id_SimulationId = [Id]&"_"&[SimulationId]
+		lineageTag: 428e5488-18f2-4f25-85b9-87e3fa1ed0ea
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: double
+		lineageTag: 8157c921-952f-4cb2-96eb-39ae932ca722
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Unit
+		dataType: string
+		lineageTag: 7db96a91-b13a-4e0b-b2d8-74cce7bef330
+		summarizeBy: none
+		sourceColumn: Unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProjectedInventory_Positive
+		dataType: double
+		formatString: 0
+		lineageTag: 46442b5e-0122-4dc2-8438-43cc2599e1be
+		summarizeBy: sum
+		sourceColumn: ProjectedInventory_Positive
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProjectedInventory_Negative
+		dataType: double
+		formatString: 0
+		lineageTag: 756e2ea1-2f2b-4885-b78b-a4908664b383
+		summarizeBy: sum
+		sourceColumn: ProjectedInventory_Negative
+
+		annotation SummarizationSetBy = Automatic
+
+	column EndMonthInventory
+		dataType: double
+		lineageTag: 09b4c326-a59b-4e8b-a884-00113fd33e4f
+		summarizeBy: sum
+		sourceColumn: EndMonthInventory
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Id_SimulationId_Date = [Id]&"_"&[SimulationId]&"_"&[Date]
+		lineageTag: 160ec3c4-2d90-4178-a986-e4ac349ab83e
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProjectedInventoryConstrainedNegative = IF(RELATED(SimulationPartForecastsConstrainedMonthly[Id])<>BLANK(),RELATED(SimulationPartForecastsConstrainedMonthly[ProjectedInventoryConstrainedNegative1])/SimulationPartForecastsMonthly[Quantity],SimulationPartForecastsMonthly[ProjectedInventory_Negative])
+		lineageTag: c5a64cfb-f736-4c04-a4a3-a68c3210e8c1
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ProjectedInventoryConstrainedPositive = IF(RELATED(SimulationPartForecastsConstrainedMonthly[Id])<>BLANK(),RELATED(SimulationPartForecastsConstrainedMonthly[ProjectedInventoryConstrainedPositive1])/SimulationPartForecastsMonthly[Quantity],SimulationPartForecastsMonthly[ProjectedInventory_Positive])
+		lineageTag: 0199a161-c26f-496f-9911-bf3b6dfd791f
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition SimulationPartForecastsMonthly = m
+		mode: import
+		queryGroup: 'S&OP report Part\SimulationPartForecasts'
+		source =
+				let
+				    Source = Table.SelectColumns(SimulationPartForecastsMonthlyAll,{"Id", "Date",  "ProjectedInventory_Positive","EndMonthInventory", "ProjectedInventory_Negative",  "SimulationId"}),
+				    #"Filtered Rows" = Table.SelectRows(Source, each (([ProjectedInventory_Negative]+[ProjectedInventory_Positive])<> 0)),
+				    #"Merged Queries" = Table.NestedJoin(#"Filtered Rows", {"Id"}, PartsPakagings, {"PartId"}, "PartsPakagings", JoinKind.LeftOuter),
+				    #"Expanded PartsPakagings" = Table.ExpandTableColumn(#"Merged Queries", "PartsPakagings", {"Quantity", "Unit"}, {"Quantity", "Unit"}),
+				    #"Added Custom1" = Table.AddColumn(#"Expanded PartsPakagings", "Inv", each [ProjectedInventory_Positive]/[Quantity], type number),
+				    #"Added Custom5" = Table.AddColumn(#"Added Custom1", "Inv-", each [ProjectedInventory_Negative]/[Quantity], type number),
+				    #"Added Custom6" = Table.AddColumn(#"Added Custom5", "Custom", each [EndMonthInventory]/[Quantity], type number),
+				    #"Removed Columns" = Table.RemoveColumns(#"Added Custom6",{ "ProjectedInventory_Negative", "ProjectedInventory_Positive", "EndMonthInventory"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns",{ {"Inv", "ProjectedInventory_Positive"}, {"Inv-", "ProjectedInventory_Negative"}, {"Custom", "EndMonthInventory"}}),
+				    #"Appended Query" = Table.Combine({#"Renamed Columns", HistoryProjectedInventoryMonth_})
+				in
+				    #"Appended Query"
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

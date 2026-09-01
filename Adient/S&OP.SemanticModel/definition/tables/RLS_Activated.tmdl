@@ -1,0 +1,24 @@
+table RLS_Activated
+	isHidden
+	lineageTag: 79cd71d5-ec48-42eb-90ec-8ae47c6e44bb
+
+	column RLS_Activated
+		dataType: string
+		isHidden
+		lineageTag: 7fdfb77b-2520-4ad9-831c-67381653058d
+		summarizeBy: none
+		sourceColumn: RLS_Activated
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RLS_Activated-8f90e056-976c-492e-94e1-90d700aa0840 = m
+		mode: import
+		queryGroup: 'Server Parameters'
+		source = "True" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Text
+

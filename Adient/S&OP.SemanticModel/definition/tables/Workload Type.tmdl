@@ -1,0 +1,24 @@
+table 'Workload Type'
+	lineageTag: e5e7d287-774a-4274-95f6-aa93fd696f72
+
+	column 'Workload Type'
+		dataType: string
+		lineageTag: bc702e5e-c57a-42f2-86d1-e67204af8cc6
+		summarizeBy: none
+		sourceColumn: Workload Type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Workload Type' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WCi4oSk1MUQjPL8rOyQcyClKLFFwSK5VidaKV4IL+eQrBJYlFJS6JJakYMq55KRDxWAA=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Workload Type" = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Workload Type", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

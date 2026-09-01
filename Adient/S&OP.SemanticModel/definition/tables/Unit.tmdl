@@ -1,0 +1,127 @@
+table Unit
+	lineageTag: 03700690-471e-41ba-98d9-fbd58fc9e841
+
+	measure SimulationSupplyVal =
+			VAR measure_=SELECTEDVALUE(Unit[Unit])
+			return SWITCH(measure_,
+			"Constrained",[SimulationConstrainedSupplyVal],
+			"Unconstrained",[SimulationUnconstrainedSupplyVal])
+		formatString: #,0
+		lineageTag: 3b1d67fb-00d5-482f-a663-ed3b251fa67e
+
+	measure 'Simulation Inventory' =
+			VAR measure_=SELECTEDVALUE(Unit[Unit])
+			return SWITCH(measure_,
+			"Constrained",[Simulation Inventory Constrained],
+			"Unconstrained",[Simulation Inventory Unconstrained])
+		formatString: #,0
+		lineageTag: be1e14ce-53fa-49d2-a033-6b9a86f3e86f
+
+	measure 'Backorders Inventory' =
+			VAR measure_=SELECTEDVALUE(Unit[Unit])
+			return SWITCH(measure_,
+			"Constrained",[Backorders Inventory Constrained],
+			"Unconstrained",[Backorders Inventory Unconstrained])
+		formatString: #,0
+		lineageTag: a072ea6f-99e1-4d0f-8563-c16f8cb06465
+
+	measure 'Inventory Days' =
+			VAR measure_=SELECTEDVALUE(Unit[Unit])
+			return SWITCH(measure_,
+			"Constrained",[Constrained Inventory Days],
+			"Unconstrained",[Unconstrained Inventory Days])
+		formatString: #,0
+		lineageTag: c99ac053-8877-486a-a106-35ff5f0d5358
+
+	measure 'Unit Measure' =
+			VAR measure_=SELECTEDVALUE(Unit[Unit])
+			return SWITCH(measure_,
+			"Constrained",0,
+			"Unconstrained",1)
+		formatString: 0
+		lineageTag: 28c5bac9-a497-4bfd-a876-32e9e9e9ed6b
+
+	measure 'Resource Type' = IF(SUM(Resources[Resource_Contraint]) >=1,1,0)
+		formatString: 0
+		lineageTag: f8216bfb-0b12-4e0f-ae9b-331165032e26
+
+	measure 'S&OP Title' =
+			VAR measure_=SELECTEDVALUE(Unit[Unit])
+			return SWITCH(measure_,
+			"Constrained","S&OP Constrained",
+			"Unconstrained","S&OP Unconstrained")
+		lineageTag: 182a700a-f281-4152-82a8-19350314abae
+
+	measure 'Count Exec Critical' =
+			VAR measure_=SELECTEDVALUE(Unit[Unit])
+			return SWITCH(measure_,
+			"Constrained",[CountExecCriticalConstrained],
+			"Unconstrained",[CountExecCritical])
+		formatString: #,0
+		lineageTag: c1115132-3889-402e-adb2-d2a935c38192
+
+	measure 'Count Exec Red' =
+			VAR measure_=SELECTEDVALUE(Unit[Unit])
+			return SWITCH(measure_,
+			"Constrained",[CountExecRedConstrained],
+			"Unconstrained",[CountExecRed])
+		formatString: 0
+		lineageTag: b8f14450-5a3c-4203-9c51-d6ef1567682b
+
+	measure 'Count Exec Yellow' =
+			VAR measure_=SELECTEDVALUE(Unit[Unit])
+			return SWITCH(measure_,
+			"Constrained",[CountExecYellowConstrained],
+			"Unconstrained",[CountExecYellow])
+		formatString: #,0
+		lineageTag: 2eb38c0a-7509-4f2c-93ef-aa3be4bb7ea6
+
+	measure 'Purchase Order' = [Open Supply Purchase]
+		formatString: #,0
+		lineageTag: 9fd4d5b4-e4a8-4dc5-978e-b8d63c137cf7
+
+	measure 'Transfer Order' = [Open Supply Transfer]
+		formatString: #,0
+		lineageTag: 7a32577c-d4d0-47db-a15c-97c9dce27b72
+
+	measure 'Work Order' = [Open Supply Work]
+		formatString: #,0
+		lineageTag: b34e029c-03fb-47ba-8ccd-a668070ae7be
+
+	measure 'Supply Days' =
+			VAR measure_=SELECTEDVALUE(Unit[Unit])
+			return SWITCH(measure_,
+			"Constrained",[Constrained Supply Days],
+			"Unconstrained",[Unconstrained Supply Days])
+		formatString: 0
+		lineageTag: cd4b8810-d0be-44c0-a397-841136a2f7dc
+
+	measure Diff = [SimulationTargetInventory]-[Simulation Inventory]
+		formatString: 0
+		lineageTag: 06089841-a2ee-468c-acfa-e355e72eec98
+
+	measure 'Simulation Inventory Zero IF NULL' = COALESCE([Simulation Inventory], 0)
+		formatString: #,0
+		lineageTag: 3031f172-dba5-492e-bfea-35582436887e
+
+	column Unit
+		dataType: string
+		lineageTag: 7242d94d-5604-4d13-8f38-6324935c6e43
+		summarizeBy: none
+		sourceColumn: Unit
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Unit = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45Wcs7PKy4pSszMS01RitWJVgrNS0YWiQUA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Unit = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Unit", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

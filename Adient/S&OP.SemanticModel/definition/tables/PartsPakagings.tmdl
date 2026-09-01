@@ -1,0 +1,78 @@
+table PartsPakagings
+	lineageTag: 323db36d-dc6c-4845-8958-32773ff612bc
+
+	column PartId
+		dataType: int64
+		formatString: 0
+		lineageTag: 7d479239-5e0f-4de8-ab19-f4c7638b4ce4
+		summarizeBy: none
+		sourceColumn: PartId
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Unit
+		dataType: string
+		lineageTag: ee4f6a41-cc8a-4fbb-961e-0e61fd50d832
+		summarizeBy: none
+		sourceColumn: Unit
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: double
+		lineageTag: 7cda769d-c50d-455f-8de5-c05cc1f14b9f
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BackordersDemand = DIVIDE(RELATED(BackordesDemand[BackorderQty]),PartsPakagings[Quantity])
+		formatString: 0
+		lineageTag: bcefd897-5b70-4cd7-b20f-aa5886ea56a9
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Today
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c07144be-c6ff-4bac-87eb-e9cd18a0deef
+		summarizeBy: none
+		sourceColumn: Today
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column AD_Key = 1
+		formatString: 0
+		lineageTag: 5c248649-fa61-4fa1-b584-6b75105e1671
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition PartsPakagings-eaf363e9-d61e-42d8-ad15-ce7c4283d01d = m
+		mode: import
+		queryGroup: 'S&OP report Part\Packagings'
+		source = ```
+				let
+				   
+				    
+				     Source = Sql.Database(Server, Database, [Query="SELECT PartId, Quantity, Unit, getdate() as Today FROM report.PartPackagings With (NOLOCK) union select Id as PartId, 1 as Quantity, 'Quantity' as Unit, getdate() as Today from report.parts union select Id as PartId, IIF(RawMaterialsCost>0,1/RawMaterialsCost,99999999999) as Quantity, 'Cost' as Unit, getdate() as Today from report.parts With (NOLOCK) union select Id as PartId, IIF(AverageSellingPrice>0,1/AverageSellingPrice,99999999999) as Quantity, 'Selling Price' as Unit, getdate() as Today from parts With (NOLOCK)", CommandTimeout=#duration(0, 1, 30, 0)]),
+				    #"Merged Queries" = Table.NestedJoin(Source, {"PartId"}, #"PartsS&OP", {"PartId"}, "PartsS&OP", JoinKind.Inner),
+				    #"Removed Columns" = Table.RemoveColumns(#"Merged Queries",{"PartsS&OP"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Removed Columns",{{"Today", type date}})
+				in
+				    #"Changed Type"
+				```
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

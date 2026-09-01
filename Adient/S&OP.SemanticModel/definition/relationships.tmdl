@@ -1,0 +1,441 @@
+relationship 2c69e6b4-fcdb-4b03-9939-e3017ed765c4
+	fromColumn: SchedulingResourceDailyLoading.ResourceId
+	toColumn: Resources.Id
+
+relationship 987e938c-d511-4b10-b336-caf08f8b91a8
+	fromColumn: ResourceCalendars.ResourceId
+	toColumn: Resources.Id
+
+relationship 44a30d58-27f2-4b9c-b9a7-6cd50df56541
+	fromColumn: PartsPakagings.PartId
+	toColumn: Parts.Id
+
+relationship 1f428e17-6df7-4526-aa74-556d220abb9f
+	fromColumn: SchedulingResourceDailyLoading.'SchedulingOrders_source.PartId'
+	toColumn: Parts.Id
+
+relationship 47215693-9043-4de7-aac6-5f28bbef0606
+	fromColumn: ResourceCalendars.Date
+	toColumn: Calendar.Date
+
+relationship ef732b8f-eed0-49e6-923e-072ccc147537
+	fromColumn: SchedulingResourceDailyLoading.Date
+	toColumn: Calendar.Date
+
+relationship 692e5833-8126-45a1-b2fd-6fd47c65b8f3
+	crossFilteringBehavior: bothDirections
+	fromColumn: BOM_Multilevel.ChildPartId
+	toColumn: Parts.Id
+
+relationship ececa7e5-ee12-4e6d-b93f-bb8929585705
+	crossFilteringBehavior: bothDirections
+	fromColumn: BOM_Multilevel.ParentPartId
+	toColumn: 'Parent Parts'.Id
+
+relationship bd6bb175-fd34-4873-88a5-01c33ec2b451
+	crossFilteringBehavior: bothDirections
+	fromColumn: RLS_Location.FieldValue
+	toColumn: RLS_LocationValue.FieldValue
+
+relationship a94b53ed-ff5c-48f4-82b2-6815c4eee5ff
+	crossFilteringBehavior: bothDirections
+	fromColumn: Parts.Location
+	toColumn: RLS_LocationValue.FieldValue
+
+relationship 1bac7793-02b8-42f6-9777-9f98583f5a6a
+	crossFilteringBehavior: bothDirections
+	fromColumn: Parts.PlannerCode
+	toColumn: RLS_PlannerCodeValue.FieldValue
+
+relationship ac655389-d48f-42ea-b0b7-7818d43a0b45
+	crossFilteringBehavior: bothDirections
+	fromColumn: RLS_PlannerCode.FieldValue
+	toColumn: RLS_PlannerCodeValue.FieldValue
+
+relationship e0012ebc-954e-48e7-926b-482bcb065b4e
+	crossFilteringBehavior: bothDirections
+	fromColumn: Parts.Vendoridentifier
+	toColumn: RLS_VendorIdentifierValue.FieldValue
+
+relationship 9b38f0c0-7753-46ef-84ae-87f81f4c3f62
+	crossFilteringBehavior: bothDirections
+	fromColumn: RLS_VendorIdentifier.FieldValue
+	toColumn: RLS_VendorIdentifierValue.FieldValue
+
+relationship 89f955ca-5090-4172-a74e-31e462b18c54
+	crossFilteringBehavior: bothDirections
+	fromColumn: RLS_Administrator.AD_Key
+	toColumn: AD_Key.AD_Key
+
+relationship e8ed093a-97cd-4648-adbe-b2b4cbd3dcac
+	crossFilteringBehavior: bothDirections
+	fromColumn: Parts.AD_Key
+	toColumn: AD_Key.AD_Key
+
+relationship b380b1f4-4ef2-4529-929d-fd29e37edbb0
+	crossFilteringBehavior: bothDirections
+	fromColumn: RLS_UserResource.AD_Key
+	toColumn: AD_Key.AD_Key
+
+relationship 3ae213c0-45b4-487d-8109-841daa7897c4
+	fromColumn: AdjustmentFactors.PartId
+	toColumn: Parts.Id
+
+relationship 39b9afe2-e4e0-4788-9722-aafe62586817
+	fromColumn: AdjustmentFactors.EndDate
+	toColumn: Calendar.Date
+
+relationship AutoDetected_ed716b70-326c-4bbf-94b4-1193fd0b75b2
+	fromColumn: AdjustmentFactors.Unit
+	toColumn: 'Packaging Units'.Unit
+
+relationship AutoDetected_a4d31d96-6136-4ec9-b722-29d037eb467a
+	fromColumn: SimulationPartForecasts_BufferItemsWeekly.Unit
+	toColumn: 'Packaging Units'.Unit
+
+relationship AutoDetected_04006e87-6efd-4122-a98b-73414060d432
+	fromColumn: SimulationPartForecasts_BufferItemsMonthly.Unit
+	toColumn: 'Packaging Units'.Unit
+
+relationship 61ad7e9a-790d-8236-0b28-33c54cd3d9c0
+	fromColumn: SimulationPartForecasts_BufferItemsWeekly.Date
+	toColumn: Calendar.Date
+
+relationship 814a50d8-4a48-bfa2-1586-281099746b44
+	fromColumn: SimulationPartForecasts_BufferItemsWeekly.Id
+	toColumn: Parts.Id
+
+relationship ce386be6-6b71-e155-f9a0-093e8ec7b07e
+	fromColumn: SimulationPartForecasts_BufferItemsMonthly.Id
+	toColumn: Parts.Id
+
+relationship 7cab40c7-9a0d-9055-4862-244138180b52
+	fromColumn: SimulationPartForecasts_BufferItemsMonthly.Date
+	toColumn: Calendar.Date
+
+relationship 70a9b2c0-32ff-6793-fdeb-e2927bfa0479
+	fromColumn: SimulationPartForecastsMonthly.Id
+	toColumn: Parts.Id
+
+relationship AutoDetected_9c0a9fb4-ab69-4a3e-9b46-85856deac2a6
+	fromColumn: Simulation_Scheduling_SupplyOrders_Source.Unit
+	toColumn: 'Packaging Units'.Unit
+
+relationship e0c5fb85-8f26-0a5c-03ee-d920b03a79d7
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Constrained resources'.PartId
+	toColumn: Parts.Id
+
+relationship d9f96bd2-1e1f-f335-1b0e-ed6cef210c1b
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Where Used'.ParentPartId
+	toColumn: Parts.Id
+
+relationship 4bc89d6d-be06-3c3d-41db-dd75044b2518
+	fromColumn: Simulation_Scheduling_SupplyOrders_Source.Id
+	toColumn: Parts.Id
+
+relationship fcec2030-7301-791e-a0b1-dc6ddca54378
+	fromColumn: Simulation_Scheduling_SupplyOrders_Source.Id
+	toColumn: PartUnitOfMeasures.Id
+
+relationship 83b84ac7-d35a-4fec-b223-69992a35ee5f
+	fromColumn: SimulationPartForecastsMonthly.Date
+	toColumn: Calendar.Date
+
+relationship AutoDetected_d059d38b-f4f7-4f57-946b-58bfd39516e2
+	fromColumn: SchedulingResourceDailyLoading.SchedulingSetId
+	toColumn: Simulations.SchedulingSetId
+
+relationship AutoDetected_bfdb838c-5c61-446e-b45c-be3105d658e9
+	fromColumn: ResourceCalendars.SchedulingSetId
+	toColumn: Simulations.SchedulingSetId
+
+relationship 43398101-c39c-9d8e-88bf-1a16d97842f2
+	fromColumn: SimulationPartForecastsMonthly.SimulationId
+	toColumn: Simulations.Id
+
+relationship f9d11001-28b1-d811-1689-0197cf1841b5
+	fromColumn: SimulationPartForecasts_BufferItemsMonthly.SimulationId
+	toColumn: Simulations.Id
+
+relationship 1086d67e-592f-2371-ac73-a9fc38bce763
+	fromColumn: SimulationPartForecasts_BufferItemsWeekly.SimulationId
+	toColumn: Simulations.Id
+
+relationship 337a3bb9-2e07-647a-c9d4-a5801fa193aa
+	fromColumn: Simulation_Scheduling_SupplyOrders_Source.SimulationId
+	toColumn: Simulations.Id
+
+relationship AutoDetected_b59e3006-4dfd-4dfa-a151-87aff94b8c9d
+	fromColumn: SimulationPartForecastsMonthly.Unit
+	toColumn: 'Packaging Units'.Unit
+
+relationship AutoDetected_f1105831-caa3-49cc-9826-2fca3d1afda2
+	fromColumn: SimulationPartForecastsWeekly.Unit
+	toColumn: 'Packaging Units'.Unit
+
+relationship 7103ca54-cbb3-599b-a255-759338590de3
+	fromColumn: SimulationPartForecastsWeekly.Date
+	toColumn: Calendar.Date
+
+relationship 4d95f103-8e6f-994c-c333-c5f752b2e4e1
+	fromColumn: SimulationPartForecastsWeekly.Id
+	toColumn: Parts.Id
+
+relationship 0e7af582-32ca-e723-f6f3-5fac0217141c
+	fromColumn: SimulationPartForecastsWeekly.SimulationId
+	toColumn: Simulations.Id
+
+relationship 3a1b2b27-732d-799b-407b-bcc77117a09b
+	fromColumn: RisksCriticalMonthly.Date
+	toColumn: Calendar.Date
+
+relationship bbb0f09a-3e36-f69f-aa6a-f015d547ca24
+	fromColumn: RisksCriticalMonthly.Id
+	toColumn: Parts.Id
+
+relationship 350c4c6f-e2fc-375e-143e-4a88427ac63a
+	fromColumn: RisksCriticalMonthly.SimulationId
+	toColumn: Simulations.Id
+
+relationship 503f974c-558b-a216-7f69-6f90b0d7d573
+	fromColumn: RisksCriticalWeekly.SimulationId
+	toColumn: Simulations.Id
+
+relationship d9bdef88-0f96-bc6c-6943-f1954914cc39
+	fromColumn: RisksCriticalWeekly.Id
+	toColumn: Parts.Id
+
+relationship ea65bc61-6ac1-abc8-c055-4aebc41f6c29
+	fromColumn: RisksCriticalWeekly.Date
+	toColumn: Calendar.Date
+
+relationship 4d777781-b422-eb9a-451f-23398f06bd35
+	fromColumn: RisksRedMonthly.SimulationId
+	toColumn: Simulations.Id
+
+relationship 43441dd1-78a7-4b35-af25-87df51115c78
+	fromColumn: RisksRedMonthly.Id
+	toColumn: Parts.Id
+
+relationship 2bfee7cd-f847-720e-e037-c52bf86f948a
+	fromColumn: RisksRedMonthly.Date
+	toColumn: Calendar.Date
+
+relationship 657e5940-c6bd-fd0e-f473-675decea817f
+	fromColumn: RisksRedWeekly.SimulationId
+	toColumn: Simulations.Id
+
+relationship 79f6fe78-c0c0-a86e-c000-fae299248146
+	fromColumn: RisksRedWeekly.Id
+	toColumn: Parts.Id
+
+relationship 77eec9d2-71bb-72b8-02ec-bb954f4cc724
+	fromColumn: RisksRedWeekly.Date
+	toColumn: Calendar.Date
+
+relationship af19c014-8892-0c62-11f1-edc26f5db1ce
+	fromColumn: RisksYellowMonthly.SimulationId
+	toColumn: Simulations.Id
+
+relationship a2c7b2e7-f602-bbb9-4a22-4821c7655fb4
+	fromColumn: RisksYellowMonthly.Id
+	toColumn: Parts.Id
+
+relationship 385e1b68-3280-6db0-05f0-9d99e48d27ec
+	fromColumn: RisksYellowMonthly.Date
+	toColumn: Calendar.Date
+
+relationship 873c8e97-fd7e-8c50-77f8-05f8b06e4895
+	fromColumn: RisksYellowWeekly.SimulationId
+	toColumn: Simulations.Id
+
+relationship a29febcd-1d71-c9c5-6ed0-9df79da34a98
+	fromColumn: RisksYellowWeekly.Id
+	toColumn: Parts.Id
+
+relationship 904f50e7-c61c-09f5-7e22-b4e38a5cc884
+	fromColumn: RisksYellowWeekly.Date
+	toColumn: Calendar.Date
+
+relationship 7ddb6773-962a-49e4-701d-3fa477587ce3
+	fromColumn: RisksCriticalConstrainedMonthly.Date
+	toColumn: Calendar.Date
+
+relationship 9996b12e-9208-5603-3a4d-66ca04b0cae2
+	fromColumn: RisksCriticalConstrainedMonthly.Id
+	toColumn: Parts.Id
+
+relationship 3ca0d00c-16ce-075f-97a4-018609039729
+	fromColumn: RisksCriticalConstrainedMonthly.SimulationId
+	toColumn: Simulations.Id
+
+relationship 343b6da4-e916-ea73-5cb1-ff4a3dc26c3a
+	fromColumn: RisksCriticalConstrainedWeekly.Date
+	toColumn: Calendar.Date
+
+relationship 8133489c-a7fa-dad7-26f4-a891da8bc16e
+	fromColumn: RisksCriticalConstrainedWeekly.Id
+	toColumn: Parts.Id
+
+relationship 27bb8f21-0e6d-ca4b-aeed-526909f67054
+	fromColumn: RisksCriticalConstrainedWeekly.SimulationId
+	toColumn: Simulations.Id
+
+relationship 4e8ab8a1-27f2-54d7-2dcc-e2ec5ab5ad37
+	fromColumn: RisksYellowConstrainedMonthly.Id
+	toColumn: Parts.Id
+
+relationship f3d5133c-9d3c-a21d-d9b7-42c5573e62ff
+	fromColumn: RisksYellowConstrainedMonthly.Date
+	toColumn: Calendar.Date
+
+relationship 0223f146-d158-1a5a-ae04-7fe85d3b5c60
+	fromColumn: RisksYellowConstrainedMonthly.SimulationId
+	toColumn: Simulations.Id
+
+relationship 425b2da8-2c2d-b5e4-e178-d603c7380e6e
+	fromColumn: RisksYellowConstrainedWeekly.Date
+	toColumn: Calendar.Date
+
+relationship 9692f6ff-7a03-1b0f-5e85-a5a2b3141c98
+	fromColumn: RisksYellowConstrainedWeekly.Id
+	toColumn: Parts.Id
+
+relationship 2b6271ac-c4fc-5497-faa1-a5291732832a
+	fromColumn: RisksYellowConstrainedWeekly.SimulationId
+	toColumn: Simulations.Id
+
+relationship c67ac2bf-4149-3b3a-5702-cbdd6c4d2833
+	fromColumn: RisksRedConstrainedMonthly.SimulationId
+	toColumn: Simulations.Id
+
+relationship cedfc138-66c7-d503-0f9e-658a42ca2ba1
+	fromColumn: RisksRedConstrainedMonthly.Id
+	toColumn: Parts.Id
+
+relationship e63438c5-1283-391e-6eaf-9114d1c50e46
+	fromColumn: RisksRedConstrainedMonthly.Date
+	toColumn: Calendar.Date
+
+relationship ba52f1ec-ec3f-dc86-f77f-48e2fdce5f0a
+	fromColumn: RisksRedConstrainedWeekly.Date
+	toColumn: Calendar.Date
+
+relationship f188096e-1a18-7acc-44ea-9f0985323d9b
+	fromColumn: RisksRedConstrainedWeekly.Id
+	toColumn: Parts.Id
+
+relationship 6747cff5-88c1-2afb-8191-dc927560d114
+	fromColumn: RisksRedConstrainedWeekly.SimulationId
+	toColumn: Simulations.Id
+
+relationship c43599c4-32c7-72dd-1594-dde5e40bf60e
+	fromColumn: SimulationPartForecastsMonthly.Id_SimulationId_Date
+	toColumn: SimulationPartForecastsConstrainedMonthly.Id_SimulationId_Date
+
+relationship 94625e74-bae4-c0df-0df1-d5c06aef0b85
+	fromColumn: SimulationPartForecastsWeekly.Id_SimulationId_Date
+	toColumn: SimulationPartForecastsConstrainedWeekly.Id_SimulationId_Date
+
+relationship e7aafc59-b841-b550-927b-f9364ea99578
+	fromColumn: 'Where Used'.ChildPartId
+	toColumn: 'Child Parts'.Id
+
+relationship 5348d4ce-f6c1-d8be-018d-713c7f603ff3
+	fromColumn: DemandForecasts.PartId
+	toColumn: 'Child Parts'.Id
+
+relationship AutoDetected_ae00f59b-f059-4cfe-916b-3d4a3d7e6bab
+	fromColumn: SimulationPartForecastsDemandMonthly.Unit
+	toColumn: 'Packaging Units'.Unit
+
+relationship 13151d47-862f-c978-f929-e95716d0b6f1
+	fromColumn: SimulationPartForecastsDemandMonthly.Date
+	toColumn: Calendar.Date
+
+relationship eaa07bc0-f48a-faea-a5ae-8fb59f17bf10
+	fromColumn: SimulationPartForecastsDemandMonthly.Id
+	toColumn: Parts.Id
+
+relationship 3ab4ec92-adc9-c04e-b510-7517327194bf
+	fromColumn: SimulationPartForecastsDemandMonthly.SimulationId
+	toColumn: Simulations.Id
+
+relationship AutoDetected_205eabdf-2de1-4d39-a97b-95b61ac2ba55
+	fromColumn: SimulationPartForecastsDemandWeekly.Unit
+	toColumn: 'Packaging Units'.Unit
+
+relationship 9a468dc1-5153-636b-ee99-f7f9b6089181
+	fromColumn: SimulationPartForecastsDemandWeekly.SimulationId
+	toColumn: Simulations.Id
+
+relationship f5b905e5-73c6-f883-93e6-0d80097d4795
+	fromColumn: SimulationPartForecastsDemandWeekly.Id
+	toColumn: Parts.Id
+
+relationship b61ef2f2-838e-7150-7619-31b00ce42a2b
+	fromColumn: SimulationPartForecastsDemandWeekly.Date
+	toColumn: Calendar.Date
+
+relationship 475e1518-a86f-3aca-25bf-ea8791c8d03e
+	fromColumn: 'Service Level'.Id
+	toColumn: Parts.Id
+
+relationship 65525577-903f-fee5-9efb-791ee93367c6
+	fromColumn: 'Service Level'.SimulationId
+	toColumn: Simulations.Id
+
+relationship 529514c0-fa4c-360c-c3f9-bde7ba95ccd1
+	fromColumn: 'Service Level'.Date
+	toColumn: Calendar.Date
+
+relationship c7a58a40-83e0-d40b-fd89-c274c73c49e5
+	fromColumn: PartsPakagings.PartId
+	toColumn: BackordesDemand.PartId
+
+relationship cce6c477-3315-f0fd-419f-56157f36128b
+	fromColumn: PartsPakagings.Unit
+	toColumn: 'Packaging Units'.Unit
+
+relationship 71fd4183-e3dd-4ab9-4670-70fb02b196cc
+	fromColumn: PartsPakagings.Today
+	toColumn: Calendar.Date
+
+relationship af4316c5-d8ca-5e0c-7ec4-f51b58a0a403
+	toCardinality: many
+	fromColumn: PartsPakagings.AD_Key
+	toColumn: Simulations.AD_Key
+
+relationship b4c268e9-9dad-20ea-5f4a-087cb9ee31d7
+	fromColumn: DemandForecasts.WeekStartDate
+	toColumn: Calendar.Date
+
+relationship e92aa84d-91da-eddd-d4a4-f1d13a5c7fb8
+	fromColumn: SchedulingResourceDailyLoading.SchedulingOrderId
+	toColumn: SchedulingOrders.Id
+
+relationship fef1c14a-0767-0df3-efa2-6d4a4458deef
+	fromColumn: 'Unit Children'.PartId
+	toColumn: 'Child Parts'.Id
+
+relationship a11c744b-c5d2-22d7-4921-1429c17de15e
+	isActive: false
+	fromColumn: SchedulingResourceDailyLoading.Start
+	toColumn: Calendar.Date
+
+relationship cfd71ee9-4251-8100-86f3-67ad928a6e2f
+	isActive: false
+	fromColumn: SchedulingResourceDailyLoading.Finish
+	toColumn: Calendar.Date
+
+relationship 6235caf8-ee90-ac51-5211-cbc5af6dc89a
+	isActive: false
+	fromColumn: Simulation_Scheduling_SupplyOrders_Source.SchedulingDate_
+	toColumn: Calendar.Date
+
+relationship fefed521-fc70-6031-70b5-2d933ffcf058
+	fromColumn: Simulation_Scheduling_SupplyOrders_Source.PromiseDate_
+	toColumn: Calendar.Date
+

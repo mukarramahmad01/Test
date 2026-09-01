@@ -1,0 +1,47 @@
+table BOM_Multilevel
+	lineageTag: 55ba50e4-9288-4ec7-8d19-6a929af0b6aa
+
+	column ChildPartId
+		dataType: int64
+		formatString: 0
+		lineageTag: b90a5862-ae1f-410f-b936-1b1646791fe9
+		summarizeBy: none
+		sourceColumn: ChildPartId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ParentPartId
+		dataType: int64
+		formatString: 0
+		lineageTag: ae8e72d4-4560-4059-b914-12eb4b5a431e
+		summarizeBy: none
+		sourceColumn: ParentPartId
+
+		annotation SummarizationSetBy = Automatic
+
+	column level
+		dataType: int64
+		formatString: 0
+		lineageTag: 9ddb56ad-f762-45ea-bbb8-9073e8671d48
+		summarizeBy: sum
+		sourceColumn: level
+
+		annotation SummarizationSetBy = Automatic
+
+	partition BOM_Multilevel = m
+		mode: import
+		queryGroup: 'S&OP report Part\BOM'
+		source = ```
+				let
+				    Source = Sql.Database(Server, Database, [Query="WITH 
+				BillOfMaterials1 as (SELECT DISTINCT b.ChildPartId, b.ParentPartId FROM Report.BillOfMaterials AS b),
+				TopDown AS (     SELECT DISTINCT ChildPartId, ParentPartId, 1 AS level FROM Report.BillOfMaterials AS b With (NOLOCK)  UNION ALL    SELECT b.ChildPartId, c.ParentPartId, level = c.level + 1  FROM BillOfMaterials1 AS b With (NOLOCK)  INNER JOIN TopDown c ON b.ParentPartId = c.ChildPartId  where c.level<7) SELECT * FROM TopDown ", CommandTimeout=#duration(0, 1, 30, 0)]),
+				    #"Removed Duplicates" = Table.Distinct(Source)
+				in
+				    #"Removed Duplicates"
+				```
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

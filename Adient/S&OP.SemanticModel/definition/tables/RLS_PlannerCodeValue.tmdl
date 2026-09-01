@@ -1,0 +1,43 @@
+table RLS_PlannerCodeValue
+	isHidden
+	lineageTag: aba886ff-3de2-454e-b7db-992021f7b7e8
+
+	column FieldValue
+		dataType: string
+		isHidden
+		lineageTag: 24df5b7e-a921-4ed9-bbb3-1e71ae086d89
+		summarizeBy: none
+		sourceColumn: FieldValue
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FilterKind
+		dataType: int64
+		formatString: 0
+		lineageTag: c442be95-670f-4bc6-8eaf-d1ce992d0cc0
+		summarizeBy: sum
+		sourceColumn: FilterKind
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RLS_PlannerCodeValue = m
+		mode: import
+		queryGroup: RLS
+		source =
+				let
+				    Source = RLS_UserResourceFilters,
+				    #"Filtered Rows" = Table.SelectRows(Source, each ([FieldName] = "PlannerCode")and ([FilterKind] <> 0)),
+				    #"Colonnes supprimées" = Table.RemoveColumns(#"Filtered Rows",{"Email", "FieldName"}),
+				    #"Doublons supprimés" = Table.Distinct(#"Colonnes supprimées"),
+				    #"Filtered Rows1" = Table.SelectRows(#"Doublons supprimés", each ([FieldValue] <> ""))
+				in
+				    #"Filtered Rows1"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

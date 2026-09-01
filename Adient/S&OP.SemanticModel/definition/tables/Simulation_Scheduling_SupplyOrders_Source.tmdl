@@ -1,0 +1,254 @@
+table Simulation_Scheduling_SupplyOrders_Source
+	lineageTag: 734f1ef8-9a61-4ce4-8afe-5378b46fd5a2
+
+	measure Status = IF(max('Chart Grouping 2'[Chart Grouping 2 Order])=26,SELECTEDVALUE(Simulation_Scheduling_SupplyOrders_Source[Firm_Projected]),BLANK())
+		lineageTag: 962354d7-c342-40a8-ba66-dc84e14b1c17
+
+	measure Days = DATEDIFF(MAX(Simulation_Scheduling_SupplyOrders_Source[PromiseDate_]),MAX(Simulation_Scheduling_SupplyOrders_Source[SchedulingDate_]),DAY)
+		formatString: 0
+		lineageTag: 5d687d3e-e605-4ca7-8f64-0044f80977d4
+
+	measure WOStatus = ```
+			MAX(Simulation_Scheduling_SupplyOrders_Source[WO Status]) 
+			```
+		lineageTag: 7791c7ec-6c4b-4961-bb6e-fb8c9ed2f161
+
+	column OrderType
+		dataType: string
+		lineageTag: 426ad344-4bca-4ca1-a42e-75ec58b9ed93
+		summarizeBy: none
+		sourceColumn: OrderType
+
+		annotation SummarizationSetBy = Automatic
+
+	column StartDate
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 0e965265-868e-4f80-a567-2cab1000078d
+		summarizeBy: none
+		sourceColumn: StartDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column OrderNumber
+		dataType: string
+		lineageTag: 282c169e-2141-43ee-88ff-aea1a1f5f648
+		summarizeBy: none
+		sourceColumn: OrderNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column Unit
+		dataType: string
+		lineageTag: cd5272f8-fbdc-487b-9aec-87042b07c272
+		summarizeBy: none
+		sourceColumn: Unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Supply Unit' =
+			VAR V=RELATED(PartUnitOfMeasures[FromUnit])
+			RETURN IF(V<>BLANK(),V,RELATED(Parts[UnitOfMeasure]))
+		lineageTag: cd7d6f77-8066-4cba-b332-2f5e999ecbdd
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Simulation Supply FormUnit' =
+			VAR M1=[Quantity]*RELATED(PartUnitOfMeasures[Rate])
+			VAR M2=[Quantity]
+			RETURN IF(AND(M1<>BLANK(),[Unit]="Quantity"),M1,M2)
+		lineageTag: dee0a6ba-b81b-475c-bab7-946458db51d3
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'WO Status' = IF([PromiseDate_]=[SchedulingDate_],"FALSE",IF([PromiseDate_]>[SchedulingDate_],"Pulled In","Pushed Out"))
+		lineageTag: 5d72040a-3bb9-473e-b1d3-82dee5aac0ae
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Id
+		dataType: int64
+		formatString: 0
+		lineageTag: a3280bf8-9294-4a05-81f4-dd62bb6227c1
+		summarizeBy: none
+		sourceColumn: Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column PromiseDate_
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 46b8d018-c6fb-4586-bb87-0f7d16dd5bd2
+		summarizeBy: none
+		sourceColumn: PromiseDate_
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column SchedulingDate_
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: bc07b7a0-d910-498e-a513-8292e19ed099
+		summarizeBy: none
+		sourceColumn: SchedulingDate_
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Quantity
+		dataType: double
+		lineageTag: fedd1b77-3e86-4344-816c-14c706d597cc
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UnitQuantity
+		dataType: double
+		lineageTag: 2ef935f2-41df-4216-ad0e-280899149f4d
+		summarizeBy: sum
+		sourceColumn: UnitQuantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SimulationId
+		dataType: int64
+		formatString: 0
+		lineageTag: 03d10edf-7211-4dc9-8a06-4292cd869b08
+		summarizeBy: none
+		sourceColumn: SimulationId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Firm_Projected =
+			
+			IF(
+			    LEN([OrderNumber]) = 36,
+			    "Projected",
+			    "Firm"
+			)
+		lineageTag: 334a1dd1-095c-4322-8ae1-8b53c58c51ed
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Vendor_
+		dataType: string
+		lineageTag: 833860ba-4155-4866-b9b5-a1e2d6d9be61
+		summarizeBy: none
+		sourceColumn: Vendor_
+
+		annotation SummarizationSetBy = Automatic
+
+	column Vendor =
+			
+			IF(AND([Firm_Projected] = "Firm",[Vendor_]=BLANK()),
+			    RELATED(Parts[Vendor]),
+			    [Vendor_]
+			)
+		lineageTag: 714bdf03-4c7c-4ab2-abff-1a76be55a831
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Simulation_Scheduling_SupplyOrders_Source = m
+		mode: import
+		queryGroup: Supply
+		source =
+				let
+				    Source = Sql.Database(Server, Database, [Query="
+				    WITH
+				    SchedulingSetsRCCP AS (
+				        SELECT Id
+				        FROM dbo.SchedulingSets
+				        WHERE Type = 1
+				    ),
+				    SchedulingOrders1 AS (
+				        SELECT t1.OrderNumber, t1.PartId, t1.PromiseDate
+				        FROM report.SchedulingOrders t1
+				        INNER JOIN SchedulingSetsRCCP t2
+				            ON t1.SchedulingSetId = t2.Id
+				    ),
+				    SupplyByDay AS (
+				        SELECT
+				            Id,
+				            [Date],
+				            [OrderType],
+				            OrderNumber,
+				            StartDate,
+				            Vendor,SimulationId,
+				            SUM(Quantity) AS SupplyQty
+				        FROM (
+				            SELECT
+				                SimulationPartId AS Id,
+				                CASE
+				                    WHEN [OrderType] = 0 THEN 'Purchase Order'
+				                    WHEN [OrderType] = 1 THEN 'Work Order'
+				                    ELSE 'Transfer Order'
+				                END AS [OrderType],
+				                OrderNumber,
+				                StartDate,
+				                CAST(
+				                    CASE
+				                        WHEN OrderReceiptDate IS NULL THEN RequestDate
+				                        ELSE OrderReceiptDate
+				                    END AS DATE
+				                ) AS [Date],
+				                Quantity,
+				                Vendor,SimulationId
+				            FROM SimulationSupplyOrders
+				        ) AS CombinedSupply
+				        GROUP BY Id, [Date], OrderNumber, StartDate, [OrderType], Vendor,SimulationId
+				    )
+				    SELECT
+				        t1.Id,
+				        StartDate,
+				        [OrderType],
+				        t1.[Date] AS PromiseDate_,
+				        t1.OrderNumber,
+				        CAST(
+				            ISNULL(t2.PromiseDate, t1.[Date]) AS DATE
+				        ) AS [SchedulingDate_],
+				        Vendor as Vendor_,t1.SimulationId,
+				        SUM(t1.SupplyQty) AS SupplyQty
+				    FROM SupplyByDay t1
+				    LEFT JOIN SchedulingOrders1 t2
+				        ON t1.OrderNumber = t2.OrderNumber
+				        AND t1.Id = t2.PartId
+				    GROUP BY
+				        t1.Id,
+				        CAST(ISNULL(t2.PromiseDate, t1.[Date]) AS DATE),
+				        t1.[Date],
+				        t1.OrderNumber,t1.SimulationId,
+				        t1.StartDate,
+				        [OrderType],
+				        [Vendor] ;
+				"]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"PromiseDate_", type date}, {"StartDate", type date}, {"SchedulingDate_", type date}}),
+				    #"Merged Queries" = Table.NestedJoin(#"Changed Type", {"Id"}, PartsPakagings, {"PartId"}, "PartsPakagings", JoinKind.LeftOuter),
+				    #"Expanded PartsPakagings" = Table.ExpandTableColumn(#"Merged Queries", "PartsPakagings", {"Quantity", "Unit"}, {"Quantity", "Unit"}),
+				    #"Added Custom" = Table.AddColumn(#"Expanded PartsPakagings", "SupplyQtyVal", each [SupplyQty]/[Quantity],type number),
+				    #"Removed Columns" = Table.RemoveColumns(#"Added Custom",{"SupplyQty"}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Removed Columns",{{"Quantity", "UnitQuantity"}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Renamed Columns1",{{"SupplyQtyVal", "Quantity"}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Renamed Columns", each ([SimulationId] <> null))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

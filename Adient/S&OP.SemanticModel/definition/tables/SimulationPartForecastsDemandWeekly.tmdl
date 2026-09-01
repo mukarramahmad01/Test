@@ -1,0 +1,81 @@
+table SimulationPartForecastsDemandWeekly
+	lineageTag: 47761ef9-f1d8-4b5a-9ed7-70cf868af1a0
+
+	column Id
+		dataType: int64
+		formatString: 0
+		lineageTag: fb507789-042d-4fb8-8120-2bb61779a5a0
+		summarizeBy: none
+		sourceColumn: Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 88d4c2b2-5a4f-4506-95c4-4c03213e2c82
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column SimulationId
+		dataType: double
+		lineageTag: 6d84e3c9-01bd-4296-bee2-b7acad7d0970
+		summarizeBy: none
+		sourceColumn: SimulationId
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Unit
+		dataType: string
+		lineageTag: 00f63560-25dc-44b7-8896-d321604fbfba
+		summarizeBy: none
+		sourceColumn: Unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column Demand
+		dataType: double
+		lineageTag: 6c7a2535-cd76-4e84-8df5-c53014495f45
+		summarizeBy: sum
+		sourceColumn: Demand
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'End Of Week'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8761cb54-dbec-40f3-b97b-3a7ae5a59ced
+		summarizeBy: none
+		sourceColumn: End Of Week
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition SimulationPartForecastsDemandWeekly = m
+		mode: import
+		queryGroup: 'S&OP report Part\SimulationPartForecasts'
+		source =
+				let
+				    Source = Table.SelectColumns(SimulationPartForecastsWeeklyAll,{"Id", "Date", "ProjectedDailyDemand", "SimulationId"}),
+				    #"Filtered Rows" = Table.SelectRows(Source, each (([ProjectedDailyDemand])<> 0)),
+				    #"Merged Queries" = Table.NestedJoin(#"Filtered Rows", {"Id"}, PartsPakagings, {"PartId"}, "PartsPakagings", JoinKind.LeftOuter),
+				    #"Expanded PartsPakagings" = Table.ExpandTableColumn(#"Merged Queries", "PartsPakagings", {"Quantity", "Unit"}, {"Quantity", "Unit"}),
+				    #"Added Custom" = Table.AddColumn(#"Expanded PartsPakagings", "Demand", each [ProjectedDailyDemand]/[Quantity], type number),
+				    #"Removed Columns" = Table.RemoveColumns(#"Added Custom",{"ProjectedDailyDemand", "Quantity"}),
+				    #"Appended Query" = Table.Combine({#"Removed Columns", HistoryDemandWeek_})
+				in
+				    #"Appended Query"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

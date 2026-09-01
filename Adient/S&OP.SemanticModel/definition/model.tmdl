@@ -1,0 +1,149 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup 'Server Parameters'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup 'S&OP report Part'
+
+	annotation PBI_QueryGroupOrder = 1
+
+queryGroup RLS
+
+	annotation PBI_QueryGroupOrder = 9
+
+queryGroup Sources
+
+	annotation PBI_QueryGroupOrder = 3
+
+queryGroup RCCP
+
+	annotation PBI_QueryGroupOrder = 8
+
+queryGroup Historical
+
+	annotation PBI_QueryGroupOrder = 7
+
+queryGroup 'S&OP report Part\BOM'
+
+	annotation PBI_QueryGroupOrder = 1
+
+queryGroup 'S&OP report Part\Packagings'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup Supply
+
+	annotation PBI_QueryGroupOrder = 2
+
+queryGroup AdjustmentFactors
+
+	annotation PBI_QueryGroupOrder = 6
+
+queryGroup 'S&OP report Part\SimulationPartForecasts'
+
+	annotation PBI_QueryGroupOrder = 2
+
+queryGroup Historical\HistoryDemand
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup Calendar
+
+	annotation PBI_QueryGroupOrder = 5
+
+queryGroup Scenarios
+
+	annotation PBI_QueryGroupOrder = 4
+
+queryGroup 'S&OP report Part\Risks'
+
+	annotation PBI_QueryGroupOrder = 3
+
+annotation PBI_QueryOrder = ["SchedulingOrders","SchedulingSets","Simulation_Scheduling_SupplyOrders_Source","BOM_Multilevel","Resources","PartsPakagings","Packaging Units","HistoricalDemandSource","ResourceCalendars","SchedulingResourceDailyLoading","Server","Database","Sources","PartsS&OP","Parts","UDF","FutureDays","RLS_Activated","Parent Parts","RLS_Sources","RLS_VendorIdentifier","RLS_PlannerCode","RLS_UserResource","RLS_UserResourceFilters","RLS_Administrator","RLS_Location","IsEmpty","RLS_PlannerCodeValue","RLS_VendorIdentifierValue","RLS_LocationValue","AD_Key","Unit","AdjustmentFactors","SimulationPartForecasts_BufferItemsWeekly","SimulationPartForecasts_BufferItemsMonthly","SimulationPartForecastsMonthlyAll","SimulationPartForecastsMonthly","HistoryProjectedInventoryMonth_","SimulationPartForecastsWeeklyAll","Inv Agregation","URL","Calendar","StartDateAndEndDateForCalendar","EndWeek","EndMonth","PartUnitOfMeasures","SupplyOrders","Simulations","Scenarios","SimulationPartForecastsWeekly","HistoryProjectedInventoryWeek_","SimulationPartForecastsConstrainedAll","SimulationPartForecastsConstrainedMonthly","SimulationPartForecastsConstrainedWeekly","Service Level","RisksCriticalMonthly","RisksCriticalWeekly","RisksRedMonthly","RisksRedWeekly","RisksYellowMonthly","RisksYellowWeekly","RisksCriticalConstrainedMonthly","RisksCriticalConstrainedWeekly","RisksRedConstrainedMonthly","RisksRedConstrainedWeekly","RisksYellowConstrainedMonthly","RisksYellowConstrainedWeekly","Unit_SellingPrice","DemandForecasts","HistoryDays","SimulationPartForecastsDemandMonthly","SimulationPartForecastsDemandWeekly","HistoryDemandMonth_","SimulationsH","HistoryDemandWeek_","DemandHistoryEdits","HistoryProjectedInventoryAll","Workload Type","BackordesDemand"]
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation __TEdtr = 1
+
+annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":[]}
+
+annotation PBI_ProTooling = ["DaxQueryView_Desktop","WebModelingEdit"]
+
+ref table Parts
+ref table 'All Measures'
+ref table PartsPakagings
+ref table 'Packaging Units'
+ref table 'Chart Grouping'
+ref table Period
+ref table SchedulingResourceDailyLoading
+ref table Resources
+ref table ResourceCalendars
+ref table UDF
+ref table 'UDF Parameters'
+ref table Calendar
+ref table 'Grouping Resource'
+ref table RLS_Activated
+ref table BOM_Multilevel
+ref table 'Parent Parts'
+ref table RLS_VendorIdentifier
+ref table RLS_PlannerCode
+ref table RLS_UserResource
+ref table RLS_Administrator
+ref table RLS_Location
+ref table RLS_PlannerCodeValue
+ref table RLS_VendorIdentifierValue
+ref table RLS_LocationValue
+ref table AD_Key
+ref table Unit
+ref table AdjustmentFactors
+ref table Simulation_Scheduling_SupplyOrders_Source
+ref table 'Inv Agregation'
+ref table SimulationPartForecastsMonthly
+ref table SimulationPartForecasts_BufferItemsWeekly
+ref table SimulationPartForecasts_BufferItemsMonthly
+ref table PartUnitOfMeasures
+ref table 'Constrained resources'
+ref table 'Child Parts'
+ref table 'Where Used'
+ref table SimulationPartForecastsConstrainedMonthly
+ref table SupplyOrders
+ref table Simulations
+ref table Fields
+ref table SimulationPartForecastsWeekly
+ref table SimulationPartForecastsConstrainedWeekly
+ref table RisksCriticalMonthly
+ref table RisksRedMonthly
+ref table RisksYellowMonthly
+ref table RisksCriticalWeekly
+ref table RisksRedWeekly
+ref table RisksYellowWeekly
+ref table RisksCriticalConstrainedMonthly
+ref table RisksRedConstrainedMonthly
+ref table RisksYellowConstrainedMonthly
+ref table RisksCriticalConstrainedWeekly
+ref table RisksRedConstrainedWeekly
+ref table RisksYellowConstrainedWeekly
+ref table Unit_SellingPrice
+ref table DemandForecasts
+ref table 'Unit Children'
+ref table 'Grouping Child'
+ref table SimulationPartForecastsDemandMonthly
+ref table SimulationPartForecastsDemandWeekly
+ref table 'Service Level'
+ref table 'Chart Grouping 2'
+ref table 'Workload Type'
+ref table BackordesDemand
+ref table SchedulingOrders
+
+ref role 'User role'
+
+ref cultureInfo en-US
+

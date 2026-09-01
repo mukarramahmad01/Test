@@ -1,0 +1,62 @@
+table RLS_Location
+	isHidden
+	lineageTag: e05d7cfa-851e-424b-86ac-571739ccbccc
+
+	column Email
+		dataType: string
+		isHidden
+		lineageTag: 871897fe-a977-49e1-8e55-a3c0ba4395a9
+		summarizeBy: none
+		sourceColumn: Email
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FieldName
+		dataType: string
+		isHidden
+		lineageTag: 744be96b-bc12-40f6-8031-cafaf2392f9a
+		summarizeBy: none
+		sourceColumn: FieldName
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FieldValue
+		dataType: string
+		isHidden
+		lineageTag: 8a10b79c-e84e-4004-a3e3-dbdc70d493f0
+		summarizeBy: none
+		sourceColumn: FieldValue
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FilterKind
+		dataType: int64
+		formatString: 0
+		lineageTag: c538195d-07c3-4222-8232-3c1849924824
+		summarizeBy: sum
+		sourceColumn: FilterKind
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RLS_Location = m
+		mode: import
+		queryGroup: RLS
+		source =
+				let
+				    Source = #"RLS_UserResourceFilters",
+				    #"Filtered Rows" = Table.SelectRows(Source, each ([FieldName] = "Location") and ([FilterKind] <> 0) )
+				in
+				    #"Filtered Rows"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+

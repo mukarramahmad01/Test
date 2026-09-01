@@ -1,0 +1,59 @@
+table RisksYellowConstrainedWeekly
+	lineageTag: 942ef376-771a-4f20-aa08-f7500dc92f18
+
+	column SimulationId
+		dataType: int64
+		formatString: 0
+		lineageTag: 7636ecad-10c9-4b77-9b6c-0f234fba1473
+		summarizeBy: none
+		sourceColumn: SimulationId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Id
+		dataType: int64
+		formatString: 0
+		lineageTag: d5b110ab-265d-4f27-8ca2-3094f1154ade
+		summarizeBy: none
+		sourceColumn: Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4fd7e717-3abf-45a6-8b05-38b3042ff89c
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column RisksYellow
+		dataType: double
+		lineageTag: 65ab0b39-5825-4e0e-a9ef-d6c450afd6e9
+		summarizeBy: sum
+		sourceColumn: RisksYellow
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition RisksYellowConstrainedWeekly = m
+		mode: import
+		queryGroup: 'S&OP report Part\Risks'
+		source =
+				let
+				    Source = Table.SelectColumns(SimulationPartForecastsConstrainedAll,{"Id", "SimulationId", "Date", "RisksYellow"}),
+				    #"Filtered Rows" = Table.SelectRows(Source, each ([RisksYellow] = 1)),
+				    #"Added Custom" = Table.AddColumn(#"Filtered Rows", "Start Of Week", each Date.StartOfWeek([Date], Day.Monday),type date),
+				    #"Grouped Rows" = Table.Group(#"Added Custom", {"SimulationId", "Id", "Start Of Week"}, {{"RisksYellow", each List.Sum([RisksYellow]), type number}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Grouped Rows",{{"Start Of Week", "Date"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

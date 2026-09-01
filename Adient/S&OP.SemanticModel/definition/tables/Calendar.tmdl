@@ -1,0 +1,91 @@
+table Calendar
+	lineageTag: 8739d516-e081-41cb-9542-29d38f48c89a
+
+	measure Today = TODAY()
+		formatString: General Date
+		lineageTag: 14f77923-c19f-4a8a-8d8a-7318848087d7
+
+	column 'Start Of Month'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: a087fe8f-d45b-4586-b02b-d4f003d26aea
+		summarizeBy: none
+		sourceColumn: Start Of Month
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Start Of Year'
+		dataType: dateTime
+		formatString: yyyy
+		lineageTag: 72888fd5-6c56-4468-83ed-4bd37368f430
+		summarizeBy: none
+		sourceColumn: Start Of Year
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'Start Of Quarter'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 935a27e3-097c-4693-a7f9-e9fb2e112af0
+		summarizeBy: none
+		sourceColumn: Start Of Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Date
+		dataType: dateTime
+		formatString: yyyy
+		lineageTag: 80447adf-becf-43bb-b349-db91d6e3bdab
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'Start Of Week'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 8e0c9ff3-5086-4f9e-bb60-53bb319249ec
+		summarizeBy: none
+		sourceColumn: Start Of Week
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Date_ = 'Calendar'[Date]
+		formatString: General Date
+		lineageTag: 68e6412c-07eb-4d26-aeb3-33f1d6993209
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Calendar-edbf028b-90ad-4ffe-aac9-8feada260198 = m
+		mode: import
+		queryGroup: Calendar
+		source =
+				let
+				    Source = StartDateAndEndDateForCalendar,
+				    #"Added Custom" = Table.AddColumn(Source, "Start Of Week", each Date.StartOfWeek([Date], Day.Monday)),
+				    #"Personnalisée ajoutée2" = Table.AddColumn(#"Added Custom", "Start Of Month", each Date.StartOfMonth([Date])),
+				    #"Personnalisée ajoutée6" = Table.AddColumn(#"Personnalisée ajoutée2", "Start Of Year", each Date.StartOfYear([Date])),
+				    #"Personnalisée ajoutée7" = Table.AddColumn(#"Personnalisée ajoutée6", "Start Of Quarter", each Date.StartOfQuarter([Date])),
+				    #"Type modifié2" = Table.TransformColumnTypes(#"Personnalisée ajoutée7",{{"Start Of Year", type date}, {"Start Of Month", type date}, {"Start Of Quarter", type date}, {"Start Of Week", type date}})
+				in
+				    #"Type modifié2"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

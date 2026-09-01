@@ -1,0 +1,55 @@
+table RisksRedMonthly
+	lineageTag: ef5dc8f0-fb2f-420d-888c-aa41cec8c502
+
+	column Id
+		dataType: int64
+		formatString: 0
+		lineageTag: b6bb5fbd-22b0-49e8-aa11-74a57cfef225
+		summarizeBy: none
+		sourceColumn: Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d581da95-c32b-4ba6-a63e-d2198a82fb2c
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column RisksRed
+		dataType: int64
+		formatString: 0
+		lineageTag: 227507b1-36b6-4082-8e22-1cd647c416ea
+		summarizeBy: sum
+		sourceColumn: RisksRed
+
+		annotation SummarizationSetBy = Automatic
+
+	column SimulationId
+		dataType: int64
+		formatString: 0
+		lineageTag: ddea7e6c-184b-4df4-95b8-520bbdcdc923
+		summarizeBy: none
+		sourceColumn: SimulationId
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RisksRedMonthly = m
+		mode: import
+		queryGroup: 'S&OP report Part\Risks'
+		source =
+				let
+				    Source = Table.SelectColumns(SimulationPartForecastsMonthlyAll,{"Id", "Date", "RisksRed", "SimulationId"}),
+				    #"Filtered Rows" = Table.SelectRows(Source, each ([RisksRed] <> 0))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
