@@ -1,0 +1,508 @@
+table 'Child Parts'
+	lineageTag: 935fa197-34b0-4c13-bc92-a6ddb6e33024
+
+	column Id
+		formatString: 0
+		lineageTag: bea01aaa-7d4b-4142-bbc8-172312cf9496
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[Id]
+
+		annotation SummarizationSetBy = Automatic
+
+	column PartNumber
+		lineageTag: d4e19ae9-f351-4855-918a-ccba7604cdd6
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[PartNumber]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		lineageTag: 409da943-c7f3-4c07-926f-9e62eb8eed85
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[Location]
+
+		annotation SummarizationSetBy = Automatic
+
+	column RawMaterialsCost
+		lineageTag: 2f395db8-33bc-441d-838b-44342a6f7383
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: Parts[RawMaterialsCost]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Part_Numb_Location
+		lineageTag: 060dfb6b-bf5d-481f-965e-e0d502a7dcdb
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[Part_Numb_Location]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		lineageTag: 410720d6-f37f-4237-be39-58652b34b0c9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[Description]
+
+		annotation SummarizationSetBy = Automatic
+
+	column PlannerCode
+		lineageTag: a6b1355d-2449-4002-a78e-c33b604c4d8f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[PlannerCode]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Vendor
+		lineageTag: 2ac62cd1-578d-47e8-bcda-523cfcc3166b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[Vendor]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Notes
+		lineageTag: fbe1d01a-3e64-487c-91f0-0e51f22cd1e0
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[Notes]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Revision
+		lineageTag: 0b3728a0-6420-4843-b238-c509c0d26cd9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[Revision]
+
+		annotation SummarizationSetBy = Automatic
+
+	column InventoryPlanning
+		lineageTag: 78ce0208-adf2-4700-b3af-d8edc675cb7f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[InventoryPlanning]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DailyUsageType
+		lineageTag: 718e7236-be68-4fc9-8de3-9994f8f15952
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[DailyUsageType]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DisableAutoProfile
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 114ef459-74b1-47ea-b667-af8a6cf1751e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[DisableAutoProfile]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MaterialType
+		lineageTag: acc4fced-3045-4be8-a6ab-d3bb57cf8af0
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[MaterialType]
+
+		annotation SummarizationSetBy = Automatic
+
+	column TopOfGreen
+		lineageTag: a305755e-d1e3-425f-829f-60318f5e3511
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: Parts[TopOfGreen]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TopOfYellow
+		lineageTag: 1065a9c9-4c70-4afe-ba79-cf4032e24dd0
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: Parts[TopOfYellow]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TopOfRed
+		lineageTag: f81a418c-fc07-47ab-a785-cc563f8feeab
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: Parts[TopOfRed]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OnHandQty
+		lineageTag: 61937a2b-6456-4880-b284-3a173fe9b63d
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: Parts[OnHandQty]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ForecastedDailyUsage
+		lineageTag: 32abd5d0-840e-4423-9faa-6bea7066969a
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: Parts[ForecastedDailyUsage]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EffectiveDailyUsage
+		lineageTag: 321634be-647a-459a-825a-c0adfd77049f
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: Parts[EffectiveDailyUsage]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AverageDailyUsage
+		lineageTag: de27dcc5-bb99-4587-8471-d0b598490f84
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: Parts[AverageDailyUsage]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RPlusLeadTime
+		formatString: 0
+		lineageTag: a5d78542-f651-42b0-8a1c-9a867ea606f2
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: Parts[RPlusLeadTime]
+
+		annotation SummarizationSetBy = Automatic
+
+	column EffectiveLeadTime
+		formatString: 0
+		lineageTag: 992fb8ad-ff9d-4434-99a2-39412f42a8fe
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: Parts[EffectiveLeadTime]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MTO-MTS
+		lineageTag: c88f5eff-7c7c-4732-98e2-fbce174b1ee8
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[MTO-MTS]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Url_Workbench
+		lineageTag: 7c8d3193-007a-4046-9bc7-29234a7102a2
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[Url_Workbench]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Url_SnOP
+		lineageTag: a0ff3cac-4629-408b-9532-8705eb5666ec
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[Url_SnOP]
+
+		annotation SummarizationSetBy = Automatic
+
+	column one
+		formatString: 0
+		lineageTag: c59e48f7-3cb6-4d31-9650-bfb9f334ce6a
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: Parts[one]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Database_Name
+		lineageTag: de6e66ff-1e18-47ae-94a7-e6121df250fe
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[Database_Name]
+
+		annotation SummarizationSetBy = Automatic
+
+	column PartType
+		lineageTag: 25c5f64b-2680-4767-a55a-a9e1f41d3bcf
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[PartType]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined1
+		lineageTag: 99845b1a-8d8c-4bf6-ba05-4014226846de
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[UserDefined1]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined2
+		lineageTag: 3a0c4922-40ba-434b-a40b-1e9fcd53d74d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[UserDefined2]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined3
+		lineageTag: b4b87c9e-6785-4190-ae86-773fd80b5508
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[UserDefined3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined4
+		lineageTag: 0ed9d709-a0a2-4a9f-82fb-1546919ea9b5
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[UserDefined4]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined5
+		lineageTag: 4dcb9123-b54b-4584-bb21-1bda76484f82
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[UserDefined5]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined6
+		lineageTag: cbd5410e-40a4-4b73-b2a8-d6bd99ecc6be
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[UserDefined6]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined7
+		lineageTag: edf88843-c750-4bc6-a829-248c48c24aa6
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[UserDefined7]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined8
+		lineageTag: ac63b2d3-84f8-4828-953d-3fc859bfda5f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[UserDefined8]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined9
+		lineageTag: 4bd2a8c9-c64e-42a5-8639-70eb03734d51
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[UserDefined9]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined10
+		lineageTag: 6b4f98f2-c1ac-482c-99e7-fbc452a512e7
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[UserDefined10]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined11
+		lineageTag: 884366b2-9dfa-4d62-8ac8-86101cf00fa6
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[UserDefined11]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined12
+		lineageTag: 6d0f12ba-b943-40ae-9636-a4ae41455859
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[UserDefined12]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined13
+		lineageTag: 1055e7c7-6a39-4b91-ab2c-e4f9aa21e35c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[UserDefined13]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined14
+		lineageTag: 25190873-1a62-4f32-b0ca-257b0b0af466
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[UserDefined14]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined15
+		lineageTag: 7910a2bc-eb38-472a-bc4b-a010f66d42ce
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[UserDefined15]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined16
+		lineageTag: 7e0dc526-6996-435d-8b07-b1c2fe042326
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[UserDefined16]
+
+		annotation SummarizationSetBy = Automatic
+
+	column AD_Key
+		formatString: 0
+		lineageTag: 7ba19eb5-c760-4f7a-93a5-c5a02694a1d3
+		summarizeBy: count
+		isNameInferred
+		sourceColumn: Parts[AD_Key]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Vendoridentifier
+		lineageTag: 3180a26e-b95e-42c0-a182-9e01f4d8ee2b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[Vendoridentifier]
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderMinimumQty
+		lineageTag: 7027690a-1ece-499d-a83a-702e103e47a8
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: Parts[OrderMinimumQty]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Inventory Method'
+		lineageTag: 3caab433-6259-4b3b-ae74-2cdd1e996254
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[Inventory Method]
+
+		annotation SummarizationSetBy = Automatic
+
+	column BoMType
+		lineageTag: 4c0e4ee6-dd9f-4b02-aaed-603ff9106bad
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[BoMType]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Priority
+		lineageTag: c8128a2e-e436-4892-a42e-7d80fcba9f32
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[Priority]
+
+		annotation SummarizationSetBy = Automatic
+
+	column AlertSeverity
+		lineageTag: 8f85d741-6842-4dc3-8aaf-b792158894bf
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[AlertSeverity]
+
+		annotation SummarizationSetBy = Automatic
+
+	column AlertType
+		lineageTag: 9fd0d0a0-5ef8-453b-b6a9-122f7f33208a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[AlertType]
+
+		annotation SummarizationSetBy = Automatic
+
+	column AlertDate
+		formatString: General Date
+		lineageTag: 1698bddf-a3cb-44a1-bc6d-561261e35a44
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[AlertDate]
+
+		variation Variation
+			isDefault
+			relationship: adcf7a5c-fcef-461b-b79e-9b09a8566e23
+			defaultHierarchy: LocalDateTable_532f252a-28f9-4d50-98d3-f5e0d4889c07.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column SupplyOrderQty
+		lineageTag: 0878ffc9-c96c-476e-b7b0-8faa6125e116
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: Parts[SupplyOrderQty]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DemandAllocationQty
+		lineageTag: db25e919-d10c-452a-a1b4-8206b88b92f9
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: Parts[DemandAllocationQty]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column InventoryMethod
+		formatString: 0
+		lineageTag: 6e5a95a1-0620-4c13-a886-30fa3b324f04
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: Parts[InventoryMethod]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnitOfMeasure
+		lineageTag: 2ea0357f-b975-4196-8ea2-5e93665ab22b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Parts[UnitOfMeasure]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Child Parts' = calculated
+		mode: import
+		source = 'Parts'
+
+	annotation PBI_Id = d7776fdbf35643a9bc1c2e0cdfffa921
+

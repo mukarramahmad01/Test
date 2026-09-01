@@ -1,0 +1,111 @@
+table SchedulingResourceDailyLoading
+	lineageTag: 0318ab95-9250-4d65-81b9-ec33e57a5aac
+
+	column ResourceId
+		dataType: int64
+		formatString: 0
+		lineageTag: 59552204-f335-423a-aaee-55510e937418
+		summarizeBy: none
+		sourceColumn: ResourceId
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Duration_Hours
+		dataType: double
+		formatString: 0.00
+		lineageTag: 98a3bb10-904c-4a8a-aca7-69ae69fb2e7a
+		summarizeBy: sum
+		sourceColumn: Duration_Hours
+
+		changedProperty = FormatString
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SchedulingOrders_source.PartId'
+		dataType: int64
+		formatString: 0
+		lineageTag: bc0b394c-a1fd-42f6-a832-742e65972861
+		summarizeBy: none
+		sourceColumn: SchedulingOrders_source.PartId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SchedulingSetId
+		dataType: int64
+		formatString: 0
+		lineageTag: 0de0cbce-1da9-44f9-a6f1-e96419d3aa73
+		summarizeBy: none
+		sourceColumn: SchedulingSetId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SchedulingOrderId
+		dataType: int64
+		formatString: 0
+		lineageTag: f7c4c498-0d0a-4c01-9d2d-400cfea06b3a
+		summarizeBy: count
+		sourceColumn: SchedulingOrderId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: c0d037ec-68c4-4b16-90cf-b29791611a81
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Duration
+		dataType: int64
+		formatString: 0
+		lineageTag: 22e270f2-da02-4d83-9f99-0ff01de3cb12
+		summarizeBy: sum
+		sourceColumn: Duration
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderNumber
+		dataType: string
+		lineageTag: dd0513bd-6791-4238-8ab3-e91286934707
+		summarizeBy: none
+		sourceColumn: OrderNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column ResourceName = IF(RELATED(Resources[ResourceType])="Constraint",RELATED(Resources[Name]),BLANK())
+		lineageTag: 0afaa823-0765-4df4-a742-bff183dcee72
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status = IF(LEN(SchedulingResourceDailyLoading[OrderNumber])=36,"Projected","Firm")
+		lineageTag: 5c0369ea-8d92-4787-a8dc-6ae6813f1d8f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition SchedulingResourceDailyLoading-1409c809-1be1-44ff-a068-3da4ef529385 = m
+		mode: import
+		queryGroup: RCCP
+		source =
+				let
+				    Source = Sql.Database(Server, Database,[Query="SELECT t1.SchedulingSetId, t1.SchedulingOrderId, t1.ResourceId, case when t1.Date<GETDATE() then GETDATE() else t1.Date end Date,t1.Duration FROM report.SchedulingResourceDailyLoading t1 With (NoLock) where t1.date<='" & Date.ToText(Date.AddDays(Date.From(DateTime.LocalNow()),FutureDays),"yyyy-MM-dd") & "'"]),
+				    #"Added Custom" = Table.AddColumn(Source, "Duration_Hours", each [Duration]/60, type number),
+				    #"Requêtes fusionnées" = Table.NestedJoin(#"Added Custom", {"SchedulingOrderId", "SchedulingSetId"}, SchedulingOrders, {"Id", "SchedulingSetId"}, "SchedulingOrders_source", JoinKind.Inner),
+				    #"SchedulingOrders_source développé" = Table.ExpandTableColumn(#"Requêtes fusionnées", "SchedulingOrders_source", {"OrderNumber", "PartId"}, {"OrderNumber", "SchedulingOrders_source.PartId"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"SchedulingOrders_source développé",{{"Date", type date}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

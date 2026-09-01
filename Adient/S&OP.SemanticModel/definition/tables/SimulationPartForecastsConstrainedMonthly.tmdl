@@ -1,0 +1,80 @@
+table SimulationPartForecastsConstrainedMonthly
+	lineageTag: 5fba74c1-a098-47b2-9573-c3c28a0ebffc
+
+	column Id
+		dataType: int64
+		formatString: 0
+		lineageTag: 16d921be-b8fb-40a5-8f1f-eda03828244a
+		summarizeBy: count
+		sourceColumn: Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column SimulationId
+		dataType: int64
+		formatString: 0
+		lineageTag: c5e11334-19dd-47e3-a7cd-cea59950c7b1
+		summarizeBy: count
+		sourceColumn: SimulationId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Id_SimulationId_Date = [Id]&"_"&[SimulationId]&"_"&[Date]
+		lineageTag: caafb0f1-1f56-4362-9e49-01f0f7caf290
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProjectedInventoryConstrainedPositive1
+		dataType: double
+		lineageTag: 835c0df1-624a-42a8-be29-523e586a2e5a
+		summarizeBy: sum
+		sourceColumn: ProjectedInventoryConstrainedPositive1
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ProjectedInventoryConstrainedNegative1
+		dataType: double
+		lineageTag: e314fc94-a2f0-44e5-ae5c-db087866b289
+		summarizeBy: sum
+		sourceColumn: ProjectedInventoryConstrainedNegative1
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: cba9a72e-949f-4c0b-97b7-d1b6ecd3099d
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: a8f44207-24b9-4183-999e-50b2e8a6d191
+			defaultHierarchy: LocalDateTable_4fbbf74d-58a2-445c-b9c9-baddde2f7012.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition SimulationPartForecastsConstrainedMonthly = m
+		mode: import
+		queryGroup: 'S&OP report Part\SimulationPartForecasts'
+		source =
+				let
+				    Source = Table.SelectColumns(SimulationPartForecastsConstrainedAll,{"Id", "SimulationId", "Date", "ProjectedInventoryConstrainedNegative", "ProjectedInventoryConstrainedPositive"}),
+				    #"Filtered Rows" = Table.SelectRows(Source, each ([ProjectedInventoryConstrainedNegative] <> 0) or ([ProjectedInventoryConstrainedPositive] <> 0) ),
+				    #"Added Custom" = Table.AddColumn(#"Filtered Rows", "End Of Month", each Date.EndOfMonth([Date]),type date),
+				    #"Grouped Rows" = Table.Group(#"Added Custom", {"SimulationId", "Id", "End Of Month"}, {{"ProjectedInventoryConstrainedPositive1", each List.Sum([ProjectedInventoryConstrainedPositive]), type number}, {"ProjectedInventoryConstrainedNegative1", each List.Sum([ProjectedInventoryConstrainedNegative]), type number}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Grouped Rows",{{"End Of Month", "Date"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

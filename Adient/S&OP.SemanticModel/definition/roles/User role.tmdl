@@ -1,0 +1,29 @@
+role 'User role'
+	modelPermission: read
+
+	tablePermission Parts = ```
+			USERPRINCIPALNAME()
+			    IN SELECTCOLUMNS ( RELATEDTABLE ( RLS_Location ), "Email", RLS_Location[Email] )
+			        || 
+			USERPRINCIPALNAME()
+			    IN SELECTCOLUMNS (RELATEDTABLE (
+			RLS_PlannerCode ),"Email", RLS_PlannerCode[Email])
+			        ||
+			USERPRINCIPALNAME()
+			    IN SELECTCOLUMNS (RELATEDTABLE ( RLS_VendorIdentifier ),"Email", RLS_VendorIdentifier[Email])
+			        || 
+			USERPRINCIPALNAME() 
+			    IN SELECTCOLUMNS (RELATEDTABLE ( 'RLS_Administrator' ),"Email", 'RLS_Administrator'[Email])
+			|| 
+			USERPRINCIPALNAME() 
+			    IN SELECTCOLUMNS (RELATEDTABLE ( 'RLS_UserResource' ),"Email", 'RLS_UserResource' [Email]
+			                            )
+			
+			|| 
+			"False"
+			    IN SELECTCOLUMNS (RELATEDTABLE ( 'RLS_Activated'),"RLS_Activated", 'RLS_Activated'[RLS_Activated]
+			                            )
+			```
+
+	annotation PBI_Id = 438275eab7334aa5a9b7a2aadac33c83
+

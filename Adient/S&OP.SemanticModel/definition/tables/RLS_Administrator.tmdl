@@ -1,0 +1,47 @@
+table RLS_Administrator
+	isHidden
+	lineageTag: dba8f80e-5a22-40fa-bf27-110471609674
+
+	column Email
+		dataType: string
+		isHidden
+		lineageTag: ef2009fe-00d0-42d6-8295-4aabbb341d5e
+		summarizeBy: none
+		sourceColumn: Email
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column AD_Key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 7a9d1a18-ee08-4b73-a55c-f51552b84e24
+		summarizeBy: none
+		sourceColumn: AD_Key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RLS_Administrator = m
+		mode: import
+		queryGroup: RLS
+		source =
+				let
+				    Source = RLS_Sources,
+				    #"AspNetUserRoles développé" = Table.ExpandTableColumn(Source, "AspNetUserRoles", {"UserId", "RoleId", "AspNetRoles", "AspNetUsers"}, {"AspNetUserRoles.UserId", "AspNetUserRoles.RoleId", "AspNetUserRoles.AspNetRoles", "AspNetUserRoles.AspNetUsers"}),
+				    #"AspNetUserRoles.AspNetRoles développé" = Table.ExpandRecordColumn(#"AspNetUserRoles développé", "AspNetUserRoles.AspNetRoles", {"Id", "Name", "Description", "PermissionsLastModified", "AspNetRoleClaims", "AspNetUserRoles"}, {"AspNetUserRoles.AspNetRoles.Id", "AspNetUserRoles.AspNetRoles.Name", "AspNetUserRoles.AspNetRoles.Description", "AspNetUserRoles.AspNetRoles.PermissionsLastModified", "AspNetUserRoles.AspNetRoles.AspNetRoleClaims", "AspNetUserRoles.AspNetRoles.AspNetUserRoles"}),
+				    #"Lignes filtrées1" = Table.SelectRows(#"AspNetUserRoles.AspNetRoles développé", each ([AspNetUserRoles.AspNetRoles.Name] = "Administrator") and ([Email] <> null)),
+				    #"Index ajouté" = Table.AddIndexColumn(#"Lignes filtrées1", "AD_Key", 1, 0, Int64.Type),
+				    #"Autres colonnes supprimées" = Table.SelectColumns(#"Index ajouté",{"Email", "AD_Key"})
+				in
+				    #"Autres colonnes supprimées"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

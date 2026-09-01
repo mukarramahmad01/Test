@@ -1,0 +1,201 @@
+table DemandForecasts
+	lineageTag: 1503bb6f-66bd-4ee3-bcc6-c080463a8c08
+
+	column PartId
+		dataType: int64
+		formatString: 0
+		lineageTag: ee8d19a2-d43e-484e-9920-bba038ea1fec
+		summarizeBy: none
+		sourceColumn: PartId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 6bd05bc7-de3d-4f82-b24b-88f4653269b6
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekOfYear
+		dataType: int64
+		formatString: 0
+		lineageTag: e93bd01c-6c55-434a-95b6-b4a5a1c144a9
+		summarizeBy: sum
+		sourceColumn: WeekOfYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		dataType: double
+		lineageTag: b7fdebb9-e7f1-47cc-a462-21e09b435143
+		summarizeBy: sum
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OriginalValue
+		dataType: double
+		lineageTag: 6f60a94a-12c3-407b-8c7c-13fb8ecc1ab7
+		summarizeBy: sum
+		sourceColumn: OriginalValue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IsExternalForecast
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 76bec6d0-dd00-4e7d-9a94-8db18cd956a3
+		summarizeBy: none
+		sourceColumn: IsExternalForecast
+
+		annotation SummarizationSetBy = Automatic
+
+	column ForecastName
+		dataType: string
+		lineageTag: f42f65d4-4a81-47df-91a8-d757115a71b0
+		summarizeBy: none
+		sourceColumn: ForecastName
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined1
+		dataType: string
+		lineageTag: a1fcc57b-6ce6-4aa6-9530-91c98019666b
+		summarizeBy: none
+		sourceColumn: UserDefined1
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined2
+		dataType: string
+		lineageTag: c8f00e98-87c9-4acc-a8ef-ef84c0a29bb2
+		summarizeBy: none
+		sourceColumn: UserDefined2
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined3
+		dataType: string
+		lineageTag: 1e0ee802-346e-4244-a339-8fa44d01ce39
+		summarizeBy: none
+		sourceColumn: UserDefined3
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined4
+		dataType: string
+		lineageTag: af613dd1-8c88-4b3d-89e6-2908ba03b479
+		summarizeBy: none
+		sourceColumn: UserDefined4
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined5
+		dataType: string
+		lineageTag: 31048f00-dc3c-497e-9435-2556a29cf57c
+		summarizeBy: none
+		sourceColumn: UserDefined5
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined6
+		dataType: string
+		lineageTag: 3b9c7c03-5f7d-4d05-9bcb-fed1228dff83
+		summarizeBy: none
+		sourceColumn: UserDefined6
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined7
+		dataType: string
+		lineageTag: feb7aa76-3adf-47d9-aa7a-f4c92840ff5b
+		summarizeBy: none
+		sourceColumn: UserDefined7
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined8
+		dataType: string
+		lineageTag: 0e964c14-9cea-45e6-8330-95403b5f7733
+		summarizeBy: none
+		sourceColumn: UserDefined8
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined9
+		dataType: string
+		lineageTag: 49abb75c-257c-4fbc-b04b-0e9f6365d058
+		summarizeBy: none
+		sourceColumn: UserDefined9
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined10
+		dataType: string
+		lineageTag: 5c801ac5-6ff8-4fca-b190-d6907982a387
+		summarizeBy: none
+		sourceColumn: UserDefined10
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekStartDate
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 428a16fd-c813-4797-8d91-b2d1b0fc117d
+		summarizeBy: none
+		sourceColumn: WeekStartDate
+
+		variation Variation
+			isDefault
+			relationship: accee505-4982-457d-924d-baccbd3d499c
+			defaultHierarchy: LocalDateTable_4a6d5100-5f9b-46f4-8538-0aded46c90e8.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Status
+		dataType: string
+		lineageTag: 3eaa201a-53f7-4e5a-aea2-5d2321fa7aca
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column RawMaterialCost = related('Child Parts'[RawMaterialsCost])
+		lineageTag: 69f95c5d-ca74-4ad5-bdc1-63dd70ce0792
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column IndependantValue = IF(DemandForecasts[Status]="Independant",DemandForecasts[OriginalValue],BLANK())
+		lineageTag: 93fa0240-4b3a-47f6-98f6-e9861ef8f058
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition DemandForecasts = m
+		mode: import
+		queryGroup: Sources
+		source =
+				let
+				    Source = Sql.Database(Server, Database, [Query="DECLARE @sqlQuery NVARCHAR(MAX);#(lf)#(lf)IF EXISTS (#(lf)    SELECT 1#(lf)    FROM INFORMATION_SCHEMA.COLUMNS#(lf)    WHERE TABLE_NAME = 'DemandForecasts'#(lf)      AND COLUMN_NAME = 'IsExternalForecast'#(lf))#(lf)BEGIN#(lf)    SET @sqlQuery = '#(lf)    WITH DF AS (#(lf)        SELECT #(lf)            PartId,#(lf)            Year,#(lf)            WeekOfYear,#(lf)            CASE #(lf)                WHEN OriginalValue IS NOT NULL THEN Value - OriginalValue #(lf)                ELSE Value #(lf)            END AS Value,#(lf)            OriginalValue,#(lf)            IsExternalForecast,#(lf)            ForecastName,#(lf)            UserDefined1,#(lf)            UserDefined2,#(lf)            UserDefined3,#(lf)            UserDefined4,#(lf)            UserDefined5,#(lf)            UserDefined6,#(lf)            UserDefined7,#(lf)            UserDefined8,#(lf)            UserDefined9,#(lf)            UserDefined10,#(lf)            -- Compute ISO Week Start (Monday)#(lf)            DATEADD(#(lf)                DAY,#(lf)                (WeekOfYear - 1) * 7,#(lf)                DATEADD(#(lf)                    DAY,#(lf)                    -((DATEPART(WEEKDAY, DATEFROMPARTS(Year, 1, 4)) + 5) % 7),#(lf)                    DATEFROMPARTS(Year, 1, 4)#(lf)                )#(lf)            ) AS WeekStartDate#(lf)        FROM dbo.DemandForecasts#(lf)    )#(lf)    SELECT *#(lf)    FROM DF#(lf)    WHERE WeekStartDate >=#(lf)        DATEADD(#(lf)            DAY,#(lf)            -((DATEPART(WEEKDAY, CAST(GETDATE() AS date)) + 5) % 7),#(lf)            CAST(GETDATE() AS date)#(lf)        );#(lf)    ';#(lf)END#(lf)ELSE#(lf)BEGIN#(lf)    SET @sqlQuery = '#(lf)    WITH DF AS (#(lf)        SELECT #(lf)            PartId,#(lf)            Year,#(lf)            WeekOfYear,#(lf)            CASE #(lf)                WHEN OriginalValue IS NOT NULL THEN Value - OriginalValue #(lf)                ELSE Value #(lf)            END AS Value,#(lf)            OriginalValue,#(lf)            ''False'' AS IsExternalForecast,#(lf)            ''Default'' AS ForecastName,#(lf)            NULL AS UserDefined1,#(lf)            NULL AS UserDefined2,#(lf)            NULL AS UserDefined3,#(lf)            NULL AS UserDefined4,#(lf)            NULL AS UserDefined5,#(lf)            NULL AS UserDefined6,#(lf)            NULL AS UserDefined7,#(lf)            NULL AS UserDefined8,#(lf)            NULL AS UserDefined9,#(lf)            NULL AS UserDefined10,#(lf)            -- Compute ISO Week Start (Monday)#(lf)            DATEADD(#(lf)                DAY,#(lf)                (WeekOfYear - 1) * 7,#(lf)                DATEADD(#(lf)                    DAY,#(lf)                    -((DATEPART(WEEKDAY, DATEFROMPARTS(Year, 1, 4)) + 5) % 7),#(lf)                    DATEFROMPARTS(Year, 1, 4)#(lf)                )#(lf)            ) AS WeekStartDate#(lf)        FROM dbo.DemandForecasts#(lf)    )#(lf)    SELECT *#(lf)    FROM DF#(lf)    WHERE WeekStartDate >=#(lf)        DATEADD(#(lf)            DAY,#(lf)            -((DATEPART(WEEKDAY, CAST(GETDATE() AS date)) + 5) % 7),#(lf)            CAST(GETDATE() AS date)#(lf)        );#(lf)    ';#(lf)END;#(lf)#(lf)EXEC sp_executesql @sqlQuery;#(lf)"]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"WeekStartDate", type date}}),
+				    #"Added Custom" = Table.AddColumn(#"Changed Type", "Status", each if [OriginalValue]<>null then "Independent" else "Dependent",type text),
+				    #"Replaced Value" = Table.ReplaceValue(#"Added Custom",0,null,Replacer.ReplaceValue,{"Value"})
+				in
+				    #"Replaced Value"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
