@@ -1,0 +1,851 @@
+table BOM_Child
+	lineageTag: c6905674-dd2b-4473-9901-48770a11bbe4
+
+	column Database_Name
+		lineageTag: 5df054e5-4bc2-4a8e-8a11-bcbe1ee568d9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[Database_Name]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Id
+		formatString: 0
+		lineageTag: a7605bd2-c91f-4525-b1cf-97de040f9899
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[Id]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataSetId
+		formatString: 0
+		lineageTag: 581c86d9-6629-4e1e-88f2-057465852ab5
+		summarizeBy: count
+		isNameInferred
+		sourceColumn: ChildrenParts[DataSetId]
+
+		annotation SummarizationSetBy = Automatic
+
+	column PartNumber
+		lineageTag: 90db664b-0097-4511-af4e-414437233175
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[PartNumber]
+
+		annotation SummarizationSetBy = Automatic
+
+	column PartType
+		lineageTag: 35191d30-5d24-4ca7-83a4-c5497342383a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[PartType]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Revision
+		lineageTag: d83d5f8e-5a7a-4822-a976-96e533c5514f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[Revision]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		lineageTag: 5bf9994d-fa78-4754-8108-52e94fd905c2
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[Location]
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderCycle
+		lineageTag: 84c6c634-7d61-4944-94cc-3963250e0798
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[OrderCycle]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OrderMaximumQty
+		lineageTag: 8a2a2220-2eb0-4fd7-b1c6-1d9dfd0bfd54
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[OrderMaximumQty]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OrderMultipleQty
+		lineageTag: ebdd5b77-4783-4763-8990-fd3b27b7caab
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[OrderMultipleQty]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OrderMinimumQty
+		lineageTag: 249e5232-9de2-4d33-b1ab-1503e4091cda
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[OrderMinimumQty]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VendorIdentifier
+		lineageTag: 20fe3a26-d8a3-4371-b0da-fc5c2b2ff60e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[VendorIdentifier]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		lineageTag: 4c7a3e29-4b9c-4405-b81d-7a8e6521fdb0
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[Description]
+
+		annotation SummarizationSetBy = Automatic
+
+	column InventoryPlanning
+		lineageTag: 0f28c7a6-0264-47bb-bb66-3b3efcca44de
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[InventoryPlanning]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DailyUsageType
+		lineageTag: 256cab07-0d45-4957-8ba3-e62272720e28
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[DailyUsageType]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DisableAutoProfile
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 34722aa9-bafb-4a52-967a-728e5865b631
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[DisableAutoProfile]
+
+		annotation SummarizationSetBy = Automatic
+
+	column RawMaterialsCost
+		lineageTag: 0efd56af-c6b2-4ea6-b104-c1c9305501fc
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[RawMaterialsCost]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PlannerCode
+		lineageTag: 7b4d0033-2bc3-4f3a-a3f0-56850de9297f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[PlannerCode]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MaterialType
+		lineageTag: 4eda6c61-7d0e-46e4-bc10-2c39bbc6500a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[MaterialType]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Notes
+		lineageTag: 01ba53f9-c785-4070-99f1-d4140dfcd6c4
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[Notes]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Vendor
+		lineageTag: a73237f5-8621-4914-b53d-e63fe5aef81e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[Vendor]
+
+		annotation SummarizationSetBy = Automatic
+
+	column TopOfGreen
+		lineageTag: 52455c06-9994-4099-a31f-12cb59cb1f2e
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[TopOfGreen]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TopOfYellow
+		lineageTag: 7a65f5fb-4a70-4038-9327-57edf3803540
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[TopOfYellow]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TopOfRed
+		lineageTag: 6d27f338-8567-49ed-946e-859134d041fb
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[TopOfRed]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OnHandQty
+		lineageTag: e126e715-e483-48ef-8f9d-bbeef21e9c30
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[OnHandQty]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ForecastedDailyUsage
+		lineageTag: 50a436cd-7c00-4e22-8831-a23154ce3005
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[ForecastedDailyUsage]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NetFlowPercentage
+		lineageTag: 8ddccb3c-ca02-46c7-ad26-a1d1bfe35046
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[NetFlowPercentage]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NetFlowQty
+		lineageTag: 5d70779b-0f80-4006-b22b-1945abe4eba5
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[NetFlowQty]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OnHandQtyMinusDemandAllocationQty
+		lineageTag: 897010d6-614c-4cdd-a5d8-682cba018381
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[OnHandQtyMinusDemandAllocationQty]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AlertType
+		lineageTag: 186eab13-090f-459a-8771-c70072dd6a5f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[AlertType]
+
+		annotation SummarizationSetBy = Automatic
+
+	column FixedLeadTime
+		formatString: 0
+		lineageTag: 11b9a870-cb27-4bb3-9ec4-f83dd55e793c
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[FixedLeadTime]
+
+		annotation SummarizationSetBy = Automatic
+
+	column GoodsReceiptTime
+		formatString: 0
+		lineageTag: b4e46d6a-a386-4635-a95e-0ac297cbaa3b
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[GoodsReceiptTime]
+
+		annotation SummarizationSetBy = Automatic
+
+	column SupplyOrderFollowUpBy
+		formatString: General Date
+		lineageTag: 3549416e-3f38-4236-b44e-be6bf4094d21
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[SupplyOrderFollowUpBy]
+
+		variation Variation
+			isDefault
+			relationship: 270e8817-ef0a-4154-8261-214f4fbad5d1
+			defaultHierarchy: LocalDateTable_97289a65-5f90-4b53-943f-241a15120cd5.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column AlertDate
+		formatString: General Date
+		lineageTag: 2556860e-b3b1-4eae-843f-d9a5dc4af110
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[AlertDate]
+
+		variation Variation
+			isDefault
+			relationship: d40c7d8e-e927-4d92-a597-8273a129c650
+			defaultHierarchy: LocalDateTable_72561616-9c1a-4024-9dd4-e3435d03e82e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column SupplyOrderNote
+		lineageTag: 293e82f4-1792-403a-9b85-d8a9824e5112
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[SupplyOrderNote]
+
+		annotation SummarizationSetBy = Automatic
+
+	column AlertSeverity
+		lineageTag: 618a6b7d-621f-4813-8afe-0f283f799e32
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[AlertSeverity]
+
+		annotation SummarizationSetBy = Automatic
+
+	column EffectiveDailyUsage
+		lineageTag: 89576fcc-2e90-4010-a529-c9a9537e23bb
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[EffectiveDailyUsage]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ReorderQuantityTo
+		lineageTag: 934173a2-fe24-4064-ad4d-2145a2aba6cd
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[ReorderQuantityTo]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BoMType
+		lineageTag: 2ef94577-f674-4160-b990-2e0302a066de
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[BoMType]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Priority
+		lineageTag: d797394e-72bc-4ec8-a939-58a27b20b60a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[Priority]
+
+		annotation SummarizationSetBy = Automatic
+
+	column InventoryQty
+		lineageTag: faa66147-1ca0-44aa-9831-81ba95ad28bb
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[InventoryQty]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DecoupledLeadTime
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: fb4b5779-1b9d-4e6d-acce-ad8042375714
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[DecoupledLeadTime]
+
+		annotation SummarizationSetBy = Automatic
+
+	column TargetedInventory
+		lineageTag: 96bacbb4-7c51-4963-8d3c-a9f563adbce5
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[TargetedInventory]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AverageDailyUsage
+		lineageTag: ef56012d-f3a0-4146-9168-17ffbeb95e31
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[AverageDailyUsage]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RPlusLeadTime
+		formatString: 0
+		lineageTag: 56691cd8-54a1-4697-bec0-eab52dbc243e
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[RPlusLeadTime]
+
+		annotation SummarizationSetBy = Automatic
+
+	column RequestDate
+		formatString: General Date
+		lineageTag: 4601b13d-e09d-4aec-a0cc-13554eb41e13
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[RequestDate]
+
+		variation Variation
+			isDefault
+			relationship: 34fa1b08-e661-4300-98b4-a83fed515976
+			defaultHierarchy: LocalDateTable_cac43468-42fc-4d98-9be6-7c7bf6eca4d1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column EffectiveLeadTime
+		formatString: 0
+		lineageTag: c25ce7f0-b7c3-40ba-b7cd-3a5d648cd7ad
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[EffectiveLeadTime]
+
+		annotation SummarizationSetBy = Automatic
+
+	column SupplyOrderQty
+		lineageTag: 0dcc18d0-6546-4a53-98cf-d3020af2ec34
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[SupplyOrderQty]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RZAFName
+		lineageTag: 13102906-2f54-417b-9829-96f326c3b3e7
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[RZAFName]
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZAFValue
+		lineageTag: f14bea44-b8f7-4ca6-b8c3-5907beec1efe
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[RZAFValue]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column YZAFName
+		lineageTag: 07bf8e98-13b8-48b7-952b-03beb2a94db9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[YZAFName]
+
+		annotation SummarizationSetBy = Automatic
+
+	column YZAFValue
+		lineageTag: 04ffb5e9-c1aa-41fc-8e7f-71c157c67ed1
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[YZAFValue]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TodaysYZAF
+		lineageTag: f1a05b98-67ce-4d99-82b5-422899870347
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[TodaysYZAF]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CDAFTargetedInventory
+		lineageTag: 35b2c199-38f2-44d0-ac85-bf74b410258f
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[CDAFTargetedInventory]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CDAFTargetedInventoryType
+		lineageTag: 06cf26b6-f120-48ab-83f1-0611dc7de356
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[CDAFTargetedInventoryType]
+
+		annotation SummarizationSetBy = Automatic
+
+	column TodaysRZAF
+		lineageTag: fea3a200-ef7f-4aea-b7af-0776f8b82b60
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[TodaysRZAF]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RZAFType
+		lineageTag: 035cb274-6920-4371-884c-7bfd54f0f4cc
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[RZAFType]
+
+		annotation SummarizationSetBy = Automatic
+
+	column YZAFType
+		lineageTag: a88075e1-2e51-4e4c-b76c-067e5a73a215
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[YZAFType]
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShelfLife
+		formatString: 0
+		lineageTag: 8babadf8-0fb1-4b8c-a7b8-60b8a8eaf51e
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[ShelfLife]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined1
+		lineageTag: fb98fb3e-59f5-4d19-8a3e-2a19fc24a854
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[UserDefined1]
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReorderQuantityFrom
+		lineageTag: 235466aa-d1a3-4389-bba9-b2c45748171f
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[ReorderQuantityFrom]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UserDefined2
+		lineageTag: 7b904c40-a8fc-42e7-84d6-4ba730d0348a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[UserDefined2]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined3
+		lineageTag: 6199f741-d1ea-4a7d-a06b-8080a97c04f7
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[UserDefined3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined4
+		lineageTag: 53e8b3ad-c7f4-4bc5-808c-557bbc0de7e6
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[UserDefined4]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined5
+		lineageTag: 2d5d8747-b320-455c-972d-7a9dab592e3d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[UserDefined5]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined6
+		lineageTag: 126981e9-4492-4c86-b38c-0d8aad56e6d1
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[UserDefined6]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined7
+		lineageTag: e8ce28a6-29f9-4313-91f7-675e94afff6d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[UserDefined7]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined8
+		lineageTag: c016c528-bad1-4c58-8174-e6018256af91
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[UserDefined8]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined9
+		lineageTag: b75475c6-fa6b-42bb-b5ca-9d430e45658e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[UserDefined9]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined10
+		lineageTag: 2bc39650-0237-4c7d-ae07-474ccee05c4d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[UserDefined10]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined11
+		lineageTag: 56ce3108-4214-4f02-be73-2b54b5994b1a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[UserDefined11]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined12
+		lineageTag: 2475ac2e-ab5e-42e5-bfc3-5c35c4d630fa
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[UserDefined12]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined13
+		lineageTag: 4716a7ad-0614-46dd-a7d9-a6d1ff5fbb90
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[UserDefined13]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined14
+		lineageTag: 051eb86b-b15d-47dc-aef7-6a4fb37878ec
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[UserDefined14]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined15
+		lineageTag: 225f3c30-c53c-470f-a6db-111d996a14a7
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[UserDefined15]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserDefined16
+		lineageTag: b6539621-9da0-4371-b612-3ffb0d6e3a5a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[UserDefined16]
+
+		annotation SummarizationSetBy = Automatic
+
+	column InventoryMethod
+		formatString: 0
+		lineageTag: ea7f862e-98f0-4bca-81c8-f2cf8fd0dede
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[InventoryMethod]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Part_Numb_Location
+		lineageTag: 51ca75fd-92ad-4570-8e99-902891ad4e07
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[Part_Numb_Location]
+
+		annotation SummarizationSetBy = Automatic
+
+	column AD_Key
+		formatString: 0
+		lineageTag: 1dc175a8-5596-4f92-8314-d00d383e34da
+		summarizeBy: count
+		isNameInferred
+		sourceColumn: ChildrenParts[AD_Key]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Url_Workbench
+		lineageTag: a971a760-84d0-47e9-8c5e-a1f1bb7feb1f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[Url_Workbench]
+
+		annotation SummarizationSetBy = Automatic
+
+	column SuspressionIsTrue
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 26d4a18b-f2a5-48dc-94fa-856a8efae2c1
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[SuspressionIsTrue]
+
+		annotation SummarizationSetBy = Automatic
+
+	column SuspressionIsTrueFalse
+		lineageTag: ecba76fc-8cf3-4cdd-b1d9-a884a25c7087
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[SuspressionIsTrueFalse]
+
+		annotation SummarizationSetBy = Automatic
+
+	column AlertTypeSeverity
+		lineageTag: da3dd385-43e2-4800-b8c9-d96418b6c726
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[AlertTypeSeverity]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MaterialAvailabilityShortage
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 059ec9b9-f403-4a07-ab16-d6ee5d290e62
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[MaterialAvailabilityShortage]
+
+		annotation SummarizationSetBy = Automatic
+
+	column LocationId
+		formatString: 0
+		lineageTag: fdd0377b-aa30-42af-a585-6c4c247b92b4
+		summarizeBy: count
+		isNameInferred
+		sourceColumn: ChildrenParts[LocationId]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Blue
+		lineageTag: 5b33980f-35f6-4e60-b18e-8e320d70587d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[Blue]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Green
+		lineageTag: 915c7c7a-51b2-403c-949f-7e294f7186c5
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[Green]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Yellow
+		lineageTag: 0665e4a2-18aa-49f0-b8ae-1d6dc54b7beb
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[Yellow]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Red
+		lineageTag: b96f51a9-734f-415f-b426-2954a3b80dcf
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[Red]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		lineageTag: e33f5d9c-6eee-44bf-a4e2-0c452ec78682
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[Status]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Custom
+		lineageTag: 582c8aae-6d92-4adb-b8e9-286e1e048034
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[Custom]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DemandAllocationQty
+		lineageTag: bc1f179b-df7b-437b-abfa-2d2f1a2face0
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: ChildrenParts[DemandAllocationQty]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DueDate
+		formatString: General Date
+		lineageTag: e0f279f4-c26c-4604-8690-26c6d25bb0db
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[DueDate]
+
+		variation Variation
+			isDefault
+			relationship: b843b160-6e3e-4dbc-848b-4dd65fc6f22f
+			defaultHierarchy: LocalDateTable_d4ff2a6d-f004-4f83-93be-db5c2f6ba1e6.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column URL_AllLocation
+		lineageTag: d8b77166-445c-4f41-a020-5954e891fb54
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ChildrenParts[URL_AllLocation]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition BOM_Child = calculated
+		mode: import
+		source = ChildrenParts
+
+	annotation PBI_Id = 773decefa8174b22a9efaa5fa45f4408
+

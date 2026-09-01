@@ -1,0 +1,84 @@
+table BackSupplyOrders
+	lineageTag: f9dc90c6-c600-4167-923d-5ff6ae49ce14
+
+	column PartId
+		dataType: int64
+		formatString: 0
+		lineageTag: 510b5fec-032b-42f2-8a85-7a74b2e1adb9
+		summarizeBy: none
+		sourceColumn: PartId
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuantityTo
+		dataType: double
+		lineageTag: 4908fe89-7aa4-452a-8e4e-ebbe104604b0
+		summarizeBy: sum
+		sourceColumn: QuantityTo
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Vendor
+		dataType: string
+		lineageTag: c527b884-61b8-4438-ba24-5c87903fc0c0
+		summarizeBy: none
+		sourceColumn: Vendor
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value = backSupplyOrders[QuantityTo]*RELATED('Parts'[RawMaterialsCost])
+		lineageTag: df03dbe6-29c7-4783-82e0-a66d2f4f0b58
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OrderNumber
+		dataType: string
+		lineageTag: 2cdf5201-6178-41d0-be9c-f23a235adc41
+		summarizeBy: none
+		sourceColumn: OrderNumber
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderReceiptDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8be9c66b-56da-4c6f-897a-bffdcd19b384
+		summarizeBy: none
+		sourceColumn: OrderReceiptDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition BackSupplyOrders = m
+		mode: import
+		queryGroup: Source
+		source =
+				let
+				    Source = Sql.Database(Server,Database,[Query="SELECT PartId, case when orderreceiptdate is not null then OrderReceiptDate else PromiseDate end as OrderReceiptDate,OrderNumber, QuantityTo, Vendor FROM report.SupplyOrders With (NOLOCK)"]),
+				    #"Type modifié" = Table.TransformColumnTypes(Source,{{"OrderReceiptDate", type date}}),
+				    #"Lignes filtrées" = Table.SelectRows(#"Type modifié", each [OrderReceiptDate] < DateTime.Date(DateTime.LocalNow()))
+				in
+				    #"Lignes filtrées"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

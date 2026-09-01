@@ -1,0 +1,1198 @@
+table 'All Measures'
+	lineageTag: a85950c0-7a8a-4ce1-b3e4-73426939f169
+
+	measure 'Nbre d''articles' = DISTINCTCOUNT('Parts'[PartNumber])
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: 91b14a30-b936-445f-be2b-5abcb6c06d71
+
+		changedProperty = IsHidden
+
+	measure 'DELTA ADU FDU' = SUMX(DISTINCT('Parts'[Delta ADU FDU]),FIRSTNONBLANK('Parts'[Delta ADU FDU],0))
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Current Model
+		lineageTag: 08ceb2ca-49e8-4524-a032-063442e2793f
+
+		changedProperty = FormatString
+
+		changedProperty = IsHidden
+
+	measure 'Demand pulses' = Min(DemandHistoryAnalyses[NumberDailyPulls])
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: de998473-206d-4a34-b854-627a93b2e1bc
+
+		changedProperty = IsHidden
+
+	measure 'Target Inv' =
+			
+			IF(SELECTEDVALUE('Unit'[Unit])="Stock Days",DIVIDE(SUMX(Parts,Parts[TargetedInventory]*Parts[RawMaterialsCost]),[EDU Value]) ,CALCULATE(SUMX(Parts,DIVIDE(Parts[TargetedInventory],CALCULATE(SELECTEDVALUE('Unit'[Quantity]),RELATEDTABLE('Unit'))))) )
+		formatString: #,0
+		displayFolder: Current Model
+		lineageTag: 088d9728-1635-4dd5-a43d-391cd33bde48
+
+		changedProperty = FormatString
+
+		changedProperty = IsHidden
+
+	measure 'Current Inv' = IF(SELECTEDVALUE('Unit'[Unit])="Stock Days",DIVIDE(SUMX(Parts,Parts[InventoryQty]*Parts[RawMaterialsCost]),[EDU Value]) , CALCULATE(SUMX(Parts,DIVIDE(Parts[InventoryQty],CALCULATE(SELECTEDVALUE('Unit'[Quantity]),RELATEDTABLE('Unit'))))) )
+		formatString: #,0
+		displayFolder: Current Model
+		lineageTag: 24b759c7-3802-421a-8de4-939914325cd5
+
+		changedProperty = FormatString
+
+		changedProperty = IsHidden
+
+	measure Variance = [Target Inv]-[Current Inv]
+		formatString: #,0
+		displayFolder: Current Model
+		lineageTag: a521b676-8c4c-4c6a-b2b2-f076a4a3cb25
+
+		changedProperty = FormatString
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure URL_Workbench = min('Parts'[Url_Workbench])
+		displayFolder: Current Model
+		lineageTag: d6da1129-7776-4203-9cad-589e26beb505
+
+		changedProperty = IsHidden
+
+	measure PartIDCount = distinctcount('Parts'[Id])
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: a8bf789e-57d0-4651-8cef-1fb624e16884
+
+		changedProperty = IsHidden
+
+	measure RedZone = IF(SELECTEDVALUE('Unit'[Unit])="Stock Days",DIVIDE(SUMx(parts,Parts[TopOfRed]*Parts[RawMaterialsCost]),[EDU Value]) , CALCULATE(SUMX(Parts,DIVIDE('Parts'[TopOfRed],CALCULATE(SELECTEDVALUE('Unit'[Quantity]),RELATEDTABLE('Unit'))))) )
+		displayFolder: Current Model
+		lineageTag: 82c7825b-ec30-43ff-b432-eee3345f9011
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure YellowZone = ```
+			
+			IF (
+			    SELECTEDVALUE ( 'Unit'[Unit] ) = "Stock Days",
+			    DIVIDE (
+			        SUMX (
+			            Parts,
+			            ( 'Parts'[TopOfYellow] - 'Parts'[TopOfRed] ) * Parts[RawMaterialsCost]
+			        ),
+			        [EDU Value]
+			    ),
+			    CALCULATE (
+			        SUMX (
+			            Parts,
+			            DIVIDE (
+			                'Parts'[TopOfYellow] - 'Parts'[TopOfRed],
+			                CALCULATE ( SELECTEDVALUE ( 'Unit'[Quantity] ), RELATEDTABLE ( 'Unit' ) )
+			            )
+			        )
+			    )
+			)
+			
+			```
+		displayFolder: Current Model
+		lineageTag: 121c9932-b52d-46ef-b836-02ff24a78f85
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure GreenZone = ```
+			
+			IF (
+			    SELECTEDVALUE ( 'Unit'[Unit] ) = "Stock Days",
+			    DIVIDE (
+			        SUMX (
+			            Parts,
+			            ( 'Parts'[TopOfGreen] - 'Parts'[TopOfYellow] ) * Parts[RawMaterialsCost]
+			        ),
+			        [EDU Value]
+			    ),
+			    CALCULATE (
+			        SUMX (
+			            Parts,
+			            DIVIDE (
+			                'Parts'[TopOfGreen] - 'Parts'[TopOfYellow],
+			                CALCULATE ( SELECTEDVALUE ( 'Unit'[Quantity] ), RELATEDTABLE ( 'Unit' ) )
+			            )
+			        )
+			    )
+			)
+			
+			```
+		displayFolder: Current Model
+		lineageTag: e2aa72a7-34a9-4e7d-b6b7-24170e90ffb9
+
+		changedProperty = FormatString
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Supply Qty2' = sum(SupplyOrders[QuantityTo])
+		formatString: #,0
+		displayFolder: Current Model
+		lineageTag: cbdecd4b-3c16-4b58-97cc-e0beea7f40bc
+
+		changedProperty = FormatString
+
+		changedProperty = IsHidden
+
+	measure 'Total Supply Value' = sum(SupplyOrders[Value])
+		displayFolder: Current Model
+		lineageTag: 953ec43e-07eb-40cd-a84d-22bbcb755a37
+
+		changedProperty = FormatString
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AvgLeadTime = AVERAGE('Parts'[RPlusLeadTime])
+		displayFolder: Current Model
+		lineageTag: 8330fdab-446e-4f96-b76c-f09bff509ed8
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Buffer Count' = calculate(DISTINCTCOUNTNOBLANK('Parts'[Id]),'Parts'[InventoryMethod]<>0)
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: d8e03a8b-4598-4fbc-a1c3-534d4f05eeb3
+
+		changedProperty = IsHidden
+
+	measure 'Inv Qty' = sum('Parts'[OnHandQty])
+		formatString: #,0.00
+		displayFolder: Current Model
+		lineageTag: 8e5bd34a-130b-4f16-9698-8000bc59888b
+
+		changedProperty = FormatString
+
+		changedProperty = IsHidden
+
+	measure 'NB count' = calculate(DISTINCTCOUNTNOBLANK('Parts'[Id]),'Parts'[InventoryMethod]=0)
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: 1c8b4fe4-ffdb-4757-9315-14b77046a078
+
+		changedProperty = IsHidden
+
+	measure 'Orders Number' = CALCULATE( COUNT(SupplyOrders[OrderNumber]), FILTER(SupplyOrders,SupplyOrders[QuantityTo]<>0))
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: 93bc5f2c-e744-49a8-b747-d9b40da546b6
+
+		changedProperty = IsHidden
+
+	measure 'Part Count' = DISTINCTCOUNT('Parts'[Id])
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: 611c8aaf-b49c-430e-9605-64126c7d9dd9
+
+		changedProperty = IsHidden
+
+	measure 'Reorder Qty' = ```
+			CALCULATE(SUMX(Parts,DIVIDE(Parts[ReorderQuantityTo],CALCULATE(SELECTEDVALUE('Unit'[Quantity]),RELATEDTABLE('Unit'))))) 
+			```
+		formatString: #,0
+		displayFolder: Current Model
+		lineageTag: 481778f4-9aa2-4666-bc0b-2ab93a2ba3ea
+
+		changedProperty = FormatString
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Supply Qty' = ```
+			sum('Parts'[SupplyOrderQty]) 
+			```
+		displayFolder: Current Model
+		lineageTag: c03fa469-95ec-4802-b52d-cd72eb814265
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Title matrix' = "CoV Range"
+		displayFolder: Current Model
+		lineageTag: f0209d0c-bcba-4446-8639-e56a0a5a095a
+
+		changedProperty = IsHidden
+
+	measure Variation = [Orders Number] -SUM('Parts'[Orders Nomber recommended])
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: e574a003-529a-46a4-82d6-19a54a7e01a1
+
+		changedProperty = FormatString
+
+		changedProperty = IsHidden
+
+	measure AlertBeforeDueDateM = maxx('demandorders',if(isblank(related('Parts'[AlertDate])),0,if(related('Parts'[AlertDate])<=DemandOrders[DueDate],if(related('Parts'[AlertSeverity])="Critical",2,1),0)))
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: fa716153-188d-49d1-ba98-7edf4319186e
+
+		changedProperty = IsHidden
+
+	measure 'Total Demand Value' = sum(DemandOrders[Value])
+		formatString: #,0
+		displayFolder: Current Model
+		lineageTag: 72effd45-c907-4534-b2e8-19848e6ef145
+
+		changedProperty = FormatString
+
+		changedProperty = IsHidden
+
+	measure avgCoV = average(DemandHistoryAnalyses[CoefficientOfVariation])
+		displayFolder: Current Model
+		lineageTag: 033af2a7-bac4-4fc1-8c79-1c16fea7dd6b
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'EDU Value' = SUMX('Parts','Parts'[EffectiveDailyUsage]*'Parts'[RawMaterialsCost])
+		displayFolder: Current Model
+		lineageTag: e0986ab6-ef5c-4501-947f-a660a15c82b1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Order Minimum' = SUM('Parts'[OrderMinimumQty])
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: f73fd636-5044-482e-a7d8-f498d55a1a0c
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Order Maximum' = SUM('Parts'[OrderMaximumQty])
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: 139b8657-010a-4d48-8368-aa82353fd54e
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Order Multiple' = SUM('Parts'[OrderMultipleQty])
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: 496911f8-726c-4230-86ed-8178bf4cfc79
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Order Cycle' = SUM('Parts'[OrderCycle])
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: c5207511-2b50-4b4c-b516-ccc08cc12793
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Current RZAF' = SUM('Parts'[RZAFValue])
+		displayFolder: Current Model
+		lineageTag: 484593b0-385b-41d3-b888-16e7a1c67fca
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Current YZAF' = SUM('Parts'[YZAFValue])
+		displayFolder: Current Model
+		lineageTag: 813c74a5-0570-46fa-a596-d0336be18d5c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Max Target Inv Days' = SUMX(Parts,DIVIDE(Parts[TopOfRed] + [Green Zone],Parts[EffectiveDailyUsage]))
+		formatString: #,0
+		displayFolder: Current Model
+		lineageTag: bc6dbc58-b59f-41e0-906e-a26a8cf43260
+
+	measure 'Min Target Inv Days' = SUMX(Parts,DIVIDE(Parts[TopOfRed],Parts[EffectiveDailyUsage]))
+		formatString: #,0
+		displayFolder: Current Model
+		lineageTag: 285d7a59-84aa-4622-8405-40f7367a246f
+
+	measure 'Qty write-off risk vs Current Inv' = ```
+			SUMX(FILTER(Parts,Parts[ShelfLife]<>0),
+			 IF(Parts[ShelfLife]-[Current Stock Days]<0,-(Parts[ShelfLife]-[Current Stock Days])*[EDU Val],0))
+			
+			```
+		formatString: #,0
+		displayFolder: Current Model
+		lineageTag: 391850e2-fc83-45a1-b717-7befa4f1a5fb
+
+	measure 'Qty write-off risk vs Target Inv' =
+			SUMX(FILTER(Parts,Parts[ShelfLife]<>0),
+			 IF(Parts[ShelfLife]-[Target Stock Days]<0,-(Parts[ShelfLife]-[Target Stock Days])*[EDU Val],0))
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: 8056c0e5-e5df-4619-b353-5f0d83208e9b
+
+	measure 'Green Zone' = SUMX('Parts','Parts'[TopOfGreen]-'Parts'[TopOfYellow])
+		displayFolder: Current Model
+		lineageTag: 8b6c009a-58e0-476f-bb54-31b62c879d33
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Demand Qty' = SUM(DemandOrders[Quantity])
+		formatString: #,0
+		displayFolder: Current Model
+		lineageTag: c3897be8-dea8-444f-a218-0d66fa076194
+
+	measure 'Order Maximum Value' = SUMX('Parts','Parts'[OrderMaximumQty]*'Parts'[RawMaterialsCost])
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: 36714eb4-18c0-44c3-9c55-494b82be138e
+
+	measure 'Order Maximum Days' = ```
+			VAR MOQValue = SUMX('Parts','Parts'[OrderMaximumQty]*'Parts'[RawMaterialsCost])
+			VAR EffectiveDailyUsageValue = SUMX('Parts','Parts'[EffectiveDailyUsage]*'Parts'[RawMaterialsCost])
+			RETURN DIVIDE(MOQValue,EffectiveDailyUsageValue)
+			
+			```
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: 1be3aa7a-1371-44d3-9d23-f35afc5a5987
+
+	measure 'Order Cycle Value' = SUMX('Parts','Parts'[OrderCycle]*'Parts'[RawMaterialsCost])
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: 6d1bc6a7-887b-49e0-af70-38ad6c02c43b
+
+	measure 'Order Cycle Days' = ```
+			VAR MOQValue = SUMX('Parts','Parts'[OrderCycle]*'Parts'[RawMaterialsCost])
+			VAR EffectiveDailyUsageValue = SUMX('Parts','Parts'[EffectiveDailyUsage]*'Parts'[RawMaterialsCost])
+			RETURN DIVIDE(MOQValue,EffectiveDailyUsageValue)
+			    
+			```
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: b7f3e7c3-2b42-4666-91cb-412f4c92f619
+
+	measure 'Order Minimum Value' = SUMX('Parts','Parts'[OrderMinimumQty]*'Parts'[RawMaterialsCost])
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: c05b7256-ee47-46b0-9c8c-b52001adfd8d
+
+	measure 'Order Minimum Days' =
+			VAR MOQValue = SUMX('Parts','Parts'[OrderMinimumQty]*'Parts'[RawMaterialsCost])
+			VAR EffectiveDailyUsageValue = SUMX('Parts','Parts'[EffectiveDailyUsage]*'Parts'[RawMaterialsCost])
+			RETURN DIVIDE(MOQValue,EffectiveDailyUsageValue)
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: d361e22a-cf4c-4eb9-bb23-6199e60e5d3e
+
+	measure 'Order Multiple Value' = SUMX('Parts','Parts'[OrderMultipleQty]*'Parts'[RawMaterialsCost])
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: 54c18c27-6784-441d-b297-29fdab6bd335
+
+	measure 'Order Multiple Days' = ```
+			VAR MOQValue = SUMX('Parts','Parts'[OrderMultipleQty]*'Parts'[RawMaterialsCost])
+			VAR EffectiveDailyUsageValue = SUMX('Parts','Parts'[EffectiveDailyUsage]*'Parts'[RawMaterialsCost])
+			RETURN DIVIDE(MOQValue,EffectiveDailyUsageValue)
+			    
+			```
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: 28095406-4efa-44ba-8863-8b2ce98ba7f5
+
+	measure 'Current RZAF Value' = SUMX('Parts','Parts'[TodaysRZAF]*'Parts'[RawMaterialsCost])
+		displayFolder: Current Model
+		lineageTag: 24224b8a-09ec-42cf-be7c-c785e26ec121
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Current YZAF Value' = SUMX('Parts','Parts'[TodaysYZAF]*'Parts'[RawMaterialsCost])
+		displayFolder: Current Model
+		lineageTag: 325a0618-a802-4786-a31c-6b042f8ed1a9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'DLT parent' = average('Parts'[RPlusLeadTime])
+		displayFolder: Others
+		lineageTag: b6cec1d9-28a6-4b88-9519-45e84a4a87f9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure LT = AVERAGE('Parts'[EffectiveLeadTime])
+		displayFolder: Others
+		lineageTag: 0b782d8d-4446-445b-a3bf-693ed28b52f2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure url = min('PrevParts'[Url_Workbench])
+		displayFolder: Others
+		lineageTag: f6e8487f-8fa6-4b28-a175-550738db6737
+		dataCategory: WebUrl
+
+	measure WUVariant = "1"
+		displayFolder: Others
+		lineageTag: 740cb706-f25a-4cc6-a7f2-af053cf840a9
+
+	measure 'Priority Where Used' = MIN('Where Used'[PrevPart.Priority])
+		displayFolder: Others
+		lineageTag: 760ce7a6-18aa-42fa-9d04-d82d1b8e0809
+
+	measure 'Alert Severity' = min('Where Used'[ParentPart.AlertSeverity])
+		displayFolder: Alerts & Priority
+		lineageTag: bca08b7d-f9e4-4dac-a228-b7155cedce56
+
+	measure 'Alert Date' = min('PrevParts'[AlertDate])
+		formatString: General Date
+		displayFolder: Alerts & Priority
+		lineageTag: a57efbec-046d-428f-bf4b-78836a8ee431
+
+	measure 'Child Severity' = switch(min('ChildrenParts'[AlertSeverity]),"Critical",0,"High",1,"Medium",2)
+		formatString: 0
+		displayFolder: Others
+		lineageTag: c213ed39-4487-4b7f-b761-30f143b53757
+
+	measure 'Parent Prio' = switch(min('Parts'[Priority]),"Critical",0,"High",1,"Medium",2,"Low",3,"OToG",4)
+		formatString: 0
+		displayFolder: Others
+		lineageTag: 258a8b2d-147c-41d3-bbd3-4c7892d2c98f
+
+	measure 'Parent Severity BOM' = switch(min('Parts'[AlertSeverity]),"Critical",0,"High",1,"Medium",2)
+		formatString: 0
+		displayFolder: BOM\Alert & Priority Status
+		lineageTag: 3a3dbba9-36a8-4aba-95a7-e3a91b396ba4
+
+	measure 'Parent Material Availability BOM' = switch(SELECTEDVALUE('Parts'[MaterialAvailabilityShortage]),TRUE,1,FALSE,0)
+		formatString: 0
+		displayFolder: BOM\Alert & Priority Status
+		lineageTag: 6f93e6d6-93f7-4b23-97c2-8d1c1fcfe30d
+
+	measure 'Child Material Availability' = switch(SELECTEDVALUE('ChildrenParts'[MaterialAvailabilityShortage]),TRUE,1,FALSE,0)
+		formatString: 0
+		displayFolder: Others
+		lineageTag: 7d3e65da-dcc5-4037-8a99-821406aa63b1
+
+	measure Childrenurl = min('ChildrenParts'[Url_Workbench])
+		displayFolder: Others
+		lineageTag: 668ac496-36ef-4add-8b0e-d334e998468e
+
+	measure 'Child Prio' = switch(min('ChildrenParts'[Priority]),"Critical",0,"High",1,"Medium",2,"Low",3,"OToG",4)
+		formatString: 0
+		displayFolder: Inventory Position
+		lineageTag: d4515063-d1ea-4d0a-9242-a8cdf7d6e497
+
+	measure 'Priority BOM' = MIN('BOM_Child'[Priority])
+		displayFolder: BOM\Alert & Priority Status
+		lineageTag: 3478a75f-157c-4b01-be8c-70e6a4dd92bb
+
+	measure Meas_PrevPrio = ```
+			min(BOM_Multilevel[PrevPrio]) 
+			```
+		displayFolder: BOM\Alert & Priority Status
+		lineageTag: 3e5d6e6c-3818-4e24-bf51-27e1b2d44de2
+
+	measure 'Alert Severity BOM' = Min('BOM_Multilevel'[Alert Severity BOMPARENT])
+		displayFolder: BOM\Alert & Priority Status
+		lineageTag: e5a92eb4-aea8-4be0-a38c-d6163ac7f671
+
+	measure BOM_url = min(BOM_Multilevel[PrevURL])
+		displayFolder: BOM\References
+		lineageTag: 06481690-609e-468c-a5fc-ec82641ef4ca
+		dataCategory: WebUrl
+
+	measure 'DLT BOM Parent' = AVERAGE(BOM_Multilevel[PrevDLT])
+		displayFolder: BOM
+		lineageTag: 8b0a299a-2145-4bdf-bcc8-b201a92ca859
+
+	measure 'Alert Date BOM' = min('BOM_PrevParent'[AlertDate])
+		formatString: General Date
+		displayFolder: BOM\Alert & Priority Status
+		lineageTag: 49430248-c5eb-4eca-bf93-ed40a8ba68d6
+
+	measure Meas_PrevLoc = min(BOM_PrevParent[Location])
+		displayFolder: BOM
+		lineageTag: 224e410d-c3de-4dc8-8bf1-1d389dd1e2d7
+
+	measure 'EDU Val' = CALCULATE(SUMX(Parts,DIVIDE(Parts[EffectiveDailyUsage],CALCULATE(SELECTEDVALUE('Unit'[Quantity]),RELATEDTABLE('Unit')))))
+		displayFolder: Current Model
+		lineageTag: 6c818e8d-116f-4b8f-b97f-5f3bd8d66140
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Lot write-off risk vs Current Demand' = CALCULATE(SUMX(PartInventories,DIVIDE(PartInventories[Lot write-off risk vs Current Demand],CALCULATE(SELECTEDVALUE('Unit'[Quantity]),RELATEDTABLE('Unit')))))
+		formatString: #,0
+		displayFolder: Current Model
+		lineageTag: cc69baa2-43e0-4887-84e9-38c22b0e5b22
+
+	measure 'Current Stock Days' = DIVIDE([Current Inv],[EDU Val],BLANK())
+		formatString: #,0
+		displayFolder: Current Model
+		lineageTag: a2109ec4-b4e1-4ae8-a7c3-f63d5a1285c8
+
+	measure 'Target Stock Days' = ```
+			DIVIDE([Target Inv],[EDU Val],BLANK())
+			
+			
+			```
+		formatString: #,0
+		displayFolder: Current Model
+		lineageTag: 371a9955-9fd1-4242-8d81-1dd20683f736
+
+	measure ISFILTERED = INT(ISFILTERED('Parts'[PartNumber]))+INT(ISFILTERED('Parts'[AlertSeverity]))+INT(ISFILTERED('Parts'[AlertType]))+INT(ISFILTERED('Parts'[BoMType]))+INT(ISFILTERED('Parts'[Description]))+INT(ISFILTERED('Parts'[Inventory Method]))+INT(ISFILTERED('Parts'[InventoryPlanning]))+INT(ISFILTERED('Parts'[Location]))+INT(ISFILTERED('Parts'[MaterialType]))+INT(ISFILTERED('Parts'[BoMType]))+INT(ISFILTERED(BackSupplyOrders))+INT(ISFILTERED(BOM_Child))+INT(ISFILTERED(BOM_Multilevel))+INT(ISFILTERED('Parts'[Part_Numb_Location]))+INT(ISFILTERED('Parts'[PartType]))+INT(ISFILTERED('Parts'[PlannerCode]))+INT(ISFILTERED('Parts'[UserDefined1]))+INT(ISFILTERED('Parts'[UserDefined2]))+INT(ISFILTERED('Parts'[UserDefined3]))+INT(ISFILTERED('Parts'[UserDefined4]))+INT(ISFILTERED('Parts'[UserDefined5]))+INT(ISFILTERED('Parts'[UserDefined6]))+INT(ISFILTERED('Parts'[UserDefined7]))+INT(ISFILTERED('Parts'[UserDefined8]))+INT(ISFILTERED('Parts'[UserDefined9]))+INT(ISFILTERED('Parts'[UserDefined10]))+INT(ISFILTERED('Parts'[UserDefined11]))+INT(ISFILTERED('Parts'[UserDefined12]))+INT(ISFILTERED('Parts'[UserDefined13]))+INT(ISFILTERED('Parts'[UserDefined14]))+INT(ISFILTERED('Parts'[UserDefined15]))+INT(ISFILTERED('Parts'[UserDefined16]))+INT(ISFILTERED('Parts'[Vendor]))+INT(ISFILTERED('Parts'[VendorIdentifier]))+INT(ISFILTERED('ChildrenParts'))+INT(ISFILTERED('DemandHistoryAnalyses'))+INT(ISFILTERED('DemandOrders'[PartNumber]))+INT(ISFILTERED('Locations'))+INT(ISFILTERED('DemandOrders'[OrderNumber]))+INT(ISFILTERED(SupplyOrders))
+		formatString: 0
+		displayFolder: Technical / Diagnostics
+		lineageTag: 693fdefb-b5b7-498c-9a54-fe4af8763f69
+
+	measure 'Supply Qty Val' = CALCULATE(SUMX(Parts,DIVIDE(Parts[SupplyOrderQty],CALCULATE(SELECTEDVALUE('Unit'[Quantity]),RELATEDTABLE('Unit')))))
+		formatString: #,0
+		displayFolder: Current Model
+		lineageTag: bd8af384-9a4e-4caf-8b6f-bbb5e34eb80c
+
+	measure Event_icon = MAX( PrevParts[Custom])
+		displayFolder: Others
+		lineageTag: f119b8da-2e12-4438-ac86-18a1e0fe39cb
+		dataCategory: Uncategorized
+
+	measure 'Count Items' = DISTINCTCOUNT(DemandOrderNumber[PartNumber])
+		formatString: 0
+		displayFolder: Alerts & Priority
+		lineageTag: afebbf62-6794-4059-aa08-5ab66dac6cd9
+
+	measure 'Alert High' =
+			
+			CALCULATE(
+			       DISTINCTCOUNT(DemandOrderNumber[PartNumber]),
+			        Parts[AlertSeverity] = "High"
+			    )
+		formatString: #,0
+		displayFolder: Alerts & Priority
+		lineageTag: 37e49e7d-f5d8-479b-97f5-b16b1efacc49
+
+	measure 'Alert Critical' = ```
+			
+			    CALCULATE(DISTINCTCOUNT(DemandOrderNumber[PartNumber]),
+			        Parts[AlertSeverity] = "Critical"
+			    )
+			
+			```
+		displayFolder: Alerts & Priority
+		lineageTag: 47f20a43-29f3-47bd-bd90-2114a28913c7
+
+	measure 'Event_icon BOM' = MAX(BOM_PrevParent[Custom])
+		displayFolder: BOM\References
+		lineageTag: fab0623a-965a-45d3-9ea2-0fe03918aad6
+
+	measure 'Max Target Inv' = [Target Inv]+[GreenZone]/2
+		displayFolder: Current Model
+		lineageTag: cb1ed8e5-02e1-4432-b89a-136bf00f02da
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Min Target Inv' = [Target Inv]-[GreenZone]/2
+		displayFolder: Current Model
+		lineageTag: e804220a-22cd-4f58-9be0-6b84683dee06
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Child_Description = SELECTEDVALUE(BOM_Multilevel[Child_Description])
+		displayFolder: BOM\References
+		lineageTag: 5b9fa8b8-d669-483f-90d4-34010b69d777
+
+	measure 'Next Description' = SELECTEDVALUE('Where Used'[Next Description])
+		displayFolder: Others
+		lineageTag: 25f8ace9-c5b4-4854-a9b9-718a511d683a
+
+	measure 'Stock Level %' = DIVIDE(([Current Inv]-[Total Demand Qty]),[Target Inv],BLANK())
+		displayFolder: Current Model
+		lineageTag: ce56be80-483b-4808-a41e-e2619a4ada12
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'KPI Reco Order Value' = SUM(Parts[RecommendedQtyValue])
+		formatString: #,0
+		displayFolder: Current Model
+		lineageTag: fdc5692b-6ddf-40fd-8436-a59c73c3c062
+
+	measure TitleReco = " Recommended Orders Value by " & MAX('Grouping Reco'[Grouping Reco])
+		displayFolder: Current Model
+		lineageTag: 1a786a00-14d6-4929-b915-f3f682520b3a
+
+	measure 'Cumulative % RecoValue' =
+			
+			CALCULATE (SUM
+			(Parts[% RecoValue]),
+			FILTER(ALL(Parts), Parts[Rank]<=MAX(Parts[Rank])
+			))
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		displayFolder: Current Model
+		lineageTag: 27f5d28b-b54c-456a-906a-d8d7939290a7
+
+	measure DataLabelColorCode = ```
+			
+			VAR _priority = SELECTEDVALUE('Parts'[Priority])
+			VAR _AllFields = 
+			SELECTEDVALUE('Parts'[PartNumber], "") & 
+			    SELECTEDVALUE('Parts'[Vendor], "") & 
+			    SELECTEDVALUE('Parts'[Location], "") & 
+			    SELECTEDVALUE('Parts'[MaterialType], "") & 
+			    SELECTEDVALUE('Parts'[Part_Numb_Location], "") & 
+			    SELECTEDVALUE('Parts'[PartType], "") & 
+			    SELECTEDVALUE('Parts'[PlannerCode], "") & 
+			    SELECTEDVALUE('Parts'[UserDefined1], "") & 
+			    SELECTEDVALUE('Parts'[UserDefined2], "") & 
+			    SELECTEDVALUE('Parts'[UserDefined3], "") & 
+			    SELECTEDVALUE('Parts'[UserDefined4], "") & 
+			    SELECTEDVALUE('Parts'[UserDefined5], "") & 
+			    SELECTEDVALUE('Parts'[UserDefined6], "") & 
+			    SELECTEDVALUE('Parts'[UserDefined7], "") & 
+			    SELECTEDVALUE('Parts'[UserDefined8], "") & 
+			    SELECTEDVALUE('Parts'[UserDefined9], "") & 
+			    SELECTEDVALUE('Parts'[UserDefined10], "") & 
+			    SELECTEDVALUE('Parts'[UserDefined11], "") & 
+			    SELECTEDVALUE('Parts'[UserDefined12], "") & 
+			    SELECTEDVALUE('Parts'[UserDefined13], "") & 
+			    SELECTEDVALUE('Parts'[UserDefined14], "") & 
+			    SELECTEDVALUE('Parts'[UserDefined15], "") & 
+			    SELECTEDVALUE('Parts'[UserDefined16], "")
+			
+			RETURN
+			    IF (
+			       _AllFields <> "",
+			        18,
+			        IF (
+			            _priority = "Medium" || _priority = "Yellow",
+			            11,
+			            BLANK() 
+			        )
+			    )
+			
+			```
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: e815aa7b-589e-4ca3-a8f2-1f24fecf30df
+
+	measure Prio = ```
+			
+			VAR _measure = SELECTEDVALUE('Parts'[Priority])
+			
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        _measure = "Critical", 0,
+			        _measure = "High", 1,
+			        _measure = "Medium", 2,
+			        _measure = "Low", 3,
+			        _measure = "OToG", 4,
+			        _measure = "Green", 5,
+			        _measure = "Red", 6,
+			        _measure = "Yellow", 7,
+			        BLANK()  
+			    )
+			```
+		formatString: 0
+		displayFolder: Alerts & Priority
+		lineageTag: 13e1744a-637b-4156-8436-385bcfbc5f40
+
+	measure 'Part Count Reco' =
+			CALCULATE(DISTINCTCOUNT('Parts'[Id]),
+			'Parts'[ReorderQuantityFrom]<>BLANK()
+			)
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: c0265663-b4f0-4b2b-bcc2-8577bd1fdb9c
+
+	measure BarColor =
+			
+			VAR _measure = MAX('Grouping Reco'[Grouping Reco])
+			VAR _Priority=SELECTEDVALUE('Parts'[Priority])
+			
+			RETURN
+			    IF (
+			        _measure = "Priority",
+			        SWITCH(
+			            TRUE(),
+			            _Priority = "Critical", 1,
+			            _Priority = "High", 2,
+			            _Priority = "Medium",3,
+			            _Priority = "Low", 4,
+			            _Priority = "OToG", 5,
+			            _Priority = "Green", 6,
+			            _Priority = "Red", 7,
+			            _Priority = "Yellow", 8
+			        ),
+			        9
+			    )
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: d5be0cc2-f771-4405-b4d0-de8387e8c6b3
+
+	measure 'KPI Order Qty' = SUM(Parts[ReorderQuantityFrom])
+		displayFolder: Current Model
+		lineageTag: f3fdaca6-b072-4038-a895-80b7ab2804c7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure ActionMessageIcon = ```
+			
+			SWITCH(
+			    TRUE(),
+			    SELECTEDVALUE('SupplyOrders'[ActionMessage]) = "Cancel", 1,
+			    SELECTEDVALUE('SupplyOrders'[ActionMessage]) = "Late", 2,
+			    SELECTEDVALUE('SupplyOrders'[ActionMessage]) = "MoveIn", 3,
+			    SELECTEDVALUE('SupplyOrders'[ActionMessage]) = "MoveOut", 4,
+			    BLANK()
+			)
+			
+			```
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: 77f228bf-ea4b-4816-b4ee-5b8434f480f7
+
+	measure 'Unbalance net' = ```
+			
+			CALCULATE(
+			    COUNT(DeploymentSource[Source.PartNumber]),
+			    FILTER(
+			        DeploymentSource, 
+			        DeploymentSource[AfterDeploymentOnHandQuantity] = 0 &&
+			        (DeploymentSource[AfterDeploymentPriority.1] = 1 || DeploymentSource[AfterDeploymentPriority.1] = 10)
+			    )
+			)
+			```
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: e8059f1f-f190-4e45-beb0-248e3b77f9b5
+
+	measure 'Part Deployed' = CALCULATE(COUNT(DeploymentSource[TotalDeployed.1]), DeploymentSource[TotalDeployed.1]<>Blank())
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: dd116f5c-158f-4154-a2a0-3bb8508fb57b
+
+	measure NetFlow% = AVERAGE(DeploymentSource[AfterDeploymentPercentOfTopOfGreen.1])
+		formatString: #,0\ %;-#,0\ %;#,0\ %
+		displayFolder: Current Model
+		lineageTag: ba13c81b-59dc-43ac-a3b0-6c5b1b3ecf48
+
+	measure 'Stock destination' = SUM(DeploymentSource[Destination.OnHandQty])+ SUM(DeploymentSource[TotalDeployed.1])
+		formatString: #,0
+		displayFolder: Current Model
+		lineageTag: e4840c4d-3c69-4e9a-8024-3fb7f59cc640
+
+	measure 'Colorscale Measure' =
+			
+			SWITCH(
+			    TRUE(),
+			    MAX(DeploymentSource[PriorityColor]) = "OTOG", 1,
+			    MAX(DeploymentSource[PriorityColor]) = "Green", 2,
+			    MAX(DeploymentSource[PriorityColor]) = "Yellow", 3,
+			    MAX(DeploymentSource[PriorityColor]) = "Red", 4,
+			    MAX(DeploymentSource[PriorityColor]) = "Critical", 5,
+			    0
+			)
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: e0bc3e12-0569-41a9-b99f-225cd8fb72ef
+
+	measure BufferProfileLocation = MAX(BufferProfiles[Name])
+		displayFolder: Current Model
+		lineageTag: 5abecb26-4d3a-43bb-9e48-419cfca8f41e
+
+	measure URLPartSource = SELECTEDVALUE(Parts[URL_AllLocation])
+		displayFolder: Current Model
+		lineageTag: 52235173-84e8-407e-9adf-fc14b7f4c10b
+
+	measure BOColorafterY-1 = IF([Total Orders OlderThanY-1]> 0, 1,0)
+		formatString: 0
+		displayFolder: Backorder Aging Analysis
+		lineageTag: 31d3063f-0357-4831-ae57-621b83744bd0
+
+	measure URLWB =
+			VAR _measure = SELECTEDVALUE ( 'Orders'[Orders])
+			RETURN
+			    SWITCH (
+			        _measure,
+			        "Supply", MAX(Parts[Url_Workbench])  ,
+			        "Demand",MAX(DemandOrders[URL_Workbench])
+			    )
+		displayFolder: Backorder Aging Analysis
+		lineageTag: f29b2f23-264f-4037-9e6c-a80cd690237b
+
+	measure TopTitle =
+			
+			Var _measure= SELECTEDVALUE(Orders[Orders])
+			
+			RETURN
+			    SWITCH(
+			        _measure,
+			        "Supply",
+			        "Top Vendors in Backorder by Value",
+			        "Demand",
+			        "Top Customers in Backorder by Value")
+		displayFolder: Backorder Aging Analysis
+		lineageTag: a95f3d47-e151-4268-8ecf-9a1d5d4c9c42
+
+	measure 'Count Delta' = COUNT(Parts[Delta ADU FDU])
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: 4a9c95c7-d547-4f78-ad3e-56889950b293
+
+	measure 'Inventory Planning' =
+			
+			VAR selectedGrouping= MAX('Grouping'[Grouping])
+			RETURN
+			IF (selectedGrouping="SKU"||selectedGrouping="PartNumber", MAX(Parts[InventoryPlanning]))
+		displayFolder: Current Model
+		lineageTag: d7332590-18f8-4ac0-b28a-388da1e9f2ad
+
+	measure 'Current Inv_EO' = IF(SELECTEDVALUE('Unit'[Unit])="Stock Days",DIVIDE(SUMX(Parts,Parts[OnHandQty]*Parts[RawMaterialsCost]),[EDU Value]) , CALCULATE(SUMX(Parts,DIVIDE(Parts[OnHandQty],CALCULATE(SELECTEDVALUE('Unit'[Quantity]),RELATEDTABLE('Unit'))))) )
+		formatString: #,0
+		displayFolder: Current Model
+		lineageTag: 853decfd-871b-4186-90f3-a3a4d0e632f1
+
+	measure 'Target Inv GZ+RZ' =
+			
+			IF(SELECTEDVALUE('Unit'[Unit])="Stock Days",DIVIDE(SUMX(Parts,Parts[Target Inventory(RZ+GZ)]*Parts[RawMaterialsCost]),[EDU Value]) ,CALCULATE(SUMX(Parts,DIVIDE(Parts[Target Inventory(RZ+GZ)],CALCULATE(SELECTEDVALUE('Unit'[Quantity]),RELATEDTABLE('Unit'))))) )
+		formatString: #,0
+		displayFolder: Current Model
+		lineageTag: 299b246e-f2c2-4160-a67d-8a0f5a500b16
+
+	measure 'Qualified Demand' =
+			
+			IF(SELECTEDVALUE('Unit'[Unit])="Stock Days",DIVIDE(SUMX(Parts,Parts[DemandAllocationQty]*Parts[RawMaterialsCost]),[EDU Value]) ,CALCULATE(SUMX(Parts,DIVIDE(Parts[DemandAllocationQty],CALCULATE(SELECTEDVALUE('Unit'[Quantity]),RELATEDTABLE('Unit'))))) )
+		formatString: #,0
+		displayFolder: Current Model
+		lineageTag: e2cfe376-f89c-45e8-a763-74c6251fd59a
+
+	measure 'Total Demand Forecast' = ```
+			
+			IF(
+			    SELECTEDVALUE('Unit'[Unit])="Stock Days",
+			    
+			DIVIDE(
+			    SUMX(Parts,
+			    Parts[Total Forecast]*(Parts[RawMaterialsCost])),
+			    [EDU Value Demand]) 
+			    
+			    ,CALCULATE(
+			        SUMX(Parts,DIVIDE(Parts[Total Forecast],
+			        CALCULATE(
+			            SELECTEDVALUE('Unit'[Quantity]),RELATEDTABLE('Unit'))))) )
+			```
+		formatString: #,0
+		displayFolder: Current Model
+		lineageTag: 9a7dda33-7438-4172-90fc-016c07d86f55
+
+	measure 'Total Supply Qty' = ```
+			
+			IF(
+			    SELECTEDVALUE('Unit'[Unit]) = "Stock Days",
+			    
+			    DIVIDE(
+			        SUMX(
+			            FILTER(SupplyOrders, SupplyOrders[Status] = "Committed"),
+			            SupplyOrders[QuantityTo] * RELATED(Parts[RawMaterialsCost])
+			        ),
+			        [EDU Value]
+			    ),
+			
+			    CALCULATE(
+			        SUMX(
+			            FILTER(SupplyOrders, SupplyOrders[Status] = "Committed"),
+			            DIVIDE(
+			                SupplyOrders[QuantityTo],
+			                CALCULATE(
+			                    SELECTEDVALUE('Unit'[Quantity]),
+			                    RELATEDTABLE('Unit')
+			                )
+			            )
+			        )
+			    )
+			)
+			```
+		formatString: #,0
+		displayFolder: Current Model
+		lineageTag: 95478e10-42ae-4161-ba4a-5923bfb49556
+
+	measure LastMovement = MAX(HistoricalDemand[LastMovement])
+		formatString: Short Date
+		displayFolder: Current Model
+		lineageTag: fb675734-8719-4be0-9bff-e68a4b7ccb45
+
+	measure EDU = ```
+			
+			VAR BaseEDU =
+			    IF (
+			        MAX ( 'Grouping'[Grouping] ) IN { "SKU", "PartNumber" },
+			        MAX ( Parts[EffectiveDailyUsage] ),
+			        BLANK ()
+			    )
+			RETURN
+			IF (
+			    MAX ( 'Unit'[Unit] ) = "Cost"&& MAX ( 'Grouping'[Grouping] ) IN { "SKU", "PartNumber" } , 
+			    [EDU Val],
+			    BaseEDU
+			)
+			```
+		displayFolder: Current Model
+		lineageTag: b95f3718-db77-4d5c-a069-a0b76a4837d9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure FDU = ```
+			VAR BaseFDU =
+			    IF (
+			        MAX ( 'Grouping'[Grouping] ) IN { "SKU", "PartNumber" },
+			        MAX ( Parts[ForecastedDailyUsage] ),
+			        BLANK ()
+			    )
+			RETURN
+			IF (
+			    MAX ( 'Unit'[Unit] ) = "Cost"&& MAX ( 'Grouping'[Grouping] ) IN { "SKU", "PartNumber" } , 
+			    [FDU Value],
+			    BaseFDU
+			)
+			
+			```
+		displayFolder: Current Model
+		lineageTag: 582aa5e6-9149-4d37-966f-496c66fec5dd
+
+	measure 'FDU Value' = CALCULATE(SUMX(Parts,DIVIDE(Parts[ForecastedDailyUsage],CALCULATE(SELECTEDVALUE('Unit'[Quantity]),RELATEDTABLE('Unit')))))
+		displayFolder: Current Model
+		lineageTag: d0d25454-2c0a-49b4-bd21-f34f38cd99b9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure ADU = ```
+			
+			VAR BaseADU =
+			    IF (
+			        MAX ( 'Grouping'[Grouping] ) IN { "SKU", "PartNumber" },
+			        MAX ( Parts[AverageDailyUsage] ),
+			        BLANK ()
+			    )
+			RETURN
+			IF (
+			    MAX ( 'Unit'[Unit] ) = "Cost"&& MAX ( 'Grouping'[Grouping] ) IN { "SKU", "PartNumber" } , 
+			    [ADU Value],
+			    BaseADU
+			)
+			
+			```
+		displayFolder: Current Model
+		lineageTag: 0ba77062-c28f-4803-b425-97880e7936c6
+
+	measure 'ADU Value' = CALCULATE(SUMX(Parts,DIVIDE(Parts[AverageDailyUsage],CALCULATE(SELECTEDVALUE('Unit'[Quantity]),RELATEDTABLE('Unit')))))
+		displayFolder: Current Model
+		lineageTag: 11526a15-4cf2-4eb8-8003-bb3e13a32d8e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure DLT = IF(MAX('Grouping'[Grouping]) in {"SKU","PartNumber"}, MAX(Parts[RPlusLeadTime]),BLANK())
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: cf9cc3af-b7b0-4276-9fe8-5cb70d8a08bb
+
+	measure Excess = IF(SELECTEDVALUE('Unit'[Unit])="Stock Days",DIVIDE(SUMX(Parts,Parts[Excess]*Parts[RawMaterialsCost]),[EDU Value]) , CALCULATE(SUMX(Parts,DIVIDE(Parts[Excess],CALCULATE(SELECTEDVALUE('Unit'[Quantity]),RELATEDTABLE('Unit'))))) )
+		formatString: #,0
+		displayFolder: Current Model
+		lineageTag: e23d2efa-9ec9-48a5-a19e-799f74ee39fc
+
+	measure StockTotalDemand =
+			
+			IF(SELECTEDVALUE('Unit'[Unit])="Stock Days",
+			DIVIDE(SUMX(Parts,[StockvsDemand]*Parts[RawMaterialsCost]),[EDU Value]) ,
+			CALCULATE(SUMX(Parts,DIVIDE(Parts[StockvsDemand],CALCULATE(SELECTEDVALUE('Unit'[Quantity]),RELATEDTABLE('Unit'))))) )
+		formatString: #,0
+		displayFolder: Current Model
+		lineageTag: 58ea03b6-a099-4cbd-bb5f-432872b375a6
+
+	measure ExcessSupplyDemand =
+			
+			VAR IsStockDays =
+			    SELECTEDVALUE ( 'Unit'[Unit] ) = "Stock Days"
+			RETURN
+			IF (
+			    IsStockDays,
+			    DIVIDE (
+			        SUMX ( Parts, Parts[ExcessSupplyDemand] * Parts[RawMaterialsCost] ),
+			        [EDU Value]
+			    ),
+			    CALCULATE (
+			        SUMX (
+			            Parts,
+			            DIVIDE (
+			                Parts[ExcessSupplyDemand],
+			                CALCULATE ( SELECTEDVALUE ( 'Unit'[Quantity] ), RELATEDTABLE ( 'Unit' ) )
+			            )
+			        )
+			    )
+			)
+		formatString: #,0
+		displayFolder: Current Model
+		lineageTag: 836d329a-e9bd-4b4e-908d-ca85c7f2c6ae
+
+	measure ExcessForecast =
+			
+			VAR IsStockDays =
+			    SELECTEDVALUE ( 'Unit'[Unit] ) = "Stock Days"
+			RETURN
+			IF (
+			    IsStockDays,
+			    DIVIDE (
+			        SUMX ( Parts, Parts[ExcessForecast] * Parts[RawMaterialsCost] ),
+			        [EDU Value]
+			    ),
+			    CALCULATE (
+			        SUMX (
+			            Parts,
+			            DIVIDE (
+			                Parts[ExcessForecast],
+			                CALCULATE ( SELECTEDVALUE ( 'Unit'[Quantity] ), RELATEDTABLE ( 'Unit' ) )
+			            )
+			        )
+			    )
+			)
+		formatString: #,0
+		displayFolder: Current Model
+		lineageTag: 01898ee9-8064-4daa-972c-606d75a92164
+
+	measure ExcessKPI = SUMX(Parts,Parts[Excess]*Parts[RawMaterialsCost])
+		formatString: #,0
+		displayFolder: Current Model
+		lineageTag: 5cec28d2-e79d-44f6-ab6b-2217713a8c45
+
+	measure 'Obsolescence Risk Value' = SUMX(Parts,Parts[ExcessSupplyDemand]*Parts[RawMaterialsCost])
+		formatString: #,0
+		displayFolder: Current Model
+		lineageTag: 5a8cd3a2-7598-49ad-979a-60d0417ed72f
+
+	measure 'Obsolescence Forecast Risk Value' = SUMX(Parts,Parts[ExcessForecast]*Parts[RawMaterialsCost])
+		formatString: #,0
+		displayFolder: Current Model
+		lineageTag: 94fa0764-2ae8-4d8d-a489-14d4ed563d20
+
+	measure BatchCount = DISTINCTCOUNT(PartInventories[BatchId])
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: 339acea3-9970-4199-afb1-f3d64de7a2c6
+
+	measure BatchQty = (SUM(PartInventories[OnHandInventory]))
+		formatString: #,0
+		displayFolder: Current Model
+		lineageTag: 06d25c67-faf5-4033-b516-ca04a9ab4f0c
+
+	measure 'Lot WOR % Demand' =
+			
+			VAR Qty= MAX(PartInventories[OnHandInventory])
+			RETURN
+			
+			IF( Qty>0, DIVIDE([Lot write-off risk vs Current Demand],Qty),BLANK())
+		formatString: 0\ %;-0\ %;0\ %
+		displayFolder: Current Model
+		lineageTag: ae77fef8-43f0-4d1f-b788-463508cd3621
+
+	measure 'BestByDate Qty' =
+			
+			
+			VAR SKU = SELECTEDVALUE(PartInventories[PartId])
+			RETURN
+			CALCULATE(
+			    SUM(PartInventories[OnHandInventory]),
+			    FILTER(
+			        ALL(PartInventories),
+			        PartInventories[ExpirationDate] > [BestDate] &&
+			        PartInventories[ExpirationDate] <= SELECTEDVALUE(PartInventories[ExpirationDate]) &&
+			        PartInventories[PartId] = SKU
+			    )
+			)
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: cff020c4-b50e-4c1f-b713-35775d79fee7
+
+	measure BestDate = ```
+			
+			VAR _n = SELECTEDVALUE(PeriodByDate[Value])
+			VAR _unit = SELECTEDVALUE(PeriodUnit[Unit])
+			VAR _DepartDate=SELECTEDVALUE(Calendar_BestByDate[Date])
+			RETURN
+			    SWITCH(
+			        _unit,
+			        "Day(s)",   _DepartDate + _n,
+			        "Week(s)",  _DepartDate + (_n * 7),
+			        "Month(s)", EDATE(_DepartDate, _n)
+			    )
+			
+			```
+		formatString: Short Date
+		displayFolder: Current Model
+		lineageTag: cc0203f0-29a2-4fc8-ada5-3c3b509f9038
+
+	measure 'PeriodValue Value' = SELECTEDVALUE(PeriodByDate[Value], 1)
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: fff88e6b-6646-42a4-8768-a9fb6c635aad
+
+	measure '% BestByDateInv' =
+			
+			IF ([BestByDate Qty]>0,
+			DIVIDE([BestByDate Qty],[BatchQty_SKU]),
+			BLANK())
+		formatString: 0\ %;-0\ %;0\ %
+		displayFolder: Current Model
+		lineageTag: cb5218ea-1b3f-493f-8c8e-086ddb1824ca
+
+	measure BatchQty_SKU = ```
+			
+			VAR SKU = SELECTEDVALUE(PartInventories[PartId])
+			RETURN
+			CALCULATE(
+			    SUM(PartInventories[OnHandInventory]),
+			    FILTER(
+			        ALL(PartInventories),        
+			        PartInventories[PartId] = SKU
+			    )
+			)
+			```
+		displayFolder: Current Model
+		lineageTag: 02f5cc73-cab9-42b6-b9f0-33a87da315e3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% BestByDateInv_KPI' = ```
+			
+			VAR BestDateQty=
+			CALCULATE(
+			    SUM(PartInventories[OnHandInventory]),
+			    FILTER(
+			        ALL(PartInventories),
+			        PartInventories[ExpirationDate] > [BestDate]
+			    )
+			)
+			RETURN
+			IF (BestDateQty>0,
+			DIVIDE(BestDateQty,[BatchQty]),
+			BLANK())
+			
+			```
+		formatString: 0\ %;-0\ %;0\ %
+		displayFolder: Current Model
+		lineageTag: 482b2f57-53f7-4e82-ac79-6d26184fae3e
+
+	partition 'All Measures-139ca569-d563-49c0-90ff-afc143d58adf' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

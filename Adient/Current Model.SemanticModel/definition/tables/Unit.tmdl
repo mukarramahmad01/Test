@@ -1,0 +1,53 @@
+table Unit
+	lineageTag: 217a892f-d0ea-44e1-8219-6645af52ffb8
+
+	column PartId
+		dataType: int64
+		formatString: 0
+		lineageTag: bbf30f26-2dc3-48fa-ac99-94dd4a5a6550
+		summarizeBy: none
+		sourceColumn: PartId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: double
+		lineageTag: f9f3f807-fe63-4759-aa6c-dd25ea3e7c68
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Unit
+		dataType: string
+		lineageTag: afe41376-1773-4314-85fe-7f7486ca9c6b
+		summarizeBy: none
+		sourceColumn: Unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dimension
+		dataType: string
+		lineageTag: 36057dd7-4966-4cf9-a21c-01e795b2d22f
+		summarizeBy: none
+		sourceColumn: Dimension
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Unit = m
+		mode: import
+		source = ```
+				let
+				   
+				    
+				     Source = Sql.Database(#"Server", #"Database", [Query="(SELECT PartId, Quantity, Unit, Dimension FROM report.PartPackagings) union (select Id as PartId, 1 as Quantity, 'Quantity' as Unit, 'NonStandard' as Dimension from report.parts) union (select Id as PartId, IIF(RawMaterialsCost>0,1/RawMaterialsCost,99999999999) as Quantity, 'Cost' as Unit, 'NonStandard' as Dimension from report.parts) union (select Id as PartId, 1 as Quantity, 'Stock Days' as Unit, 'NonStandard' as Dimension From report.Parts)", CommandTimeout=#duration(0, 1, 30, 0)])
+				in
+				    Source
+				```
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+

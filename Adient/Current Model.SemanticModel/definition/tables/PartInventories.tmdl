@@ -1,0 +1,219 @@
+table PartInventories
+	lineageTag: fc159d46-1f6f-4372-b390-5127d18299c3
+
+	measure Expiration<TodayM = max(PartInventories[Expiration<Today])
+		formatString: 0
+		displayFolder: Current Model
+		lineageTag: 67527d77-732d-4a68-8b09-3c9f5628eb65
+
+	column PartId
+		dataType: int64
+		formatString: 0
+		lineageTag: 1a212a36-8e37-41c5-8bf2-e919aeda4e64
+		summarizeBy: none
+		sourceColumn: PartId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: f7a76935-b7fa-4607-a579-61302ac1ac76
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: 581d2476-8665-4d3e-a42f-9b4d729b7e8a
+			defaultHierarchy: LocalDateTable_bac1dd2e-402c-4d19-aa0d-3e053beaa22d.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column OnHandInventory
+		dataType: double
+		formatString: #,0
+		lineageTag: 7c43cc92-f23f-44dc-8fde-be4cb4c2b2c9
+		summarizeBy: sum
+		sourceColumn: OnHandInventory
+
+		annotation SummarizationSetBy = Automatic
+
+	column BatchId
+		dataType: string
+		lineageTag: 775b45ae-9aac-4e46-ab93-32a14c8e4907
+		summarizeBy: none
+		sourceColumn: BatchId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExpirationDate
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 1a75541a-1db4-4a12-b490-749b46b6d84b
+		summarizeBy: none
+		sourceColumn: ExpirationDate
+
+		variation Variation
+			isDefault
+			relationship: 1c801fbb-7704-4717-accd-41788a2a4780
+			defaultHierarchy: LocalDateTable_aa13f463-52ec-4387-8be3-9d189714e8e9.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Quantity
+		dataType: double
+		formatString: #,0
+		lineageTag: 1d77d621-8c71-47d2-873d-950891cd2a4a
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Lot write-off risk vs Current Demand' = IF([CumulativeColumn]<0,0,[CumulativeColumn])
+		formatString: 0
+		lineageTag: 70285919-5d89-4498-a73b-7e29aacc884c
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column OnHandInventory-PartInventories = PartInventories[OnHandInventory]-PartInventories[Cumulative Demand]
+		lineageTag: 9529d22d-a6d1-4478-b315-4a1913d3343c
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Expiration<Today = ```
+			IF(PartInventories[ExpirationDate]<TODAY(),1,0) 
+			```
+		formatString: 0
+		lineageTag: f10cf567-3ed8-4f36-b204-24beff90e893
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Index =
+			
+			RANKX(
+			    FILTER(
+			        'PartInventories',
+			        'PartInventories'[PartId] = EARLIER('PartInventories'[PartId])
+			    ),
+			    'PartInventories'[BatchId],
+			    ,
+			    ASC,
+			    DENSE
+			)
+		formatString: 0
+		lineageTag: ae6967f5-7bd8-483d-af18-31eaf7d63909
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExpirationDate_ID = [ExpirationDate]+[Index]
+		formatString: General Date
+		lineageTag: 4b692111-6288-485f-899b-6c6dcebeb0e5
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: 9cf8e544-bb3f-4907-84ee-d33a7a7a3a77
+			defaultHierarchy: LocalDateTable_4ad624b7-f005-48c7-b8ca-7ff6b60eae21.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cumulative Demand' = ```
+			
+			VAR CurrentQuantity = 'PartInventories'[Quantity]
+			VAR PreviousDate = 'PartInventories'[PreviousDate]
+			VAR CurrentPartID = 'PartInventories'[PartId]
+			VAR PreviousQuantities = 
+			    CALCULATE(
+			        SUM('PartInventories'[Quantity]),
+			        FILTER(
+			            'PartInventories',
+			            'PartInventories'[PartId] = CurrentPartID && 'PartInventories'[ExpirationDate_ID] = PreviousDate)
+			        )
+			RETURN
+			    CurrentQuantity-PreviousQuantities
+			```
+		lineageTag: 592ea93a-0fcd-4eba-92a2-974151a364f1
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CumulativeColumn =
+			
+			VAR CurrentIndex = 'PartInventories'[ExpirationDate_ID]
+			VAR CurrentPartID = 'PartInventories'[PartId]
+			VAR CumulativeNegatives =
+			    SUMX(
+			        FILTER(
+			            'PartInventories',
+			            'PartInventories'[ExpirationDate_ID] <= CurrentIndex &&
+			            'PartInventories'[PartId] = CurrentPartID
+			        ),
+			        'PartInventories'[OnHandInventory-PartInventories]
+			    )
+			RETURN
+			  IF(CumulativeNegatives<'PartInventories'[OnHandInventory-PartInventories],CumulativeNegatives,'PartInventories'[OnHandInventory-PartInventories])
+		lineageTag: f09466f5-7712-4ab5-83ec-7eea5ca7da7a
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PreviousDate = ```
+			
+			VAR CurrentDate = 'PartInventories'[ExpirationDate_ID]
+			VAR CurrentPartID = 'PartInventories'[PartId]
+			
+			VAR PreviousQuantityValue = 
+			    CALCULATE(
+			        MAX('PartInventories'[ExpirationDate_ID]),
+			        FILTER(
+			            'PartInventories',
+			            'PartInventories'[PartId] = CurrentPartID &&
+			            'PartInventories'[ExpirationDate_ID] < CurrentDate
+			        )
+			    )
+			
+			RETURN
+			    PreviousQuantityValue
+			```
+		formatString: General Date
+		lineageTag: c4e0b0d9-9133-44f8-a6f0-07de46d0c315
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: 84dfc2bc-90cb-4bc3-8e5a-abacc14f202e
+			defaultHierarchy: LocalDateTable_5fca108e-c6f6-4f4a-9727-c6ef5f4140be.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition PartInventories = m
+		mode: import
+		queryGroup: Source
+		source =
+				let
+				    Source = Sql.Database(Server, Database, [Query="SELECT t1.PartId, t1.Date, t1.IssuedInventory, t1.OnHandInventory, t1.BatchId, t1.ExpirationDate, t1.Id, t2.Quantity as Qty, t2.DueDate  FROM PartInventories t1 With (NOLOCK) left join (select Quantity,DueDate,PartId from Report.DemandOrders With (NOLOCK)) t2 on t1.PartId=t2.PartId where t1.ExpirationDate is not null "]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"ExpirationDate", type date}, {"DueDate", type date}, {"Date", type date}}),
+				    #"Personnalisée ajoutée" = Table.AddColumn(#"Changed Type", "Check", each [ExpirationDate]>[DueDate], type logical),
+				    #"Added Custom" = Table.AddColumn(#"Personnalisée ajoutée", "Quantity", each if [Check]=false then null else [Qty],type number),
+				    #"Lignes groupées" = Table.Group(#"Added Custom", {"PartId", "Date", "OnHandInventory", "BatchId", "ExpirationDate"}, {{"Quantity", each List.Sum([Quantity]), type number}})
+				in
+				    #"Lignes groupées"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
