@@ -78,20 +78,9 @@
       "type": "CustomVisual",
       "items": [
         {
-          "name": "psProcessAnalyzer.pbiviz.json",
+          "name": "resources/psProcessAnalyzer.pbiviz.json",
           "path": "psProcessAnalyzer.pbiviz.json",
           "type": "CustomVisualMetadata"
-        }
-      ]
-    },
-    {
-      "name": "SharedResources",
-      "type": "SharedResources",
-      "items": [
-        {
-          "name": "CY21SU11",
-          "path": "BaseThemes/CY21SU11.json",
-          "type": "BaseTheme"
         }
       ]
     },
@@ -318,6 +307,17 @@
           "name": "valeur_icon612500928380971.jpg",
           "path": "valeur_icon612500928380971.jpg",
           "type": "Image"
+        }
+      ]
+    },
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY21SU11",
+          "path": "BaseThemes/CY21SU11.json",
+          "type": "BaseTheme"
         }
       ]
     }
