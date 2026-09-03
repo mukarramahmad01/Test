@@ -1,0 +1,218 @@
+table Orders
+	isHidden
+	lineageTag: 2cb5c7d6-da26-43c4-b9c6-cf952dc3b89a
+
+	measure 'Total Orders Qty' =
+			VAR _measure = SELECTEDVALUE ( 'Orders'[Orders])
+			RETURN
+			    SWITCH (
+			        _measure,
+			        "Supply", SUM(BackSupplyOrders[QuantityTo])   ,
+			        "Demand",SUM(DemandOrders[Quantity])
+			    )
+		formatString: #,0
+		isHidden
+		lineageTag: bc8c44e9-6c47-4bed-a50e-87265ca61042
+
+		changedProperty = IsHidden
+
+	measure 'Total Orders Value' =
+			VAR _measure = SELECTEDVALUE ( 'Orders'[Orders])
+			RETURN
+			    SWITCH (
+			        _measure,
+			        "Supply", SUM(backSupplyOrders[Value]),
+			        "Demand",SUM(DemandOrders[Value])
+			    )
+		formatString: #,0
+		isHidden
+		lineageTag: f043d158-60d5-4185-bed5-d71376bb2f9b
+
+		changedProperty = IsHidden
+
+	measure 'Depth Delay Days' =
+			VAR _measure = SELECTEDVALUE ( 'Orders'[Orders])
+			RETURN
+			    SWITCH (
+			        _measure,
+			        "Supply", MAXX(BackSupplyOrders,DATEDIFF(backSupplyOrders[PromiseDate],TODAY(),DAY)),
+			        "Demand",MAXX(DemandOrders,DATEDIFF(DemandOrders[DueDate],TODAY(),DAY))
+			    )
+		isHidden
+		lineageTag: df3911bf-f7e1-4b1b-b942-ce6b6d3e391d
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure EDUValue =
+			VAR _measure = SELECTEDVALUE ( 'Orders'[Orders])
+			RETURN
+			    SWITCH (
+			        _measure,
+			        "Supply", SUMX('BackSupplyOrders', RELATED(Parts[EffectiveDailyUsage])*RELATED(Parts[RawMaterialsCost])),
+			        "Demand",SUMX('DemandOrders', RELATED(Parts[EffectiveDailyUsage])*RELATED(Parts[RawMaterialsCost]))
+			    )
+		isHidden
+		lineageTag: 0649678a-c3da-4c6a-840a-afde08b03b7c
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure SELECTOrders = SELECTEDVALUE(Orders[Orders]) & " " &"Backorders"
+		isHidden
+		lineageTag: 66109da7-05ee-489d-86ad-99312d4bd6a9
+
+		changedProperty = IsHidden
+
+	measure CountBackorders =
+			VAR _measure = SELECTEDVALUE ( 'Orders'[Orders])
+			RETURN
+			    SWITCH (
+			        _measure,
+			        "Supply", COUNT(BackSupplyOrders[OrderNumber])   ,
+			        "Demand",COUNT(DemandOrders[OrderNumber])
+			    )
+		formatString: #,0
+		lineageTag: 82b3c2e2-58be-4ee2-ab31-c7b1739a9eb3
+
+	measure 'Total OrdersCurrentY' = ```
+			
+			VAR _measure = SELECTEDVALUE('Orders'[Orders])
+			VAR _CurrentYear = YEAR(TODAY())
+			
+			RETURN 
+			    SWITCH(
+			        _measure,
+			        "Supply", 
+			            CALCULATE(
+			                SUM(backSupplyOrders[Value]),
+			                YEAR(backSupplyOrders[PromiseDate])= _CurrentYear
+			            ),
+			        "Demand", 
+			            CALCULATE(
+			                SUM(DemandOrders[Value]),
+			                YEAR(DemandOrders[DueDate])=_CurrentYear
+			            )
+			    )
+			```
+		formatString: #,0
+		lineageTag: 10b8b343-ff57-4344-883c-2e17a4286390
+
+	measure 'Total OrdersY-1' = ```
+			
+			VAR _measure = SELECTEDVALUE('Orders'[Orders])
+			VAR _PreviousYear = YEAR(TODAY()) - 1
+			
+			RETURN 
+			    SWITCH(
+			        _measure,
+			        "Supply", 
+			            CALCULATE(
+			                SUM(backSupplyOrders[Value]),
+			                YEAR(backSupplyOrders[PromiseDate])= _PreviousYear
+			            ),
+			        "Demand", 
+			            CALCULATE(
+			                SUM(DemandOrders[Value]),
+			                YEAR(DemandOrders[DueDate])=_PreviousYear
+			            )
+			    )
+			```
+		formatString: #,0
+		lineageTag: 109e616d-f3ec-431d-b2b7-d51d592d4cde
+
+	measure 'Total Orders OlderThanY-1' = ```
+			
+			VAR _measure = SELECTEDVALUE('Orders'[Orders])
+			VAR _TwoYearsAgo = YEAR(TODAY()) - 2
+			
+			RETURN 
+			    SWITCH(
+			        _measure,
+			        "Supply", 
+			            CALCULATE(
+			                SUM(backSupplyOrders[Value]),
+			                YEAR(backSupplyOrders[PromiseDate]) <= _TwoYearsAgo
+			            ),
+			        "Demand", 
+			            CALCULATE(
+			                SUM(DemandOrders[Value]),
+			                YEAR(DemandOrders[DueDate]) <= _TwoYearsAgo
+			            )
+			    )
+			```
+		formatString: #,0
+		lineageTag: 92b9bac1-8628-40b4-9f51-5c41cdbc03ce
+
+	measure IconYear = ```
+			
+			VAR _TwoYearsAgo = YEAR(TODAY()) - 2
+			VAR _CurrentYear = YEAR(TODAY())
+			VAR _PreviousYear = YEAR(TODAY()) - 1
+			
+			RETURN 
+			    SWITCH(
+			            TRUE(),
+			            YEAR(MAX(backSupplyOrders[PromiseDate]))=_CurrentYear,0,
+			            YEAR(MAX(backSupplyOrders[PromiseDate]))= _PreviousYear,1,
+			            YEAR(MAX(backSupplyOrders[PromiseDate]))<= _TwoYearsAgo,2,
+			            YEAR(MAX(DemandOrders[DueDate]))=_CurrentYear,3,
+			            YEAR(MAX(DemandOrders[DueDate]))= _PreviousYear,4,
+			            YEAR(MAX(DemandOrders[DueDate]))<= _TwoYearsAgo,5
+			            )
+			```
+		lineageTag: b216b870-465c-44a5-86e7-8281fada95df
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AVG Delay Days' =
+			VAR _measure = SELECTEDVALUE ( 'Orders'[Orders])
+			RETURN
+			    SWITCH (
+			        _measure,
+			        "Supply", AVERAGEX(BackSupplyOrders,DATEDIFF(backSupplyOrders[PromiseDate],TODAY(),DAY)),
+			        "Demand",AVERAGEX(DemandOrders,DATEDIFF(DemandOrders[DueDate],TODAY(),DAY))
+			    )
+		formatString: 0
+		lineageTag: cab42950-ff31-41c7-bcdf-a1745921fd38
+
+	column Orders
+		dataType: string
+		isHidden
+		lineageTag: a24eaaa2-b17d-4dcf-80a7-782e4a8bce6a
+		summarizeBy: none
+		sourceColumn: Orders
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 45e767a5-4d2e-4bff-8874-a2cfeb8d6039
+		summarizeBy: none
+		sourceColumn: Key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Orders = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WCi4tKMipVNJRMlCK1YlWcknNTcxLAXINlWJjAQ==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Orders = _t, Key = _t]),
+				    #"Type modifié1" = Table.TransformColumnTypes(Source,{{"Key", Int64.Type}})
+				in
+				    #"Type modifié1"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

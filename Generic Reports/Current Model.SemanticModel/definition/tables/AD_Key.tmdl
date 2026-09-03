@@ -1,0 +1,32 @@
+table AD_Key
+	isHidden
+	lineageTag: 89a073cc-3479-4aa1-81c1-3e740dad6351
+
+	column AD_Key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 8181df4d-77ad-4809-b259-869b2b9e01ba
+		summarizeBy: none
+		sourceColumn: AD_Key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition AD_Key = m
+		mode: import
+		queryGroup: RLS
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlSKjQUA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [AD_Key = _t]),
+				    #"Type modifié" = Table.TransformColumnTypes(Source,{{"AD_Key", Int64.Type}})
+				in
+				    #"Type modifié"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

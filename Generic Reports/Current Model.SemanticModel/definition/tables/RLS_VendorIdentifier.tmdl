@@ -1,0 +1,62 @@
+table RLS_VendorIdentifier
+	isHidden
+	lineageTag: 7a60bfbf-be6a-4d35-abe1-55c4c1365b5c
+
+	column Email
+		dataType: string
+		isHidden
+		lineageTag: 2245d333-ceac-4cc2-a24d-1500f1414e87
+		summarizeBy: none
+		sourceColumn: Email
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FieldName
+		dataType: string
+		isHidden
+		lineageTag: e1aac5d9-2722-4cb8-943f-4700d3c984cd
+		summarizeBy: none
+		sourceColumn: FieldName
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FieldValue
+		dataType: string
+		isHidden
+		lineageTag: a7f8aeee-7298-434e-aa57-14f34aba0505
+		summarizeBy: none
+		sourceColumn: FieldValue
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FilterKind
+		dataType: int64
+		formatString: 0
+		lineageTag: bff12ba0-17f7-440b-a34f-2f199487439c
+		summarizeBy: sum
+		sourceColumn: FilterKind
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RLS_VendorIdentifier-cd200f4b-7342-48a9-a373-0fa8f5ac1b0c = m
+		mode: import
+		queryGroup: RLS
+		source =
+				let
+				    Source = RLS_UserResourceFilters,
+				    #"Filtered Rows" = Table.SelectRows(Source, each ([FieldName] = "VendorIdentifier")and ([FilterKind] <> 0))
+				in
+				    #"Filtered Rows"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
