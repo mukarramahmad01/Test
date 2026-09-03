@@ -1,0 +1,51 @@
+table SupplyOrderReminders
+	lineageTag: 0bb01061-d1d1-4d32-85a4-635cd03f7389
+
+	column SupplyOrderId
+		dataType: string
+		lineageTag: 88adaaf3-9d20-439c-aaa8-8624e406395c
+		summarizeBy: none
+		sourceColumn: SupplyOrderId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Note
+		dataType: string
+		lineageTag: af759634-bdf9-45e1-bdc1-830696a7b62a
+		summarizeBy: none
+		sourceColumn: Note
+
+		annotation SummarizationSetBy = Automatic
+
+	column FollowUpBy
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 478c68a2-861e-41d3-a26b-77f5b98879f7
+		summarizeBy: none
+		sourceColumn: FollowUpBy
+
+		variation Variation
+			isDefault
+			relationship: 020b0f8e-8a93-46cf-83e3-e91c41a603b0
+			defaultHierarchy: LocalDateTable_5e77b858-d48b-4bf8-ad80-11bb5765e675.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition SupplyOrderReminders = m
+		mode: import
+		queryGroup: Source
+		source =
+				let
+				    Source = Sql.Database(Server, Database, [Query="SELECT sor.SupplyOrderId,#(lf)       sor.Note,#(lf)       sor.FollowUpBy#(lf)FROM dbo.SupplyOrderReminders sor#(lf)INNER JOIN (#(lf)    SELECT SupplyOrderId, MAX(FollowUpBy) AS MaxFollowUpBy#(lf)    FROM dbo.SupplyOrderReminders#(lf)    GROUP BY SupplyOrderId#(lf)) latest#(lf)    ON sor.SupplyOrderId = latest.SupplyOrderId#(lf)   AND sor.FollowUpBy = latest.MaxFollowUpBy;#(lf)"]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"FollowUpBy", type date}}),
+				    #"Removed Duplicates" = Table.Distinct(#"Changed Type", {"SupplyOrderId"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Removed Duplicates",{{"SupplyOrderId", type text}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

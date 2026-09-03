@@ -1,0 +1,50 @@
+table OrderNumber
+	isHidden
+	lineageTag: 4fc4f615-a1bc-4bda-ada3-15b8b9888708
+
+	column Paramètre
+		isHidden
+		lineageTag: ba479929-f962-465f-a2a3-f78cf9dd5628
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Paramètre Commande'
+
+		relatedColumnDetails
+			groupByColumn: 'Paramètre Champs'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Paramètre Champs'
+		isHidden
+		lineageTag: 961b2ecc-7821-43da-83d3-755daddbbed8
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Paramètre Commande'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Paramètre Commande'
+		isHidden
+		formatString: 0
+		lineageTag: 876dfba0-8546-4149-9da0-5c2c84beeb57
+		summarizeBy: none
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition OrderNumber = calculated
+		mode: import
+		source =
+				{
+				    ("OrderNumber", NAMEOF('backSupplyOrders'[OrderNumber]), 0),
+				    ("OrderNumber", NAMEOF('DemandOrders'[BackorderOrderNumber]), 1)
+				}
+
+	annotation PBI_Id = 7c7f6f46cae74430bfa0dc78060c4581
+
