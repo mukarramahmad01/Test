@@ -1,0 +1,61 @@
+table Calendar
+	isHidden
+	lineageTag: 9ba37eb8-bb88-427c-9392-c4523142d3d9
+
+	measure YearToday = YEAR(MAX(DemandOrders[DueDate]))
+		formatString: 0
+		lineageTag: 1f523a1f-ee26-45ad-aa6b-d755b5b84407
+
+	column Date
+		dataType: dateTime
+		isHidden
+		formatString: Short Date
+		lineageTag: fd3658d1-4ccd-4de9-be27-3bf02fa8be3a
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: 103659ea-4601-400b-b385-337592112da9
+			defaultHierarchy: LocalDateTable_0b3a110b-10dd-4586-86ab-ae8146877c55.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CalendarYear = YEAR('Calendar'[Date])
+		formatString: 0
+		lineageTag: f542be2b-c832-4317-8b94-bfae7067a56c
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthCalendar = MONTH('Calendar'[Date])
+		formatString: 0
+		lineageTag: bf649349-2997-4769-8d5f-06c8c83bc83c
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Calendar = m
+		mode: import
+		queryGroup: Source
+		source =
+				let
+				    DateDebut = DateTime.Date(Date.AddDays(DateTime.LocalNow(), -HistoryDays-12)),
+				    DateFin = Date.AddDays(DateTime.Date(DateTime.LocalNow()),-1),
+				    NbJours = Duration.Days(DateFin - DateDebut),
+				    ListeDates = List.Dates(DateDebut, NbJours+1, #duration(1,0,0,0)),
+				    TableDates = Table.FromColumns({ListeDates}, {"Date"}),
+				    #"Type modifié" = Table.TransformColumnTypes(TableDates,{{"Date", type date}})
+				in
+				    #"Type modifié"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,258 @@
+table DeploymentSource
+	lineageTag: f3c58941-72f1-4d09-baac-bb9796f14a87
+
+	column 'PartId Source'
+		dataType: int64
+		formatString: 0
+		lineageTag: 183eaeb8-4925-441b-9940-4a252a3e9d00
+		summarizeBy: sum
+		sourceColumn: PartId Source
+
+		annotation SummarizationSetBy = Automatic
+
+	column AfterDeploymentOnHandQuantity
+		dataType: double
+		formatString: #,0
+		lineageTag: eeac36f2-17a8-403f-a5e5-1cb7667d6885
+		summarizeBy: sum
+		sourceColumn: AfterDeploymentOnHandQuantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column AfterDeploymentNetFlow
+		dataType: double
+		lineageTag: 5fdc5131-4885-4d6e-9d14-76a6a41c599b
+		summarizeBy: sum
+		sourceColumn: AfterDeploymentNetFlow
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AfterDeploymentPercentOfTopOfGreen
+		dataType: double
+		lineageTag: 6d9409f9-90bb-472f-874d-ceb8cc538b70
+		summarizeBy: sum
+		sourceColumn: AfterDeploymentPercentOfTopOfGreen
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AfterDeploymentPriority
+		dataType: int64
+		formatString: 0
+		lineageTag: 9abc4496-5f2f-4eca-8501-20493e5d669a
+		summarizeBy: sum
+		sourceColumn: AfterDeploymentPriority
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalDeployed
+		dataType: double
+		lineageTag: 5156d5fc-f226-4ef3-81aa-6bcf8676d133
+		summarizeBy: sum
+		sourceColumn: TotalDeployed
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'PartId Destination'
+		dataType: int64
+		formatString: 0
+		lineageTag: 34f3f0a7-dff3-435f-bda9-fab3baf9b814
+		summarizeBy: none
+		sourceColumn: PartId Destination
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AfterDeploymentNetFlow.1'
+		dataType: double
+		lineageTag: 1e1b4642-5399-497e-b956-9b3d6f51d902
+		summarizeBy: sum
+		sourceColumn: AfterDeploymentNetFlow.1
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'AfterDeploymentPercentOfTopOfGreen.1'
+		dataType: double
+		lineageTag: 4baae87a-6afc-4a04-bcfa-b7355bdf842e
+		summarizeBy: sum
+		sourceColumn: AfterDeploymentPercentOfTopOfGreen.1
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'AfterDeploymentPriority.1'
+		dataType: int64
+		formatString: 0
+		lineageTag: 605d773c-60be-45bc-8bcd-645cffc3cee8
+		summarizeBy: sum
+		sourceColumn: AfterDeploymentPriority.1
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'TotalDeployed.1'
+		dataType: double
+		lineageTag: 471b626e-29d1-4305-9246-e16dde92c81e
+		summarizeBy: sum
+		sourceColumn: TotalDeployed.1
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Source.Database_Name'
+		dataType: string
+		lineageTag: 7b6e6233-cc57-4fd8-a449-c8f21b862429
+		summarizeBy: none
+		sourceColumn: Source.Database_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Source.PartNumber'
+		dataType: string
+		lineageTag: 58e2aecf-6c59-4bea-92fa-efb82024b890
+		summarizeBy: none
+		sourceColumn: Source.PartNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Source.Revision'
+		dataType: string
+		lineageTag: 662537bb-0dd1-4ec4-b572-2eb485d0ae57
+		summarizeBy: none
+		sourceColumn: Source.Revision
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Source.Location'
+		dataType: string
+		lineageTag: 2db35cfd-b1a2-4baa-89c9-e2a60ae5f89d
+		summarizeBy: none
+		sourceColumn: Source.Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Source.OnHandQty'
+		dataType: double
+		lineageTag: 1246f347-c56b-40c0-baba-9e699a82332d
+		summarizeBy: sum
+		sourceColumn: Source.OnHandQty
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Source.NetFlowPercentage'
+		dataType: double
+		lineageTag: d54a5081-b7a4-4aeb-924e-d9b78c6eb426
+		summarizeBy: sum
+		sourceColumn: Source.NetFlowPercentage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Source.NetFlowQty'
+		dataType: double
+		lineageTag: f3c24ae1-7414-4662-80c5-929e04c61919
+		summarizeBy: sum
+		sourceColumn: Source.NetFlowQty
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Destination.PartNumber'
+		dataType: string
+		lineageTag: b42f8f8b-db88-4f09-984a-4bb2430b3d39
+		summarizeBy: none
+		sourceColumn: Destination.PartNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Destination.Location'
+		dataType: string
+		lineageTag: d3ac7a18-6814-4d03-83e3-a04cb66a29c8
+		summarizeBy: none
+		sourceColumn: Destination.Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Destination.Description'
+		dataType: string
+		lineageTag: eacaf6e0-e7ef-40c4-81b7-c3693175e076
+		summarizeBy: none
+		sourceColumn: Destination.Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Destination.OnHandQty'
+		dataType: double
+		lineageTag: 0b757e38-c50d-4483-8938-6f6380e4743b
+		summarizeBy: sum
+		sourceColumn: Destination.OnHandQty
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Destination.NetFlowPercentage'
+		dataType: double
+		lineageTag: 61dbb029-2599-40e2-89d5-92441ce6a9d4
+		summarizeBy: sum
+		sourceColumn: Destination.NetFlowPercentage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Destination.NetFlowQty'
+		dataType: double
+		lineageTag: a9fbe87d-8c1c-42a0-b755-f68f49dc1359
+		summarizeBy: sum
+		sourceColumn: Destination.NetFlowQty
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PriorityColor =
+			SWITCH ( (TRUE),
+			    DeploymentSource[AfterDeploymentPriority.1]=1,"Critical",
+			    DeploymentSource[AfterDeploymentPriority.1]=10,"Red",
+			    DeploymentSource[AfterDeploymentPriority.1]=20,"Yellow",
+			    DeploymentSource[AfterDeploymentPriority.1]=30,"Green",
+			    DeploymentSource[AfterDeploymentPriority.1]=40,"OTOG",
+			    BLANK())
+		lineageTag: fe878384-14fc-42d2-a51d-258c9703edb8
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DeploymentSource = m
+		mode: import
+		queryGroup: Source
+		source =
+				let
+				    Source = Sql.Database(Server, Database),
+				    dbo_StockDeploymentSources1 = Source{[Schema="dbo",Item="StockDeploymentSources"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(dbo_StockDeploymentSources1,{"Id", "AfterDeploymentOnHandQuantity", "AfterDeploymentNetFlow", "AfterDeploymentPercentOfTopOfGreen", "AfterDeploymentPriority", "TotalDeployed", "StockDeploymentDestinations"}),
+				    #"Expanded StockDeploymentDestinations" = Table.ExpandTableColumn(#"Removed Other Columns", "StockDeploymentDestinations", {"Id", "AfterDeploymentNetFlow", "AfterDeploymentPercentOfTopOfGreen", "AfterDeploymentPriority", "TotalDeployed"}, {"Id.1", "AfterDeploymentNetFlow.1", "AfterDeploymentPercentOfTopOfGreen.1", "AfterDeploymentPriority.1", "TotalDeployed.1"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Expanded StockDeploymentDestinations",{{"Id", "PartId Source"}, {"Id.1", "PartId Destination"}}),
+				    #"Merged Queries" = Table.NestedJoin(#"Renamed Columns", {"PartId Source"}, Parts, {"Id"}, "Parts", JoinKind.LeftOuter),
+				    #"Expanded Parts" = Table.ExpandTableColumn(#"Merged Queries", "Parts", {"Database_Name", "PartNumber", "Revision", "Location", "OnHandQty", "NetFlowPercentage", "NetFlowQty"}, {"Source.Database_Name", "Source.PartNumber", "Source.Revision", "Source.Location", "Source.OnHandQty", "Source.NetFlowPercentage", "Source.NetFlowQty"}),
+				    #"Merged Queries1" = Table.NestedJoin(#"Expanded Parts", {"PartId Destination"}, Parts, {"Id"}, "Parts", JoinKind.LeftOuter),
+				    #"Expanded Parts1" = Table.ExpandTableColumn(#"Merged Queries1", "Parts", {"PartNumber", "Location", "Description", "OnHandQty", "NetFlowPercentage", "NetFlowQty"}, {"Destination.PartNumber", "Destination.Location", "Destination.Description", "Destination.OnHandQty", "Destination.NetFlowPercentage", "Destination.NetFlowQty"})
+				in
+				    #"Expanded Parts1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
